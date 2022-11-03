@@ -15,10 +15,16 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-        //public Domicilio Domicilio { get; set; }
-        //public Perfil Perfil { get; set; }
+        public Domicilio Domicilio { get; set; }
+        public Perfil Perfil { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public DateTime FechaRegistro { get; set; }
         public bool Activo { get; set; }
+
+        public Usuario()
+        {
+            Domicilio = new Domicilio();
+            Perfil = new Perfil();          
+        }
     }
 }
