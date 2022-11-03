@@ -6,10 +6,10 @@
     <div class="row justify-content-center caja">
         <div class="col">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 align-self-center">
                     <div class="row">
-                        <div class="col align-self-center">
-                            <h1>asdasd</h1>
+                        <div class="col">
+                            <h1>Login</h1>
                         </div>
                     </div>
                 </div>
