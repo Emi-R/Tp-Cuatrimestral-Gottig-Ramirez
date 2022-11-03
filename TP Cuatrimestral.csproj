@@ -94,6 +94,10 @@
       <Project>{d5c9c73f-dfd5-4e9a-a509-e21f8e79b466}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="Negocio\Negocio.csproj">
+      <Project>{a045f49e-814e-40bc-8643-f55c929d8408}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
