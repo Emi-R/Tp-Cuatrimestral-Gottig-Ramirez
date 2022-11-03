@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class DetallePlato : DetalleInsumo
+    public class DetalleBebida
     {
-        Plato plato;
+        Bebida bebida;
 
-        public DetallePlato()
+        public DetalleBebida()
         {
-            plato = new Plato();
+            bebida = new Bebida();
         }
     }
 }
