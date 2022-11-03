@@ -1,0 +1,14 @@
+﻿body {
+}
+
+.cajaLogin {
+    border: double;
+    box-shadow: 10px 10px 5px lightblue;
+}
+
+.caja {
+    margin-top: 300px !important;
+    margin-left: 300px !important;
+    margin-right: 300px !important;
+}
+
