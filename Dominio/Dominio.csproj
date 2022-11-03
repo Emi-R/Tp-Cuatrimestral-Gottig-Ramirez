@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domicilio.cs" />
     <Compile Include="Mesa.cs" />
-    <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Venta.cs" />
