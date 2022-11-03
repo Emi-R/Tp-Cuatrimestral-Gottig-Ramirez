@@ -1,0 +1,21 @@
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (5, 1, 6);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 2, 1);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (3, 3, 5);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (10, 4, 3);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (6, 5, 5);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (2, 6, 1);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (8, 7, 1);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (2, 8, 3);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (5, 9, 6);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 10, 6);
+
+insert into Usuarios (Legajo) values (1);
+insert into Usuarios (Legajo) values (2);
+insert into Usuarios (Legajo) values (3);
+insert into Usuarios (Legajo) values (4);
+insert into Usuarios (Legajo) values (5);
+insert into Usuarios (Legajo) values (6);
+insert into Usuarios (Legajo) values (7);
+insert into Usuarios (Legajo) values (8);
+insert into Usuarios (Legajo) values (9);
+insert into Usuarios (Legajo) values (10);
