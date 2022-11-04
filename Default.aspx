@@ -17,9 +17,9 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="container justify-content-center" style="width: 60%; padding-top: 50px;">
+                    <div class="container justify-content-center" style="width: 60%; padding-top: 50px; text-align:-webkit-center;">
                         <!-- Email input -->
-                        <div class="text-center">
+                        <div class="text-center" style="font-size:150px; color:black">
                             <i class="fas fa-utensils"></i>
                         </div>
                         <div class="form-outline mb-4">
@@ -43,7 +43,7 @@
                         </div>
 
                         <!-- Submit button -->
-                        <asp:Button runat="server" ID="btnIngresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" Text="Ingresar" />
+                        <asp:Button runat="server" ID="btnIngresar" CssClass="btn" OnClick="btnIngresar_Click" Text="Ingresar" />
 
                     </div>
                 </div>

@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administracion.aspx" />
     <Content Include="Bebidas.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -79,6 +80,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion.aspx.cs">
+      <DependentUpon>Administracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion.aspx.designer.cs">
+      <DependentUpon>Administracion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bebidas.aspx.cs">
       <DependentUpon>Bebidas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

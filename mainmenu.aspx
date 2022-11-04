@@ -6,17 +6,17 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
-            <div>
+            <div class="title-page">
                 <h1>Mesas</h1>
             </div>
-            <div class="container pt-5">
-                <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0 bg-white" ID="dgvMesas" AutoGenerateColumns="false">
+            <div class="container pt-3">
+                <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0" ID="dgvMesas" AutoGenerateColumns="false">
                     <Columns>
-                        <asp:BoundField HeaderText="Número de Mesa" DataField="Numero" />
-                        <asp:BoundField HeaderText="Mesero Asignado" DataField="MeseroAsignado" />
-                        <asp:BoundField HeaderText="Número de Asientos" DataField="Capacidad" />
-                        <asp:CheckBoxField HeaderText="Ocupado" DataField="Ocupado" />
-                        <asp:CheckBoxField HeaderText="Activa" DataField="Activo" />
+                        <asp:BoundField HeaderText="Número de Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero"/>
+                        <asp:BoundField HeaderText="Mesero Asignado"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado" />
+                        <asp:BoundField HeaderText="Número de Asientos" HeaderStyle-CssClass="headerTitle" DataField="Capacidad" />
+                        <asp:CheckBoxField HeaderText="Ocupado" HeaderStyle-CssClass="headerTitle" DataField="Ocupado" />
+                        <asp:CheckBoxField HeaderText="Activa" HeaderStyle-CssClass="headerTitle" DataField="Activo" />
                     </Columns>
                 </asp:GridView>
             </div>
