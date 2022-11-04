@@ -17,20 +17,26 @@
 
 .imgLogin {
     background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/1a/b8/46/6d/london-stock.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
 }
 
-.tituloLogin h1, h4 {
-    color: #a32020;
+.tituloLogin h2, h4 {
+    color: #cc1919;
     margin: 10px;
     margin-top: 10%;
     font-size: 80px;
 }
 
+.backgrLogin {
+    background-color: #2322229e;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    text-shadow:1px 1px 4px #ffd800;
+}
 .navbar {
     background-color: #a32020 !important;
+    
 }
 
 .navbar-brand {
