@@ -8,15 +8,20 @@
             <div class="row cajaLogin">
                 <div class="col-6 imgLogin">
                     <div class="row">
-                        <div class="col justify-content-center tituloLogin">
-                            <h1>FastFood</h1>
-                            <h4>Ingrese su legajo y contraseña</h4>
+                        <div class="col justify-content-center tituloLogin backgrLogin text-center">
+                            <h2>Restaurant Fressen</h2>
+                            <div class="text-center">
+                                <h4>Ingrese su legajo y contraseña</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="container justify-content-center" style="width: 60%;padding-top:50px;">
+                    <div class="container justify-content-center" style="width: 60%; padding-top: 50px;">
                         <!-- Email input -->
+                        <div class="text-center">
+                            <i class="fas fa-utensils"></i>
+                        </div>
                         <div class="form-outline mb-4">
                             <input type="email" id="form1Example1" class="form-control" />
                             <label class="form-label" for="form1Example1">Legajo</label>
@@ -38,13 +43,13 @@
                         </div>
 
                         <!-- Submit button -->
-                        <asp:Button runat="server" ID="btnIngresar" cssclass="btn btn-primary" onClick="btnIngresar_Click" Text="Ingresar" />
+                        <asp:Button runat="server" ID="btnIngresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" Text="Ingresar" />
 
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </asp:Content>
