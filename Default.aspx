@@ -4,13 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row justify-content-center caja">
-        <div class="col cajaLogin">
-            <div class="row">
-                <div class="col-6 align-self-center imgLogin">
+        <div class="col ">
+            <div class="row cajaLogin">
+                <div class="col-6 imgLogin">
                     <div class="row">
-                        <div class="col justify-content-center">
-                            <h1 class="tituloLogin">Bienvenido a FastFood</h1>
-                            <h4 class="tituloLogin">Ingrese su legajo y contraseña</h4>
+                        <div class="col justify-content-center tituloLogin">
+                            <h1>FastFood</h1>
+                            <h4>Ingrese su legajo y contraseña</h4>
                         </div>
                     </div>
                 </div>
