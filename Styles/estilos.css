@@ -2,8 +2,9 @@
 }
 
 .cajaLogin {
-    border: double;
-    box-shadow: 10px 10px 5px lightblue;
+    border:groove;
+    box-shadow: 0px 0px 25px 5px #808080;
+    border-radius: 10px;
 }
 
 .caja {
@@ -12,3 +13,13 @@
     margin-right: 300px !important;
 }
 
+.imgLogin {
+    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/1a/b8/46/6d/london-stock.jpg");
+    background-repeat: no-repeat;
+    height: 300px;
+}
+
+.tituloLogin
+{
+    color:dodgerblue;
+}

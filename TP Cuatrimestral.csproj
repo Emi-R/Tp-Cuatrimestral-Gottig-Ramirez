@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="mainmenu.aspx" />
     <Content Include="Styles\estilos.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="LoginMaster.Master.designer.cs">
       <DependentUpon>LoginMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="mainmenu.aspx.cs">
+      <DependentUpon>mainmenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainmenu.aspx.designer.cs">
+      <DependentUpon>mainmenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
