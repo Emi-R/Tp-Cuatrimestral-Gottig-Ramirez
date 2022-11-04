@@ -26,5 +26,10 @@ namespace Dominio
             Domicilio = new Domicilio();
             Perfil = new Perfil();          
         }
+
+        public override string ToString()
+        {
+            return Legajo.ToString();
+        }
     }
 }

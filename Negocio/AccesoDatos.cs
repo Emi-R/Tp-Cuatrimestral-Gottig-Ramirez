@@ -12,7 +12,8 @@ namespace Negocio
     {
         private SqlConnection Conexion;
         private SqlCommand Comando;
-        private SqlDataReader Lector;
+        private SqlDataReader lector;
+        public SqlDataReader Lector { get { return lector; } }
 
         public AccesoDatos()
         {
@@ -33,7 +34,7 @@ namespace Negocio
             try
             {
                 Conexion.Open();
-                Lector = Comando.ExecuteReader();
+                lector = Comando.ExecuteReader();
             }
             catch (Exception ex)
             {
@@ -42,6 +43,14 @@ namespace Negocio
                 throw;
             }
             
+        }
+
+        public void CerrarConexion()
+        {
+            if(lector !=null)
+            {
+                Conexion.Close();
+            }
         }
     }
 }
