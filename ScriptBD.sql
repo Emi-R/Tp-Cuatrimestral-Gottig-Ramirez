@@ -5,7 +5,39 @@ Use Restaurant
 Go
 
 Create Table Usuarios(
-    Legajo Int Primary Key
+    Legajo Int Primary Key Identity(1,1),
+    Contraseña varchar(10) Not Null,
+    Dni varchar(10) Unique Not Null,
+    Nombre varchar(30),
+    Apellidos varchar(30) Not Null,
+    Telefono varchar(15) Not Null,
+    Email varchar(30) Not Null,
+    Calle varchar(20) Not Null,
+    Numero varchar(5) Not Null,
+    Piso tinyint Null,
+    Departamento char(1) Null,
+    IDLocalidad int Not Null Foreign Key References Localidades(ID),
+    TipoPerfil tinyint Not Null Foreign Key References Perfiles(ID),
+    FechaNac date Not Null,
+    FechaRegistro date Not Null,
+    Estado bit Not Null
+)
+
+Create Table Provincias(
+    ID int Primary Key Identity(1,1),
+    Nombre varchar(20)
+)
+
+Create Table Ciudades(
+    ID int Primary Key Identity(1,1),
+    Nombre varchar(30),
+    IDProvincia int Not Null Foreign Key References Provincias(ID)
+)
+
+Create Table Localidades(
+    ID int Primary Key Identity(1,1),
+    Nombre varchar(30),
+    IDCiudad int Not Null Foreign Key References Ciudades(ID)
 )
 
 Create Table Mesas(
@@ -15,4 +47,10 @@ Create Table Mesas(
     Capacidad Int Not Null,
     Ocupado Bit Not Null Default(0),
     Activo Bit Not Null Default(1)
+)
+
+Create Table Perfiles
+(
+    ID tinyint Primary Key Identity(1,1),
+    Nombre Varchar(20) Not Null
 )

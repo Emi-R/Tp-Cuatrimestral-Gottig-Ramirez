@@ -12,8 +12,8 @@
             <div class="container pt-3">
                 <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0" ID="dgvMesas" AutoGenerateColumns="false">
                     <Columns>
-                        <asp:BoundField HeaderText="Número de Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero"/>
-                        <asp:BoundField HeaderText="Mesero Asignado"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado" />
+                        <asp:BoundField HeaderText="Nro. Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero"/>
+                        <asp:BoundField HeaderText="Apellido"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado" />
                         <asp:BoundField HeaderText="Número de Asientos" HeaderStyle-CssClass="headerTitle" DataField="Capacidad" />
                         <asp:CheckBoxField HeaderText="Ocupado" HeaderStyle-CssClass="headerTitle" DataField="Ocupado" />
                         <asp:CheckBoxField HeaderText="Activa" HeaderStyle-CssClass="headerTitle" DataField="Activo" />

@@ -29,7 +29,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            return Legajo.ToString();
+            return Apellido.ToString();
         }
     }
 }
