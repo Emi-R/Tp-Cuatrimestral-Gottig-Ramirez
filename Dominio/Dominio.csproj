@@ -42,9 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bebida.cs" />
-    <Compile Include="DetalleBebida.cs" />
     <Compile Include="DetalleInsumo.cs" />
-    <Compile Include="DetallePlato.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Insumo.cs" />
     <Compile Include="Mesa.cs" />
