@@ -17,7 +17,7 @@ namespace Negocio
         {
             List<Mesa> listaMesas = new List<Mesa>();
 
-            string consulta = "Select M.Numero, U.Legajo, U.Apellidos, U.Nombre, M.Capacidad, M.Ocupado, M.Activo From Mesas M Inner Join Usuarios U On M.MeseroAsignado = U.Legajo";
+            string consulta = "Select M.Numero, U.Legajo, U.Apellidos, U.Nombre, M.Capacidad, M.Ocupado, M.Reservado, M.Activo From Mesas M Inner Join Usuarios U On M.MeseroAsignado = U.Legajo";
 
             basedatos.SetearConsulta(consulta);
             basedatos.EjecutarLectura();
@@ -39,7 +39,9 @@ namespace Negocio
 
                     mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
 
-                    mesa.Reservado = (bool)basedatos.Lector["Ocupado"];
+                    mesa.Reservado = (bool)basedatos.Lector["Reservado"];
+
+                    mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
 
                     mesa.Activo = (bool)basedatos.Lector["Activo"];
 

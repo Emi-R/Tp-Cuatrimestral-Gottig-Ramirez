@@ -19,6 +19,8 @@ namespace Dominio
 
         public bool Reservado { get; set; }
 
+        public bool Ocupado { get; set; }
+
         public bool Activo { get; set; }
 
         public Mesa()

@@ -39,7 +39,6 @@ Insert into Localidades (Nombre, IDCiudad) Values ('Santa Cruz', 9);
 Insert into Localidades (Nombre, IDCiudad) Values ( 'Tucuman', 10);
 Go
 
-
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (5, 1, 6);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 2, 1);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (3, 3, 5);

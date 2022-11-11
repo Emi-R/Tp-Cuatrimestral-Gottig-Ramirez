@@ -52,5 +52,6 @@ Create Table Mesas(
     Numero Int Not Null,
     Capacidad Int Not Null,
     Ocupado Bit Not Null Default(0),
+    Reservado Bit Not Null Default(0),
     Activo Bit Not Null Default(1)
 )
