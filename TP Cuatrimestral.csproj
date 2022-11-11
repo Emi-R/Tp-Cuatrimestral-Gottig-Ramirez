@@ -69,6 +69,7 @@
     <Content Include="Bebidas.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Insumos.aspx" />
     <Content Include="mainmenu.aspx" />
     <Content Include="Mesas.aspx" />
     <Content Include="Meseros.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Insumos.aspx.cs">
+      <DependentUpon>Insumos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insumos.aspx.designer.cs">
+      <DependentUpon>Insumos.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginMaster.Master.cs">
       <DependentUpon>LoginMaster.Master</DependentUpon>

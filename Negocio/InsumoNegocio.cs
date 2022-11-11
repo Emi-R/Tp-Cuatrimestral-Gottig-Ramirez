@@ -26,7 +26,7 @@ namespace Negocio
 
                     insumo.Id = baseDatos.Lector.GetInt32(0);
                     insumo.Nombre = baseDatos.Lector.GetString(1);
-                    insumo.Precio = baseDatos.Lector.GetFloat(2);
+                    insumo.Precio = baseDatos.Lector.GetDecimal(2);
 
                     listaInsumos.Add(insumo);
                 }
