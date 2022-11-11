@@ -55,3 +55,29 @@ Create Table Mesas(
     Reservado Bit Not Null Default(0),
     Activo Bit Not Null Default(1)
 )
+
+Create table TipoInsumo(
+Id int primary key identity(1,1),
+Nombre varchar(150),
+Activo bit not null default 1
+)
+go
+
+Create table Marcas(
+Id int primary key identity(1,1),
+Nombre varchar(max),
+Activo bit not null default 1
+)
+go
+
+Create table Insumos(
+Id int primary key identity(1,1),
+Nombre varchar(150),
+Precio money,
+IdTipoInsumo int foreign key references TipoInsumo(Id) not null,
+Capacidad float,
+Marca int foreign key references Marcas(Id) null,
+Alcoholica bit default 0,
+Activo bit not null default 1
+)
+go

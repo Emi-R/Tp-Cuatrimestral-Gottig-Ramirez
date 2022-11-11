@@ -1,4 +1,6 @@
-﻿
+﻿body {
+
+}
 
 .cajaLogin {
     border: groove;
@@ -23,18 +25,19 @@
 }
 
 .tituloLogin h2, h4 {
-    color: #cc1919;
+    color: #e8c712;
     margin: 10px;
     margin-top: 10%;
     font-size: 80px;
+    font-family: 'Fugaz One' !important;
 }
 
 .backgrLogin {
     border-radius: 10px;
-    background-color: #2322229e;
+    background-color: #23222266;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    text-shadow: 1px 1px 4px #ffd800;
+    text-shadow: 1px 1px 6px #e8c71276;
 }
 .navbar {
     background-color: #a32020 !important;
