@@ -39,7 +39,7 @@ namespace Negocio
 
                     mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
 
-                    mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
+                    mesa.Reservado = (bool)basedatos.Lector["Ocupado"];
 
                     mesa.Activo = (bool)basedatos.Lector["Activo"];
 
