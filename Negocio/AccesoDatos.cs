@@ -42,12 +42,23 @@ namespace Negocio
                 MessageBox.Show(ex.ToString());
                 throw;
             }
-            
+
+        }
+
+        public void SetarProcedimiento(string sp)
+        {
+            Comando.CommandType = System.Data.CommandType.StoredProcedure;
+            Comando.CommandText = sp;
+        }
+
+        public void SetearParametro(string p, object value)
+        {
+            Comando.Parameters.AddWithValue(p, value);
         }
 
         public void CerrarConexion()
         {
-            if(lector !=null)
+            if (lector != null)
             {
                 Conexion.Close();
             }
