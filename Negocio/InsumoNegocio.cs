@@ -9,13 +9,38 @@ namespace Negocio
 {
     public class InsumoNegocio
     {
-        private AccesoDatos basedatos = new AccesoDatos();
+        private AccesoDatos baseDatos = new AccesoDatos();
 
-        public List<Insumo> ListarInsumos()
+        public List<Insumo> ListarInsumosConSP()
         {
-            List<Insumo> listarInsumos = new List<Insumo>();
+            baseDatos.SetarProcedimiento("SpListarInsumos");
+            baseDatos.EjecutarLectura();
 
-            return listarInsumos;
+            List<Insumo> listaInsumos = new List<Insumo>();
+
+            try
+            {
+                while (baseDatos.Lector.Read())
+                {
+                    Insumo insumo = new Insumo();
+
+                    insumo.Id = baseDatos.Lector.GetInt32(0);
+                    insumo.Nombre = baseDatos.Lector.GetString(1);
+                    insumo.Precio = baseDatos.Lector.GetFloat(2);
+
+                    listaInsumos.Add(insumo);
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+
+            return listaInsumos;
         }
     }
 }
