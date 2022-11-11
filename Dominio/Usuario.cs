@@ -29,7 +29,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            return Apellido.ToString();
+            return (Apellido + ", " + Nombre).ToString();
         }
     }
 }
