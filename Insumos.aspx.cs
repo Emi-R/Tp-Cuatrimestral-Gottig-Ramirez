@@ -38,5 +38,12 @@ namespace TP_Cuatrimestral
                 repeaterInsumos.DataBind();
             }
         }
+
+        //queda pendiente si ver si se puede lograr desarrollar o no
+        protected void linkBtnDetalle_Click(object sender, EventArgs e)
+        {
+            //int idInsumo = Convert.ToInt32(((Button)sender).CommandArgument);
+            //int tipoInsumo = negocio.ObtenerIdTipoInsumo(idInsumo);
+        }
     }
 }
