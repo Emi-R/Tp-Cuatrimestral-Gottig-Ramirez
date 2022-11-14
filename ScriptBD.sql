@@ -81,3 +81,16 @@ Alcoholica bit default 0,
 Activo bit not null default 1
 )
 go
+
+Create Procedure SpListarInsumos
+As
+Begin
+Select i.Id, i.Nombre, Precio, ti.Nombre As Tipo,
+m.Nombre As Marca
+From Insumos i
+Inner join TipoInsumo ti
+On i.IdTipoInsumo = ti.Id
+Left Join Marcas m
+On i.Id = m.Id
+Where i.Activo = 1
+end

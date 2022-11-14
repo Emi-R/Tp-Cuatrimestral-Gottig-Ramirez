@@ -45,7 +45,7 @@ namespace Negocio
 
         }
 
-        public void SetarProcedimiento(string sp)
+        public void SetearProcedimiento(string sp)
         {
             Comando.CommandType = System.Data.CommandType.StoredProcedure;
             Comando.CommandText = sp;

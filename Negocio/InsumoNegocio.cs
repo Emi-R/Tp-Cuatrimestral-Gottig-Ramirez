@@ -13,7 +13,7 @@ namespace Negocio
 
         public List<Insumo> ListarInsumosConSP()
         {
-            baseDatos.SetarProcedimiento("SpListarInsumos");
+            baseDatos.SetearProcedimiento("SpListarInsumos");
             baseDatos.EjecutarLectura();
 
             List<Insumo> listaInsumos = new List<Insumo>();

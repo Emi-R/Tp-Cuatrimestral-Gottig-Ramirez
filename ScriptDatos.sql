@@ -25,8 +25,6 @@ Insert into Ciudades (Nombre, IDProvincia) Values ('Santa Cruz', 9);
 Insert into Ciudades (Nombre, IDProvincia) Values ('Tucuman', 10);
 Go
 
-Select * from Ciudades
-
 Insert into Localidades (Nombre, IDCiudad) Values ('Buenos Aires', 1);
 Insert into Localidades (Nombre, IDCiudad) Values ('Cordoba', 2);
 Insert into Localidades (Nombre, IDCiudad) Values ('Mendoza', 3);
@@ -61,4 +59,32 @@ insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Call
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDLocalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('rxgf', 23367514, 'Judicaël', 'Cordie', '5508976418', 'jcordie7@domainmarket.com', 'Nelson', '00', null, null, 3, 2, '1995-08-17 06:55:21', '2021-05-21 18:43:21', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDLocalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('cjjb', 36909435, 'Adèle', 'Westwell', '4933840137', 'swestwell8@hp.com', 'Crest Line', '806', null, null, 5, 2, '1999-06-09 03:21:26', '2021-12-24 07:51:03', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDLocalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10 06:56:28', '2019-10-16 16:55:39', 2);
+Go
+
+Insert Into Marcas (nombre)
+Values
+('Coca Cola'),
+('Fanta'),
+('Pepsi')
+Go
+
+Insert Into TipoInsumo (Nombre) 
+Values 
+('Bebida'),
+('Plato principal'),
+('Plato dulce')
+Go
+
+Insert Into Insumos (Nombre, Precio, IdTipoInsumo)
+Values 
+('Ensalada Cesar', 500, 2),
+('Ensalada Lechuga y Tomate', 300, 2),
+('Papas fritas', 1000, 2)
+Go
+
+Insert Into Insumos (Nombre, Precio, IdTipoInsumo, Capacidad)
+Values 
+('Cola', 500, 1, 1),
+('Cola', 500, 1, 1),
+('Naranja', 500, 1, 1)
 Go
