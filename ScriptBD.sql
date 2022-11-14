@@ -80,7 +80,9 @@ Marca int foreign key references Marcas(Id) null,
 Alcoholica bit default 0,
 Activo bit not null default 1
 )
-go
+Go
+
+-- Store Procedures
 
 Create Procedure SpListarInsumos
 As
@@ -94,3 +96,44 @@ Left Join Marcas m
 On i.Id = m.Id
 Where i.Activo = 1
 end
+Go 
+
+Create Procedure SpListarUsuarios
+As 
+Begin 
+Select 
+    U.Legajo,
+    U.TipoPerfil,
+    U.Apellidos, 
+    U.Nombre,
+    U.Dni,
+    U.Telefono,
+    U.Email,
+    U.Calle,
+    U.Numero,
+    U.Piso,
+    U.FechaNac,
+    U.FechaRegistro,
+    U.Estado
+From Usuarios U 
+End
+Go 
+
+Create Procedure SpListarMesas 
+As
+Begin
+Select 
+    M.Numero, 
+    U.Legajo, 
+    U.Apellidos, 
+    U.Nombre, 
+    M.Capacidad, 
+    M.Ocupado, 
+    M.Reservado, 
+    M.Activo 
+From Mesas M 
+Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
+End
+Go 
+
+Exec SpListarUsuarios
