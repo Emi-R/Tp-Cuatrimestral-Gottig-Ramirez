@@ -58,7 +58,9 @@
     margin:0 !important;
 }
 
-.btn {
+/*cambie este btn a btn2*/
+
+.btn2 {
     background-color: #a32020 !important;
     max-width: 100% !important;
     color:white !important;

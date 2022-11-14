@@ -98,14 +98,14 @@ Where i.Activo = 1
 end
 Go 
 
-Create Procedure SpListarUsuarios
+Alter Procedure SpListarUsuarios
 As 
 Begin 
 Select 
     U.Legajo,
-    U.TipoPerfil,
     U.Apellidos, 
     U.Nombre,
+    U.TipoPerfil,
     U.Dni,
     U.Telefono,
     U.Email,

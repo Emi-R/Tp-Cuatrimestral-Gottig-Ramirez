@@ -43,7 +43,7 @@
                         </div>
 
                         <!-- Submit button -->
-                        <asp:Button runat="server" ID="btnIngresar" CssClass="btn" OnClick="btnIngresar_Click" Text="Ingresar" />
+                        <asp:Button runat="server" ID="btnIngresar" CssClass="btn btn2" OnClick="btnIngresar_Click" Text="Ingresar" />
 
                     </div>
                 </div>
