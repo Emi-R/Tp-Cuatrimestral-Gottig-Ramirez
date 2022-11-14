@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row m-5">
+        <div>
+            <button type="button" class="btn btn-success">Agregar mesero</button>
+        </div>
         <div class="col mt-3">
             <div class="row">
                 <div class="col">
