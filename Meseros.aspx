@@ -21,9 +21,9 @@
                     <ItemTemplate>
                         <div class="card cardEdit" style="width: 18rem;margin-left:auto;margin-bottom:3px">
                             <img src="https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg" class="card-img-top" alt="Chicago Skyscrapers" />
-                            <div class="card-body">
+                            <div class="card-body pb-0">
                                 <h5 class="card-title">Legajo: #<%# Eval("Legajo") %></h5>
-                                <p class="card-text">Apellido: <%# Eval("Apellido") %>, <%# Eval("Nombre") %></p>
+                                <p class="card-text"><%# Eval("Apellido") %>, <%# Eval("Nombre") %></p>
                             </div>
                             <ul class="list-group list-group-light list-group-small">
                                 <li class="list-group-item px-4">Dni: <%# Eval("Dni") %></li>
