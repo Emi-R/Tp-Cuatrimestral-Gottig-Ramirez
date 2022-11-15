@@ -8,7 +8,7 @@
         </div>
         <div class="col mt-3">
             <div class="row">
-                <button type="button" class="btn btn-success">Agregar mesero</button>
+                <a class="btn btn-success" role="button" href="AddMesero.aspx">Agregar mesero</a>
             </div>
 
             <div class="row me-5">

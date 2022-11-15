@@ -13,7 +13,10 @@
 }
 
 .caja {
-    margin: 10%;
+    margin-top: 10% !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+    margin-bottom: 10% !important;
 }
 
 .imgLogin {
@@ -90,6 +93,10 @@
     margin-bottom:0.5cm;
 }
 
-.cont{
-    border:dashed;
+.boxForm {
+    border: solid;
+    padding: 0.5cm;
+    background-color: #3332324f;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    border-radius: 10px;
 }
