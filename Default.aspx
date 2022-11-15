@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-6">
                     <div class="container justify-content-center" style="width: 60%; padding-top: 50px; text-align:-webkit-center;">
-
+                        <!-- Email input -->
                         <div class="text-center" style="font-size:150px; color:black">
                             <i class="fas fa-utensils"></i>
                         </div>
@@ -27,11 +27,13 @@
                             <label class="form-label" for="form1Example1">Legajo</label>
                         </div>
 
+                        <!-- Password input -->
                         <div class="form-outline mb-4">
                             <input type="password" id="form1Example2" class="form-control" />
                             <label class="form-label" for="form1Example2">Contraseña</label>
                         </div>
 
+                        <!-- 2 column grid layout for inline styling -->
                         <div class="row mb-4">
                             <div class="col d-flex justify-content-center">
                             </div>
@@ -40,6 +42,7 @@
                             </div>
                         </div>
 
+                        <!-- Submit button -->
                         <asp:Button runat="server" ID="btnIngresar" CssClass="btn btn2" OnClick="btnIngresar_Click" Text="Ingresar" />
 
                     </div>

@@ -29,6 +29,7 @@ namespace Negocio
 
                     mesa.Numero = (int)basedatos.Lector["Numero"];
 
+
                     mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
 
                     mesa.MeseroAsignado.Apellido = (string)basedatos.Lector["Apellidos"];
