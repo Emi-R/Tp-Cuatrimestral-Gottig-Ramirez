@@ -29,8 +29,8 @@ namespace Negocio
                     user.Apellido = (string)basedatos.Lector["Apellidos"];
                     user.Nombre = (string)basedatos.Lector["Nombre"];
                     user.Dni = (string)basedatos.Lector["Dni"];
-                    user.FechaNacimiento = (DateTime)basedatos.Lector["FechaNac"];
-                    user.FechaRegistro = (DateTime)basedatos.Lector["FechaRegistro"];
+                    user.FechaNacimiento = (string)basedatos.Lector["FechaNac"];
+                    user.FechaRegistro = (string)basedatos.Lector["FechaRegistro"];
                     user.Telefono = (string)basedatos.Lector["Telefono"];
                     user.Email = (string)basedatos.Lector["Email"];
                     user.Domicilio.Calle = (string)basedatos.Lector["Calle"];
