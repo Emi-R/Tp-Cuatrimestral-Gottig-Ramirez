@@ -22,7 +22,7 @@
 
                 </div>
 
-                <div class="col-10">
+                <div class="col-8">
                     <div class="row  row-cols-1 row-cols-md-3 g-4">
                         <asp:Repeater runat="server" ID="repeaterBebidas">
                             <ItemTemplate>
@@ -40,12 +40,20 @@
                                             </div>
                                         </div>
                                         <div class="card-footer bg-primary p-2 text-dark bg-opacity-25 text-end">
-                                            <asp:LinkButton ID="linkBtnDetalle" OnClick="linkBtnDetalle_Click" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="IdInsumo" CssClass="color-black fs-6 fw-semibold  m-3" Text="Ver Detalle"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkBtnDetalle" OnClick="linkBtnDetalle_Click" runat="server" CommandArgument='<%#Eval("Id") %>' CommandName="IdBebida" CssClass="color-black fs-6 fw-semibold  m-3" Text="Ver Detalle"></asp:LinkButton>
                                         </div>
                                     </div>
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                         <div class="col text-center ">
+                            <asp:Button OnClick="btnAgregar_Click" runat="server" ID="btnAgregar" CssClass="w-100 btn btn-dark" Text="Agregar Bebidas" />
+                        </div>
                     </div>
                 </div>
 

@@ -57,7 +57,8 @@ namespace TP_Cuatrimestral
         }
         protected void linkBtnDetalle_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
+            Response.Redirect("EditBebida.aspx?id=" + id, false);
         }
 
         protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +70,11 @@ namespace TP_Cuatrimestral
             repeaterBebidas.DataSource = null;
             repeaterBebidas.DataSource = listaBebidas.Where(x => x.Marca.Id == id);
             repeaterBebidas.DataBind();
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EditBebida.aspx", false);
         }
     }
 }
