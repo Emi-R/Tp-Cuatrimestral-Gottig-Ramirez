@@ -17,8 +17,8 @@ namespace Dominio
         public string Email { get; set; }
         public Domicilio Domicilio { get; set; }
         public Perfil Perfil { get; set; }
-        public DateTime FechaNacimiento { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public string FechaNacimiento { get; set; }
+        public string FechaRegistro { get; set; }
         public bool Activo { get; set; }
 
         public Usuario()
