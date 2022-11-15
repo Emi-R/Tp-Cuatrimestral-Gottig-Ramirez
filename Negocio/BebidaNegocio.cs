@@ -11,7 +11,7 @@ namespace Negocio
     {
         private AccesoDatos baseDatos = new AccesoDatos();
 
-        public List<Bebida> ListarBebidas()
+        public List<Bebida> ListarBebidas(string id = "")
         {
             string consulta = @"SELECT i.Id, i.Nombre as Nombre, i.Precio,
                                i.Capacidad,  m.Id as IdMarca, m.Nombre as Marca, i.Alcoholica
@@ -22,6 +22,9 @@ namespace Negocio
                                on i.Marca = m.Id
                                where i.Activo = 1
                                and ti.Id = 1";
+
+            if (!string.IsNullOrEmpty(id))
+                consulta += $"AND I.ID = {id}";
 
             baseDatos.SetearConsulta(consulta);
             baseDatos.EjecutarLectura();

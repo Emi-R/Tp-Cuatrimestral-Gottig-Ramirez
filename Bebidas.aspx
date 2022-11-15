@@ -10,13 +10,13 @@
                 <div class="col mt-3">
                     <div class="row">
                         <div class="col">
-                            <asp:Label runat="server" CssClass="fs-5 fw-bold" Text="Marca"></asp:Label>
+                            <asp:Label runat="server" CssClass="fs-5 fw-bold text-dark" Text="Marca"></asp:Label>
                         </div>
                     </div>
 
                     <div class="row me-5">
                         <div class="col">
-                           <asp:DropDownList OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-outline-dark dropwdown-toggle w-100" runat="server" ID="ddlMarcas"></asp:DropDownList>
+                           <asp:DropDownList OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-outline-dark bg-light dropwdown-toggle w-100" runat="server" ID="ddlMarcas"></asp:DropDownList>
                         </div>
                     </div>
 
