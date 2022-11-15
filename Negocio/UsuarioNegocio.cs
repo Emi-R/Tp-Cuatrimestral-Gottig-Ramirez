@@ -31,7 +31,6 @@ namespace Negocio
                     user.Dni = (string)basedatos.Lector["Dni"];
                     user.FechaNacimiento = (DateTime)basedatos.Lector["FechaNac"];
                     user.FechaRegistro = (DateTime)basedatos.Lector["FechaRegistro"];
-                    user.FechaRegistro = (DateTime)user.FechaRegistro.Date;
                     user.Telefono = (string)basedatos.Lector["Telefono"];
                     user.Email = (string)basedatos.Lector["Email"];
                     user.Domicilio.Calle = (string)basedatos.Lector["Calle"];
@@ -40,8 +39,6 @@ namespace Negocio
 
                     listaUsuarios.Add(user);
                 }
-
-
             }
             catch (Exception ex)
             {

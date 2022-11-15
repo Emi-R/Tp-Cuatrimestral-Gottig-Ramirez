@@ -14,8 +14,7 @@
                     <Columns>
                         <asp:BoundField HeaderText="Nro. Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero"/>
                         <asp:BoundField HeaderText="Legajo"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado.Legajo" />
-                        <asp:BoundField HeaderText="Apellido"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado.Apellido" />
-                        <asp:BoundField HeaderText="Nombre"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado.Nombre" />
+                        <asp:BoundField HeaderText="Apellido y Nombre"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado" />
                         <asp:BoundField HeaderText="Número de Asientos" HeaderStyle-CssClass="headerTitle" DataField="Capacidad" />
                         <asp:CheckBoxField HeaderText="Ocupada" HeaderStyle-CssClass="headerTitle" DataField="Ocupado" />
                         <asp:CheckBoxField HeaderText="Reservada" HeaderStyle-CssClass="headerTitle" DataField="Reservado" />
