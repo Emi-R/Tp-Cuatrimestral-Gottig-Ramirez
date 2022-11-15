@@ -103,7 +103,7 @@ As
 Begin 
 Select 
     U.Legajo,
-    U.Apellidos, 
+    U.Apellidos,
     U.Nombre,
     U.TipoPerfil,
     U.Dni,
@@ -112,14 +112,19 @@ Select
     U.Calle,
     U.Numero,
     U.Piso,
-    U.FechaNac,
-    U.FechaRegistro,
+    CONVERT(VARCHAR(10),U.FechaNac ,103) AS FechaNac,
+    CONVERT(VARCHAR(10),U.FechaRegistro ,103) AS FechaRegistro,
     U.Estado
 From Usuarios U 
 End
 Go 
 
-Create Procedure SpListarMesas 
+use Restaurant
+Go
+Exec SpListarUsuarios
+Go
+
+Alter Procedure SpListarMesas 
 As
 Begin
 Select 
@@ -135,5 +140,3 @@ From Mesas M
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 End
 Go 
-
-Exec SpListarUsuarios

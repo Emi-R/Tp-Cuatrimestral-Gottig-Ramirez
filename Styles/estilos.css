@@ -13,11 +13,7 @@
 }
 
 .caja {
-    margin-top: 10% !important;
-    margin-left: 10% !important;
-    margin-right: 10% !important;
-    margin-bottom: 10% !important;
-
+    margin: 10%;
 }
 
 .imgLogin {
@@ -92,4 +88,8 @@
 .h42{
     color:#b7b6b6 !important;
     margin-bottom:0.5cm;
+}
+
+.cont{
+    border:dashed;
 }

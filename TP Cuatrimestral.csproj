@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddMesero.aspx" />
     <Content Include="Administracion.aspx" />
     <Content Include="Bebidas.aspx" />
     <Content Include="Default.aspx" />
@@ -79,6 +80,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMesero.aspx.cs">
+      <DependentUpon>AddMesero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddMesero.aspx.designer.cs">
+      <DependentUpon>AddMesero.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administracion.aspx.cs">
       <DependentUpon>Administracion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
