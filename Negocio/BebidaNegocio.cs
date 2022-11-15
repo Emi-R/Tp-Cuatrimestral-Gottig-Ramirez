@@ -14,12 +14,12 @@ namespace Negocio
         public List<Bebida> ListarBebidas()
         {
             string consulta = @"SELECT i.Id, i.Nombre as Nombre, i.Precio,
-                               i.Capacidad, m.Nombre as Marca, i.Alcoholica
+                               i.Capacidad,  m.Id as IdMarca, m.Nombre as Marca, i.Alcoholica
                                FROM Insumos I
                                inner join TipoInsumo ti
                                on i.IdTipoInsumo = ti.Id
                                left join Marcas m
-                               on i.IdMarca = m.Id
+                               on i.Marca = m.Id
                                where i.Activo = 1
                                and ti.Id = 1";
 
@@ -38,8 +38,12 @@ namespace Negocio
                     bebida.Nombre = baseDatos.Lector.GetString(1);
                     bebida.Precio = baseDatos.Lector.GetDecimal(2);
                     bebida.Capacidad = (float)baseDatos.Lector.GetDouble(3);
-                    bebida.Marca = baseDatos.Lector.GetString(4);
-                    bebida.Alcoholica = baseDatos.Lector.GetBoolean(5);
+
+                    bebida.Marca = new Marca();
+                    bebida.Marca.Id = baseDatos.Lector.IsDBNull(baseDatos.Lector.GetOrdinal("IdMarca")) ? 0 : baseDatos.Lector.GetInt32(4);
+                    bebida.Marca.Nombre = baseDatos.Lector.IsDBNull(baseDatos.Lector.GetOrdinal("Marca")) ? "" : baseDatos.Lector.GetString(5);
+
+                    bebida.Alcoholica = baseDatos.Lector.GetBoolean(6);
 
                     listaBebidas.Add(bebida);
                 }
@@ -55,5 +59,6 @@ namespace Negocio
 
             return listaBebidas;
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace TP_Cuatrimestral
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("mainmenu.aspx");
+            Response.Redirect("Mesas.aspx");
         }
     }
 }

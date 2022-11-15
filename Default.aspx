@@ -10,9 +10,7 @@
                     <div class="row">
                         <div class="col justify-content-center tituloLogin backgrLogin text-center">
                             <h2>Restaurant Fressen</h2>
-                            <div class="text-center">
-                                <h4>Ingrese su legajo y contraseña</h4>
-                            </div>
+                           <h4 style="font-size:35px !important">Login</h4>
                         </div>
                     </div>
                 </div>
@@ -21,6 +19,9 @@
                         <!-- Email input -->
                         <div class="text-center" style="font-size:150px; color:black">
                             <i class="fas fa-utensils"></i>
+                             <div class="text-center">
+                                <h4 class="h42">Ingrese su legajo y contraseña</h4>
+                            </div>
                         </div>
                         <div class="form-outline mb-4">
                             <input type="email" id="form1Example1" class="form-control" />
