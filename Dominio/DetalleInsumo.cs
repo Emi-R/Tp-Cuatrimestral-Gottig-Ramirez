@@ -13,6 +13,6 @@ namespace Dominio
         public float PrecioTotal { get; set; }
         public bool Activo { get; set; }
         public Insumo Insumo { get; set; }
-
+                                                                                                
     }
 }

@@ -17,19 +17,61 @@
                 <div class="row mb-4">
                     <div class="col">
                         <div class="form-outline form-white">
-                            <input type="text" id="form6Example1" class="form-control" />
-                            <label class="form-label" for="form6Example1">First name</label>
+                            <input type="text" id="txtApellido" class="form-control" />
+                            <label class="form-label" for="txtApellido">Apellido</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-outline form-white">
-                            <input type="text" id="form6Example2" class="form-control" />
-                            <label class="form-label" for="form6Example2">Last name</label>
+                            <input type="text" id="txtNombre" class="form-control" />
+                            <label class="form-label" for="txtNombre">Nombre</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Text input -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" id="txtPassword" class="form-control" />
+                            <label class="form-label" for="txtPassword">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" id="txtDni" class="form-control" />
+                            <label class="form-label" for="txtDni">DNI</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-outline form-white mb">
+                                    <input type="text" id="txtDia" class="form-control" />
+                                    <label class="form-label" for="txtDia">Dia</label>
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <div class="form-outline form-white mb">
+                                    <input type="text" id="txtMes" class="form-control" />
+                                    <label class="form-label" for="txtMes">Mes</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline form-white mb" >
+                                    <input type="text" id="txtAnio" class="form-control" />
+                                    <label class="form-label" for="txtAnio">Año</label>
+
+                                </div>
+                            </div>
+                            <div id="textExample1" class="form-text" style="color:#ffffff !important">
+                                Fecha de Nacimiento
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="margin-top: -15px;" />
                 <div class="form-outline form-white mb-4">
                     <input type="text" id="form6Example3" class="form-control" />
                     <label class="form-label" for="form6Example3">Company name</label>
