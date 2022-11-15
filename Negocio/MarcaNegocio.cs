@@ -7,31 +7,31 @@ using Dominio;
 
 namespace Negocio
 {
-    public class InsumoNegocio
+    public class MarcaNegocio
     {
         private AccesoDatos baseDatos = new AccesoDatos();
-
-        public List<Insumo> ListarInsumosConSP()
+        public List<Marca> ListarMarcas()
         {
-            baseDatos.SetearProcedimiento("SpListarInsumos");
+            string consulta = "SELECT ID, NOMBRE FROM MARCAS";
+
+            baseDatos.SetearConsulta(consulta);
             baseDatos.EjecutarLectura();
 
-            List<Insumo> listaInsumos = new List<Insumo>();
+            List<Marca> listaMarcas = new List<Marca>();
 
             try
             {
                 while (baseDatos.Lector.Read())
                 {
-                    Insumo insumo = new Insumo();
+                    Marca marca = new Marca();
 
-                    insumo.Id = baseDatos.Lector.GetInt32(0);
-                    insumo.Nombre = baseDatos.Lector.GetString(1);
-                    insumo.Precio = baseDatos.Lector.GetDecimal(2);
+                    marca.Id = baseDatos.Lector.GetInt32(0);
+                    marca.Nombre = baseDatos.Lector.GetString(1);
 
-                    listaInsumos.Add(insumo);
+                    listaMarcas.Add(marca);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -40,8 +40,7 @@ namespace Negocio
                 baseDatos.CerrarConexion();
             }
 
-            return listaInsumos;
+            return listaMarcas;
         }
-
     }
 }

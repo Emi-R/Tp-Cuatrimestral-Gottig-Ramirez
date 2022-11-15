@@ -45,6 +45,7 @@
     <Compile Include="DetalleInsumo.cs" />
     <Compile Include="Domicilio.cs" />
     <Compile Include="Insumo.cs" />
+    <Compile Include="Marca.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Perfil.cs" />
