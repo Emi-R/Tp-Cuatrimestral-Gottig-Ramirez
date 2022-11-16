@@ -47,6 +47,7 @@
     <Compile Include="Insumo.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Mesa.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Plato.cs" />

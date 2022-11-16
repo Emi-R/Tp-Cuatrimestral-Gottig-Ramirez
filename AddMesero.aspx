@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="pt-2">
             <h1 class="title-page display-2 pb-3">Nuevo mesero</h1>
@@ -92,41 +92,43 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                         <div class="form-outline form-white mb-4">
                             <input type="text" id="txtCalle" class="form-control" />
                             <label class="form-label" for="txtCalle">Calle</label>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-4">
                         <div class="form-outline form-white mb-4">
                             <input type="text" id="txtNumero" class="form-control" />
                             <label class="form-label" for="txtNumero">Número</label>
                         </div>
                     </div>
-                    <div class="col">
-                        
+                    <div class="col-4">
+                        <div class="row">
+                            <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle dropdown-toggle2" Style="width: 95%" ID="ddlPaises" runat="server"></asp:DropDownList>
+                        </div>
                     </div>
-                    <div class="col">
-                        <asp:DropDownList cssclass="btn btn-info dropdown-toggle" ID="ddlPaises" runat="server"></asp:DropDownList>
-                    </div>
-                </div>
-                <!-- Calle -->
 
+                </div>
                 <!-- Message input -->
-                <div class="form-outline form-white mb-4">
-                    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                    <label class="form-label" for="form6Example7">Additional information</label>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" checked />
-                    <label class="form-check-label" for="form6Example8">Create an account? </label>
-                </div>
-
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <div class="row mb-4">
+                            <div class="col" style="align-self:center">
+                                <div class="form-outline form-white">
+                                    <input type="text" id="txtUrlImagen" class="form-control" />
+                                    <label class="form-label" for="txtUrlImagen">Ruta Imagen</label>
+                                </div>
+                            </div>
+                            <div class="col" style="text-align: center;">
+                                <asp:Image ID="imgPerfil"  runat="server" />
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Agregar</button>
             </div>
         </div>
         <div class="col-3"></div>
