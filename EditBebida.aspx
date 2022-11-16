@@ -11,8 +11,8 @@
                 <div class="col-6 p-5 container-bebidas_edit">
                     <div class="row bg-light br-6">
                         <div class="col text-center">
-                             <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Id #"></asp:Label>
-                              <asp:label runat="server" ID="lblId" CssClass="form-label br-6 w-100"></asp:label>
+                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Id #"></asp:Label>
+                            <asp:Label runat="server" ID="lblId" CssClass="form-label br-6 w-100"></asp:Label>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -46,17 +46,17 @@
 
 
                     <div class="row">
-                        <div class="col">
-                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Marca"></asp:Label>
+                        <div class="col-2">
+                            <asp:Label runat="server" ID="lblAlcoholica" CssClass="text-dark" Text="Es alcoholica?"></asp:Label>
+                        </div>
+                        <div class="col-2 p-0">
+                            <asp:CheckBox runat="server" ID="ckxAlcoholica" />
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-1">
                         <div class="col">
-                            <asp:Label runat="server" ID="lblAlcoholica" Text="Es alcoholica?"></asp:Label>
-                        </div>
-                        <div class="col">
-                            <asp:CheckBox runat="server" ID="ckxAlcoholica"/>
+                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Marca"></asp:Label>
                         </div>
                     </div>
 
@@ -67,13 +67,11 @@
                         </div>
                     </div>
 
-
-                    <div class="row">
-                        <div class="col mt-3">
+                    <div class="row mt-5">
+                        <div class="col">
                             <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
                         </div>
                     </div>
-
                 </div>
             </div>
         </ContentTemplate>

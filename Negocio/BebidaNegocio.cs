@@ -92,7 +92,14 @@ namespace Negocio
  
             try
             {
+                string idMarca = bebida.Marca.Id == 0 ? "" : bebida.Marca.Id.ToString();
 
+                string consulta = $"Insert into Insumos(Nombre, Precio, Capacidad, IdTipoInsumo, Marca, Alcoholica)  values ('{bebida.Nombre}',  '{bebida.Precio.ToString().Replace(',', '.')}',  '{bebida.Capacidad}', @idTipoInsumo ,'{idMarca}',  {(bebida.Alcoholica ? 1 : 0)})";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@idTipoInsumo", 1);
+
+                baseDatos.EjecutarAccion();
             }
             catch (Exception ex)
             {
