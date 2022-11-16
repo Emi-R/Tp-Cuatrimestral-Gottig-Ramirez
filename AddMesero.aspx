@@ -15,12 +15,14 @@
             <div class="boxForm">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
+                    <!-- Apellido -->
                     <div class="col">
                         <div class="form-outline form-white">
                             <input type="text" id="txtApellido" class="form-control" />
                             <label class="form-label" for="txtApellido">Apellido</label>
                         </div>
                     </div>
+                    <!-- Nombre -->
                     <div class="col">
                         <div class="form-outline form-white">
                             <input type="text" id="txtNombre" class="form-control" />
@@ -29,7 +31,7 @@
                     </div>
                 </div>
 
-                <!-- Text input -->
+                <!-- Contraseña -->
                 <div class="row mb-4">
                     <div class="col">
                         <div class="form-outline form-white mb-4">
@@ -37,12 +39,14 @@
                             <label class="form-label" for="txtPassword">Contraseña</label>
                         </div>
                     </div>
+                    <!-- DNI -->
                     <div class="col">
                         <div class="form-outline form-white mb-4">
                             <input type="text" id="txtDni" class="form-control" />
                             <label class="form-label" for="txtDni">DNI</label>
                         </div>
                     </div>
+                    <%-- Fecha Nac --%>
                     <div class="col">
                         <div class="row">
                             <div class="col">
@@ -50,7 +54,6 @@
                                     <input type="text" id="txtDia" class="form-control" />
                                     <label class="form-label" for="txtDia">Dia</label>
                                 </div>
-
                             </div>
                             <div class="col">
                                 <div class="form-outline form-white mb">
@@ -59,41 +62,56 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="form-outline form-white mb" >
+                                <div class="form-outline form-white mb">
                                     <input type="text" id="txtAnio" class="form-control" />
                                     <label class="form-label" for="txtAnio">Año</label>
 
                                 </div>
                             </div>
-                            <div id="textExample1" class="form-text" style="color:#ffffff !important">
+                            <div id="textExample1" class="form-text" style="color: #ffffff !important">
                                 Fecha de Nacimiento
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr style="margin-top: -15px;" />
-                <div class="form-outline form-white mb-4">
-                    <input type="text" id="form6Example3" class="form-control" />
-                    <label class="form-label" for="form6Example3">Company name</label>
+                <div class="row">
+                    <div class="col">
+                        <%-- Telefono --%>
+                        <div class="form-outline form-white mb-4">
+                            <input type="number" id="txtTelefono" class="form-control" />
+                            <label class="form-label" for="txtTelefono">Telefono o Celular</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <%-- Email --%>
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" id="txtEmail" class="form-control" />
+                            <label class="form-label" for="txtEmail">Email</label>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Text input -->
-                <div class="form-outline form-white mb-4">
-                    <input type="text" id="form6Example4" class="form-control" />
-                    <label class="form-label" for="form6Example4">Address</label>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" id="txtCalle" class="form-control" />
+                            <label class="form-label" for="txtCalle">Calle</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" id="txtNumero" class="form-control" />
+                            <label class="form-label" for="txtNumero">Número</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        
+                    </div>
+                    <div class="col">
+                        <asp:DropDownList cssclass="btn btn-info dropdown-toggle" ID="ddlPaises" runat="server"></asp:DropDownList>
+                    </div>
                 </div>
-
-                <!-- Email input -->
-                <div class="form-outline form-white mb-4">
-                    <input type="email" id="form6Example5" class="form-control" />
-                    <label class="form-label" for="form6Example5">Email</label>
-                </div>
-
-                <!-- Number input -->
-                <div class="form-outline form-white mb-4">
-                    <input type="number" id="form6Example6" class="form-control" />
-                    <label class="form-label" for="form6Example6">Phone</label>
-                </div>
+                <!-- Calle -->
 
                 <!-- Message input -->
                 <div class="form-outline form-white mb-4">

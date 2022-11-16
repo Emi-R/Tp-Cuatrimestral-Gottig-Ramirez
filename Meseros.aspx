@@ -27,8 +27,9 @@
                             </div>
                             <ul class="list-group list-group-light list-group-small">
                                 <li class="list-group-item px-4">Dni: <%# Eval("Dni") %></li>
-                                <li class="list-group-item px-4">Nacimiento: <%# Eval("FechaNacimiento") %></li>
                                 <li class="list-group-item px-4">Ingreso: <%# Eval("FechaRegistro") %></li>
+<%--                                <li class="list-group-item px-4">Nacimiento: <%# Eval("FechaNacimiento") %></li>
+                                <li class="list-group-item px-4">Procedencia: <%# Eval("Nacionalidad") %></li>--%>
                             </ul>
                             <div class="card-body">
                                 <a href="#" class="card-link">
