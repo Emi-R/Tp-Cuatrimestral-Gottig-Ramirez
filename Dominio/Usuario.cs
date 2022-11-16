@@ -15,6 +15,7 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
+        public string Nacionalidad { get; set; }
         public Domicilio Domicilio { get; set; }
         public Perfil Perfil { get; set; }
         public string FechaNacimiento { get; set; }
