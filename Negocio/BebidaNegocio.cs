@@ -63,5 +63,46 @@ namespace Negocio
             return listaBebidas;
         }
 
+        public void ModificarBebida(Bebida bebida)
+        {
+
+            try
+            {
+                string idMarca = bebida.Marca.Id == 0 ? "" : bebida.Marca.Id.ToString();
+
+                string consulta = $"Update Insumos set Nombre = '{bebida.Nombre}', Precio = '{bebida.Precio.ToString().Replace(',', '.')}', Capacidad = '{bebida.Capacidad}', Marca = '{idMarca}', Alcoholica ={(bebida.Alcoholica ? 1 : 0)} where Id = {bebida.Id}";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+
+
+        }
+
+        public void AgregarBebida(Bebida bebida)
+        {
+ 
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
     }
 }

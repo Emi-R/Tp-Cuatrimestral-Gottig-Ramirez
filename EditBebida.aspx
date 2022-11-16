@@ -53,6 +53,15 @@
 
                     <div class="row">
                         <div class="col">
+                            <asp:Label runat="server" ID="lblAlcoholica" Text="Es alcoholica?"></asp:Label>
+                        </div>
+                        <div class="col">
+                            <asp:CheckBox runat="server" ID="ckxAlcoholica"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
                             <asp:DropDownList CssClass="form-select btn btn-outline-dark dropwdown-toggle bg-light" runat="server" ID="ddlMarcas">
                             </asp:DropDownList>
                         </div>
@@ -61,7 +70,7 @@
 
                     <div class="row">
                         <div class="col mt-3">
-                            <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning btn-block mb-4" />
+                            <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
                         </div>
                     </div>
 

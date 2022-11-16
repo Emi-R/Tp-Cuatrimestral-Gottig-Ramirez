@@ -59,12 +59,47 @@ namespace TP_Cuatrimestral
 
             ddlMarcas.SelectedIndex = ddlMarcas.Items.IndexOf((ddlMarcas.Items.FindByValue(bebida.Marca.Id.ToString())));
 
+            ckxAlcoholica.Checked = bebida.Alcoholica;
+
             btnAgregar.Text = "Modificar";
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Bebida bebida = new Bebida();
 
+                cargarBebida(bebida);
+
+                if (bebida.Id > 0)
+                {
+                    bebidaNegocio.ModificarBebida(bebida);
+                }
+                else
+                {
+                    bebidaNegocio.AgregarBebida(bebida);
+                }
+
+                Response.Redirect("Bebidas.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void cargarBebida(Bebida bebida)
+        {
+            bebida.Id = lblId.Text != "" ? int.Parse(lblId.Text) : 0;
+            bebida.Nombre = txtNombre.Text ?? "";
+            bebida.Precio = txtPrecio.Text != "" ? decimal.Parse(txtPrecio.Text) : 0;
+            bebida.Capacidad = txtCapacidad.Text != "" ? float.Parse(txtCapacidad.Text) : 0;
+
+            bebida.Marca = new Marca();
+            bebida.Marca.Id = ddlMarcas.SelectedValue != null ? int.Parse(ddlMarcas.SelectedValue) : 0;
+
+            bebida.Alcoholica = ckxAlcoholica.Checked;
         }
     }
 }

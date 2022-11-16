@@ -45,6 +45,21 @@ namespace Negocio
 
         }
 
+        public void EjecutarAccion()
+        {
+            Comando.Connection = Conexion;
+
+            try
+            {
+                Conexion.Open();
+                Comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void SetearProcedimiento(string sp)
         {
             Comando.CommandType = System.Data.CommandType.StoredProcedure;
