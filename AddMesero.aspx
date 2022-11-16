@@ -6,7 +6,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="pt-2">
-            <h1 class="title-page display-2 pb-3">Nuevo mesero</h1>
+            <h1 class="title-page display-2 pb-3">Nuevo Mesero</h1>
         </div>
     </div>
     <div class="row">

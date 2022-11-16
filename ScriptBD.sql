@@ -87,7 +87,7 @@ Where i.Activo = 1
 end
 Go 
 
-Alter Procedure SpListarUsuarios
+Create Procedure SpListarUsuarios
 As 
 Begin 
 Select 
@@ -125,3 +125,10 @@ From Mesas M
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 End
 Go 
+
+Create Procedure SpListarPaises
+As
+Begin 
+Select P.ID, P.Nombre from Paises P
+End 
+Go
