@@ -143,3 +143,27 @@ Begin
 Select P.ID, P.Nombre from Paises P
 End 
 Go
+
+Create Procedure SpListarTipoPlato
+as
+Begin
+Select Id, Nombre from TipoPlatos
+End
+go
+
+Create Procedure SpListarPlatos
+as
+begin
+
+Select I.Id, I.Nombre, I.Precio, I.Activo,  
+TP.Id AS IdTipoPlato, TP.Nombre AS TipoPlato
+from Insumos I
+inner join TipoInsumo TI
+on I.IdTipoInsumo = TI.Id
+left join TipoPlatos TP
+on I.IdTipoPlato = TP.Id
+where ti.Id = 2
+
+end
+
+EXEC SpListarPlatos
