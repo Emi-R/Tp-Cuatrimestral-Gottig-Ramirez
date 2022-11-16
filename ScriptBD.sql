@@ -1,3 +1,7 @@
+
+DROP database IF EXISTS Restaurant
+go
+
 Create Database Restaurant
 GO
 
@@ -59,12 +63,19 @@ Activo bit not null default 1
 )
 go
 
+create table TipoPlatos(
+Id int primary key identity(1,1),
+Nombre varchar(150),
+Activo bit not null default 1
+)
+
 Create table Insumos(
 Id int primary key identity(1,1),
 Nombre varchar(150),
 Precio money,
 IdTipoInsumo int foreign key references TipoInsumo(Id) not null,
 Capacidad float,
+IdTipoPlato int foreign key references TipoPlatos(Id) null,
 Marca int foreign key references Marcas(Id) null,
 Alcoholica bit default 0,
 Activo bit not null default 1

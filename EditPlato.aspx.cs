@@ -7,19 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace TP_Cuatrimestral
 {
-    public partial class Platos : System.Web.UI.Page
+    public partial class EditPlato : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void linkBtnDetalle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
         }

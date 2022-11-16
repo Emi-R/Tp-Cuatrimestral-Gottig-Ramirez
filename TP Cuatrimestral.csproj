@@ -70,6 +70,7 @@
     <Content Include="Bebidas.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="EditBebida.aspx" />
+    <Content Include="EditPlato.aspx" />
     <Content Include="Global.asax" />
     <Content Include="mainmenu.aspx" />
     <Content Include="Mesas.aspx" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="EditBebida.aspx.designer.cs">
       <DependentUpon>EditBebida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditPlato.aspx.cs">
+      <DependentUpon>EditPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditPlato.aspx.designer.cs">
+      <DependentUpon>EditPlato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
