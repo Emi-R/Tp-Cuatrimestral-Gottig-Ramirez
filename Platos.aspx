@@ -15,7 +15,7 @@
 
                     <div class="row me-5">
                         <div class="col">
-                           <asp:DropDownList AutoPostBack="true" CssClass="btn btn-outline-dark bg-light dropwdown-toggle w-100" runat="server" ID="ddlTipoPLato"></asp:DropDownList>
+                           <asp:DropDownList AutoPostBack="true" CssClass="btn btn-outline-dark bg-light dropwdown-toggle w-100" runat="server" ID="ddlTipoPLato" OnSelectedIndexChanged="ddlTipoPLato_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                     </div>
 

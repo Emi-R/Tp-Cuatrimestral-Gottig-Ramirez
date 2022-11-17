@@ -167,5 +167,7 @@ on I.IdTipoPlato = TP.Id
 where ti.Id = 2
 
 end
+go
 
 EXEC SpListarPlatos
+go
