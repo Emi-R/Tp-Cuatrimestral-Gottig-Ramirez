@@ -40,6 +40,7 @@ namespace Negocio
                     user.Domicilio.Calle = (string)basedatos.Lector["Calle"];
                     user.Domicilio.Numero = (string)basedatos.Lector["Numero"];
                     user.Perfil.Id = (byte)basedatos.Lector["TipoPerfil"];
+                    user.UrlImagen = (string)basedatos.Lector["UrlImagen"];
 
                     listaUsuarios.Add(user);
                 }

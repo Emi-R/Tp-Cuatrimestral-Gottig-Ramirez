@@ -20,7 +20,7 @@
                 <asp:Repeater runat="server" ID="repeaterMeseros">
                     <ItemTemplate>
                         <div class="card cardEdit" style="width: 18rem; margin-left: auto; margin-bottom: 3px">
-                            <img src="https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg" class="card-img-top" alt="ImgEmpleado" />
+                            <img src="<%# Eval("UrlImagen") %>" class="card-img-top" alt="ImgEmpleado" />
                             <div class="card-body pb-0">
                                 <h5 class="card-title">Legajo: #<%# Eval("Legajo") %></h5>
                                 <p class="card-text"><%# Eval("Apellido") %>, <%# Eval("Nombre") %></p>

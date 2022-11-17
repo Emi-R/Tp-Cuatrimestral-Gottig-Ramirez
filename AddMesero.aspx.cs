@@ -63,7 +63,8 @@ namespace TP_Cuatrimestral
                 nuevoUser.UrlImagen = txtUrlImagen.Text;
 
             negocio.agregarConSp(nuevoUser);
-            Response.Redirect("meseros.aspx");
+
+            Response.Redirect("meseros.aspx", false);
 
         }
 
