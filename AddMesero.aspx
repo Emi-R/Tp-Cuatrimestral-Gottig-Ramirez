@@ -99,25 +99,40 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col">
                         <%-- Calle --%>
                         <div class="form-outline form-white mb-4">
                             <asp:TextBox id="txtCalle" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtCalle">Calle</label>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col">
                         <%-- Numero --%>
                         <div class="form-outline form-white mb-4">
                             <asp:TextBox TextMode="Number" id="txtNumero" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtNumero">Número</label>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col">
+                        <%-- Numero --%>
+                        <div class="form-outline form-white mb-4">
+                            <asp:TextBox TextMode="Number" id="txtPiso" class="form-control" runat="server"></asp:TextBox>
+                            <label class="form-label" for="txtPiso">Piso</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <%-- Calle --%>
+                        <div class="form-outline form-white mb-4">
+                            <asp:TextBox id="txtDpto" class="form-control" runat="server"></asp:TextBox>
+                            <label class="form-label" for="txtDpto">Dpto</label>
+                        </div>
+                    </div>
+                    <div class="col">
                         <div class="row">
                             <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle dropdown-toggle2" Style="width: 95%" ID="ddlPaises" runat="server"></asp:DropDownList>
                         </div>
                     </div>
+
 
                 </div>
                 <!-- Ruta Imagen con update panel -->

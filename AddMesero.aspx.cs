@@ -56,11 +56,14 @@ namespace TP_Cuatrimestral
 
             nuevoUser.Domicilio.Calle = txtCalle.Text;
             nuevoUser.Domicilio.Numero = txtNumero.Text;
-            
+
+            if (!String.IsNullOrEmpty(txtPiso.Text)) { nuevoUser.Domicilio.Piso = int.Parse(txtPiso.Text); } else { nuevoUser.Domicilio.Piso = null; }
+
+            if (!String.IsNullOrEmpty(txtDpto.Text)) { nuevoUser.Domicilio.Depto = txtDpto.Text; } else { nuevoUser.Domicilio.Depto= null; }
+
             nuevoUser.Nacionalidad.ID = ddlPaises.SelectedIndex + 1;
 
-            if(!String.IsNullOrEmpty(txtUrlImagen.Text))
-                nuevoUser.UrlImagen = txtUrlImagen.Text;
+            if(!String.IsNullOrEmpty(txtUrlImagen.Text)) nuevoUser.UrlImagen = txtUrlImagen.Text;
 
             negocio.agregarConSp(nuevoUser);
 
