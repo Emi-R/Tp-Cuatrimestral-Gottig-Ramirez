@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using Dominio;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -108,6 +109,39 @@ namespace Negocio
             }
 
 
+        }
+
+        public Usuario buscarPorLegajo(int legajo)
+        {
+            
+            Usuario aux = new Usuario();
+            
+
+            basedatos.SetearConsulta($"Select * from VW_ListaUsuarios V where V.Legajo = {legajo}");
+            basedatos.EjecutarLectura();
+
+            while(basedatos.Lector.Read())
+            {
+
+            aux.Legajo = (int)basedatos.Lector["Legajo"];
+            aux.Apellido = (string)basedatos.Lector["Apellidos"];
+            aux.Nombre = (string)basedatos.Lector["Nombre"];
+            aux.Dni = (string)basedatos.Lector["Dni"];
+            aux.Nacionalidad.ID = (int)basedatos.Lector["Pais"];
+            aux.FechaNacimiento = (string)basedatos.Lector["FechaNac"];
+            aux.Telefono = (string)basedatos.Lector["Telefono"];
+            aux.Email = (string)basedatos.Lector["Email"];
+            aux.Domicilio.Calle = (string)basedatos.Lector["Calle"];
+            aux.Domicilio.Numero = (string)basedatos.Lector["Numero"];
+            aux.UrlImagen = (string)basedatos.Lector["UrlImagen"];
+
+            }
+            return aux;
+        }
+
+        public void modificar(Usuario nuevoUser)
+        {
+            
         }
     }
 }

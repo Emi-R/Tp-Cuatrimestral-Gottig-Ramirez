@@ -10,7 +10,6 @@
             <div class="row">
                 <a class="btn btn-success" role="button" href="AddMesero.aspx">Agregar mesero</a>
             </div>
-
             <div class="row me-5">
             </div>
 
@@ -32,8 +31,9 @@
                                 <li class="list-group-item px-4">Procedencia: <%# Eval("Nacionalidad") %></li>--%>
                             </ul>
                             <div class="card-body">
-                                <a href="#" class="card-link">
-                                    <button type="button" class="btn btn-outline-info">+ Info</button></a>
+                                <asp:LinkButton ID="btnDetalle" OnClick="btnDetalle_Click" runat="server" CommandArgument='<%#Eval("Legajo") %>' CommandName="Legajo" CssClass="btn btn-outline-info" Text="+ Info"></asp:LinkButton>
+                                <%--<a href="#" class="card-link">
+                                    <button type="button" class="btn btn-outline-info">+ Info</button></a>--%>
                                 <a href="#" class="card-link">
                                     <button type="button" class="btn btn-danger">Eliminar</button></a>
                             </div>

@@ -169,5 +169,88 @@ where ti.Id = 2
 end
 go
 
+Create Procedure SpNuevoUsuario
+(
+	@Contraseña Varchar(10),
+	@Dni Varchar(15),
+	@Apellido Varchar(40),
+	@Nombre Varchar(40),
+	@Telefono Varchar(20),
+	@Email Varchar(40),
+	@Calle Varchar(40),
+	@Numero Varchar(5),
+	@Piso Varchar(5),
+	@Dpto char(1),
+	@IDNacionalidad int,
+	@TipoPerfil tinyint,
+	@FechaNac date,
+	@UrlImagen Varchar(max)
+)
+As
+Begin
+	Begin Try
+	Begin Transaction
+		Insert Into Usuarios (Contraseña, Dni, Apellidos, Nombre, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, UrlImagen, Estado)
+		Values (@Contraseña, @Dni, @Apellido, @Nombre, @Telefono, @Email, @Calle, @Numero, @Piso, @Dpto, @IDNacionalidad, @TipoPerfil, @FechaNac, Getdate(), @UrlImagen, 1)
+		Commit Transaction
+	End Try
+	Begin Catch
+		Raiserror('Error al cargar usuario', 16, 1)
+		Rollback 
+	End Catch
+End
+Go
+
+Create View VW_ListaUsuarios as(
+Select 
+    U.Legajo,
+    U.Apellidos,
+    U.Nombre,
+    U.Dni,
+    P.ID as Pais,
+    U.TipoPerfil,
+    U.Telefono,
+    U.Email,
+    U.Calle,
+    U.Numero,
+    U.Piso,
+    CONVERT(VARCHAR(10),U.FechaNac ,103) AS FechaNac,
+    CONVERT(VARCHAR(10),U.FechaRegistro ,103) AS FechaRegistro,
+	U.UrlImagen,
+    U.Estado
+From Usuarios U Inner Join Paises P On U.IDNacionalidad = P.ID)
+GO
+
+Alter Procedure SpModificarUsuario
+(
+	@Contraseña Varchar(10),
+	@Dni Varchar(15),
+	@Apellido Varchar(40),
+	@Nombre Varchar(40),
+	@Telefono Varchar(20),
+	@Email Varchar(40),
+	@Calle Varchar(40),
+	@Numero Varchar(5),
+	@Piso Varchar(5),
+	@Dpto char(1),
+	@IDNacionalidad int,
+	@TipoPerfil tinyint,
+	@FechaNac date,
+	@UrlImagen Varchar(max)
+)
+As
+Begin
+	Begin Try
+	Begin Transaction
+		Update Usuarios set Contraseña = @Contraseña, Dni = @Dni, Apellidos = @Apellido, Nombre = @Nombre, Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, Piso = @Piso, Departamento = @Dpto, IDNacionalidad = @IDNacionalidad, FechaNac = @FechaNac, UrlImagen = @UrlImagen
+		Commit Transaction
+	End Try
+	Begin Catch
+		Raiserror('Error al modificar usuario', 16, 1)
+		Rollback 
+	End Catch
+End
+Go
+
 EXEC SpListarPlatos
 go

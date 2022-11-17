@@ -39,5 +39,10 @@ namespace TP_Cuatrimestral
             repeaterMeseros.DataBind();
         }
 
+        protected void btnDetalle_Click(object sender, EventArgs e)
+        {
+            int legajo = Convert.ToInt32(((LinkButton)sender).CommandArgument);
+            Response.Redirect("AddMesero.aspx?Legajo=" + legajo, false);
+        }
     }
 }

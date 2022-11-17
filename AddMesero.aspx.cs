@@ -17,8 +17,38 @@ namespace TP_Cuatrimestral
             {
                 cargarPaises();
 
-                imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
-                imgPerfil.Height = 150;
+                if (Request.QueryString["Legajo"] != null)
+                {
+                    UsuarioNegocio negocio = new UsuarioNegocio();
+
+                    Usuario aux = negocio.buscarPorLegajo(int.Parse(Request.QueryString["Legajo"]));
+
+                    txtApellido.Text = aux.Apellido;
+                    txtNombre.Text = aux.Nombre;
+                    txtPassword.Text = aux.Password;
+                    txtDni.Text = aux.Dni;
+                    txtFechaNac.Text = aux.FechaNacimiento;
+                    txtTelefono.Text = aux.Telefono;
+                    txtEmail.Text = aux.Email;
+                    txtCalle.Text = aux.Domicilio.Calle;
+                    txtNumero.Text = aux.Domicilio.Numero;
+                    ddlPaises.SelectedIndex = aux.Nacionalidad.ID - 1;
+                    txtPiso.Text = aux.Domicilio.Piso.ToString();
+                    txtDpto.Text = aux.Domicilio.Depto;
+                    txtUrlImagen.Text = aux.UrlImagen;
+                    imgPerfil.ImageUrl = aux.UrlImagen;
+
+                    titulo.Text = "Legajo #" + aux.Legajo;
+                    imgPerfil.Height = 150;
+
+
+                }
+                else
+                {
+                    imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
+                    imgPerfil.Height = 150;
+                }
+
 
             }
             catch (Exception ex)
@@ -59,13 +89,16 @@ namespace TP_Cuatrimestral
 
             if (!String.IsNullOrEmpty(txtPiso.Text)) { nuevoUser.Domicilio.Piso = int.Parse(txtPiso.Text); } else { nuevoUser.Domicilio.Piso = null; }
 
-            if (!String.IsNullOrEmpty(txtDpto.Text)) { nuevoUser.Domicilio.Depto = txtDpto.Text; } else { nuevoUser.Domicilio.Depto= null; }
+            if (!String.IsNullOrEmpty(txtDpto.Text)) { nuevoUser.Domicilio.Depto = txtDpto.Text; } else { nuevoUser.Domicilio.Depto = null; }
 
             nuevoUser.Nacionalidad.ID = ddlPaises.SelectedIndex + 1;
 
-            if(!String.IsNullOrEmpty(txtUrlImagen.Text)) nuevoUser.UrlImagen = txtUrlImagen.Text;
+            if (!String.IsNullOrEmpty(txtUrlImagen.Text)) nuevoUser.UrlImagen = txtUrlImagen.Text;
 
-            negocio.agregarConSp(nuevoUser);
+            if (Request.QueryString["Legajo"] != null)
+                negocio.modificar(nuevoUser);
+            else
+                negocio.agregarConSp(nuevoUser);
 
             Response.Redirect("meseros.aspx", false);
 

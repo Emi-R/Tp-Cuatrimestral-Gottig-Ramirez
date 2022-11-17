@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
-        <div class="pt-2">
-            <h1 class="title-page display-2 pb-3">Nuevo Mesero</h1>
+        <div class="pt-2" style="text-align:center; margin-bottom:0.5cm">
+            <asp:Label id="titulo" CssClass="title-page display-2 pb-3" runat="server" Text="Nuevo Mesero"></asp:Label>
         </div>
     </div>
     <div class="row">
