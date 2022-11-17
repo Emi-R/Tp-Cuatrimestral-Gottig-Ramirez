@@ -82,3 +82,5 @@ Values
 Go
 
 exec splistarusuarios
+
+Insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 2);

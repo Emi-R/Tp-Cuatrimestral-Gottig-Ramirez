@@ -15,17 +15,19 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-        public string Nacionalidad { get; set; }
+        public Pais Nacionalidad { get; set; }
         public Domicilio Domicilio { get; set; }
         public Perfil Perfil { get; set; }
         public string FechaNacimiento { get; set; }
         public string FechaRegistro { get; set; }
+        public string UrlImagen { get; set; }
         public bool Activo { get; set; }
 
         public Usuario()
         {
             Domicilio = new Domicilio();
-            Perfil = new Perfil();          
+            Perfil = new Perfil();
+            Nacionalidad = new Pais();
         }
 
         public override string ToString()

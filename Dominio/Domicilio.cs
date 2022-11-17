@@ -12,7 +12,5 @@ namespace Dominio
         public string Numero { get; set; }
         public char Depto { get; set; }
         public int Piso { get; set; }
-        public string Ciudad { get; set; }
-        public bool Activo { get; set; }
     }
 }

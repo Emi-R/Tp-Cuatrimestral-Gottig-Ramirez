@@ -23,20 +23,21 @@ Create Table Paises
 Create Table Usuarios(
     Legajo Int Primary Key Identity(1,1),
     Contraseña varchar(10) Not Null,
-    Dni varchar(15) Unique Not Null,
+    Dni varchar(15) Unique Not Null Check (DNI > 10000000),
     Nombre varchar(40),
     Apellidos varchar(40) Not Null,
     Telefono varchar(20) Not Null,
     Email varchar(40) Not Null,
     Calle varchar(40) Not Null,
-    Numero varchar(5) Not Null,
-    Piso varchar(5) Null,
+    Numero varchar(5) Not Null Check (Numero > 0),
+    Piso varchar(5) Null Check (Piso > 0),
     Departamento char(1) Null,
     IDNacionalidad int Not Null Foreign Key References Paises(ID),
     TipoPerfil tinyint Not Null Foreign Key References Perfiles(ID),
     FechaNac date Not Null,
     FechaRegistro date Not Null,
-    Estado bit Not Null
+	UrlImagen varchar(max) Not Null Default ('https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg'),
+    Estado bit Not Null Default (1)
 )
 
 Create Table Mesas(
@@ -115,6 +116,7 @@ Select
     U.Piso,
     CONVERT(VARCHAR(10),U.FechaNac ,103) AS FechaNac,
     CONVERT(VARCHAR(10),U.FechaRegistro ,103) AS FechaRegistro,
+	U.UrlImagen,
     U.Estado
 From Usuarios U Inner Join Paises P On U.IDNacionalidad = P.ID
 End

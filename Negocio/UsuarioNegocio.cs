@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Negocio
 {
@@ -29,7 +32,7 @@ namespace Negocio
                     user.Apellido = (string)basedatos.Lector["Apellidos"];
                     user.Nombre = (string)basedatos.Lector["Nombre"];
                     user.Dni = (string)basedatos.Lector["Dni"];
-                    user.Nacionalidad = (string)basedatos.Lector["Pais"];
+                    user.Nacionalidad.Nombre = (string)basedatos.Lector["Pais"];
                     user.FechaNacimiento = (string)basedatos.Lector["FechaNac"];
                     user.FechaRegistro = (string)basedatos.Lector["FechaRegistro"];
                     user.Telefono = (string)basedatos.Lector["Telefono"];
@@ -52,6 +55,58 @@ namespace Negocio
             }
 
             return listaUsuarios;
+        }
+
+        public void agregarConSp(Usuario nuevo)
+        {
+
+            // @Contraseña Varchar(10),
+            // @Dni Varchar(15),
+            // @Apellido Varchar(40),
+            // @Nombre Varchar(40),
+            // @Telefono Varchar(20),
+            // @Email Varchar(40),
+            // @Calle Varchar(40),
+            // @Numero Varchar(5),
+            // @Piso Varchar(5),
+            // @Dpto char(1),
+            // @IDNacionalidad int,
+            // @TipoPerfil tinyint,
+            // @FechaNac date,
+            // UrlImagen Varchar(max)
+
+            try
+            {
+                basedatos.SetearProcedimiento("SpNuevoUsuario");
+
+                basedatos.SetearParametro("@Contraseña", nuevo.Password);
+                basedatos.SetearParametro("@Dni", nuevo.Dni);
+                basedatos.SetearParametro("@Apellido", nuevo.Apellido);
+                basedatos.SetearParametro("@Nombre", nuevo.Nombre);
+                basedatos.SetearParametro("@Telefono", nuevo.Telefono);
+                basedatos.SetearParametro("@Email", nuevo.Email);
+                basedatos.SetearParametro("@Calle", nuevo.Domicilio.Calle);
+                basedatos.SetearParametro("@Numero", nuevo.Domicilio.Numero);
+                basedatos.SetearParametro("@Piso", nuevo.Domicilio.Piso);
+                basedatos.SetearParametro("@Dpto", nuevo.Domicilio.Depto);
+                basedatos.SetearParametro("@IDNacionalidad", nuevo.Nacionalidad.ID);
+                basedatos.SetearParametro("@TipoPerfil", 2);
+                basedatos.SetearParametro("@FechaNac", nuevo.FechaNacimiento);
+                basedatos.SetearParametro("@UrlImagen", nuevo.UrlImagen);
+
+                basedatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
+
+
         }
     }
 }
