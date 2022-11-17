@@ -65,5 +65,15 @@ namespace TP_Cuatrimestral
         {
 
         }
+
+        protected void ddlTipoPLato_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string tipo = ddlTipoPLato.SelectedItem.Text.ToUpper();
+            List<Plato> listaPlatos = platoNegocio.ListarPlatos();
+
+            repeaterPlatos.DataSource = null;
+            repeaterPlatos.DataSource = listaPlatos.Where(x => x.Tipo.Nombre.ToUpper().Contains(tipo));
+            repeaterPlatos.DataBind();
+        }
     }
 }
