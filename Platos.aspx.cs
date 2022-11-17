@@ -22,7 +22,7 @@ namespace TP_Cuatrimestral
             {
                 if (!IsPostBack)
                 {
-                    //cargarRepeaterPlatos();
+                    cargarRepeaterPlatos();
                     cargarDdlTiposPlato();
                 }
             }
