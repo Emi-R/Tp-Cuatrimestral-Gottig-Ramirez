@@ -16,7 +16,7 @@
 
                     <div class="row me-5">
                         <div class="col">
-                           <asp:DropDownList OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-outline-dark bg-light dropwdown-toggle w-100" runat="server" ID="ddlMarcas"></asp:DropDownList>
+                            <asp:DropDownList OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged" AutoPostBack="true" CssClass="btn btn-outline-dark bg-light dropwdown-toggle w-100" runat="server" ID="ddlMarcas"></asp:DropDownList>
                         </div>
                     </div>
 
@@ -35,7 +35,7 @@
                                                     <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                                 </div>
                                                 <div class="col text-end">
-                                                    <h5 class="card-title">$ <%#Eval("Precio") %></h5>
+                                                    <h5 class="card-title fs-6 fw-normal">$ <%#Eval("Precio") %></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,8 +51,13 @@
 
                 <div class="col">
                     <div class="row">
-                         <div class="col text-center ">
-                            <asp:Button OnClick="btnAgregar_Click" runat="server" ID="btnAgregar" CssClass="w-100 btn btn-dark" Text="Agregar Bebidas" />
+                        <div class="col text-center ">
+                            <asp:Button OnClick="btnAgregar_Click" runat="server" ID="btnAgregar" CssClass="w-100 btn btn-primary" Text="Agregar Bebida" />
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col text-center ">
+                            <asp:Button OnClick="btnAdministrarMarcas_Click" runat="server" ID="btnAdministrarMarcas" CssClass="w-100 btn btn-dark" Text="Administrar Marcas" />
                         </div>
                     </div>
                 </div>

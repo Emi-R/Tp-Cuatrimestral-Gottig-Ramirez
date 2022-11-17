@@ -73,6 +73,7 @@
     <Content Include="EditPlato.aspx" />
     <Content Include="Global.asax" />
     <Content Include="mainmenu.aspx" />
+    <Content Include="Marcas.aspx" />
     <Content Include="Mesas.aspx" />
     <Content Include="Meseros.aspx" />
     <Content Include="Pedidos.aspx" />
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="mainmenu.aspx.designer.cs">
       <DependentUpon>mainmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Marcas.aspx.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Marcas.aspx.designer.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

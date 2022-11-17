@@ -58,12 +58,13 @@ namespace TP_Cuatrimestral
 
         protected void linkBtnDetalle_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(((LinkButton)sender).CommandArgument);
+            Response.Redirect("EditPlato.aspx?id=" + id, false);
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("EditPlato.aspx", false);
         }
 
         protected void ddlTipoPLato_SelectedIndexChanged(object sender, EventArgs e)

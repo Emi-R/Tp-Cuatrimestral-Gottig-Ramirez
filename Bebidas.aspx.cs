@@ -76,5 +76,10 @@ namespace TP_Cuatrimestral
         {
             Response.Redirect("EditBebida.aspx", false);
         }
+
+        protected void btnAdministrarMarcas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Marcas.aspx", false);
+        }
     }
 }

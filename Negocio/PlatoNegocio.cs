@@ -31,7 +31,7 @@ namespace Negocio
                     plato.Activo = baseDatos.Lector.GetBoolean(3);
 
                     plato.Tipo = new TipoPlato();
-                    plato.Tipo.Nombre = baseDatos.Lector.IsDBNull(baseDatos.Lector.GetOrdinal("TipoPlato")) ? "": baseDatos.Lector.GetString(5);
+                    plato.Tipo.Nombre = baseDatos.Lector.IsDBNull(baseDatos.Lector.GetOrdinal("TipoPlato")) ? "-": baseDatos.Lector.GetString(5);
 
                     listaPlatos.Add(plato);
                 }
