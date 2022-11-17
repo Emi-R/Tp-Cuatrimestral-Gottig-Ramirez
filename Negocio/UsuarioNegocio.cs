@@ -139,9 +139,39 @@ namespace Negocio
             return aux;
         }
 
-        public void modificar(Usuario nuevoUser)
+        public void modificar(Usuario modificado)
         {
-            
+            try
+            {
+                basedatos.SetearProcedimiento("SpModificarUsuario");
+
+                basedatos.SetearParametro("@Legajo", modificado.Legajo);
+                basedatos.SetearParametro("@Contraseña", modificado.Password);
+                basedatos.SetearParametro("@Dni", modificado.Dni);
+                basedatos.SetearParametro("@Apellido", modificado.Apellido);
+                basedatos.SetearParametro("@Nombre", modificado.Nombre);
+                basedatos.SetearParametro("@Telefono", modificado.Telefono);
+                basedatos.SetearParametro("@Email", modificado.Email);
+                basedatos.SetearParametro("@Calle", modificado.Domicilio.Calle);
+                basedatos.SetearParametro("@Numero", modificado.Domicilio.Numero);
+                basedatos.SetearParametro("@Piso", modificado.Domicilio.Piso);
+                basedatos.SetearParametro("@Dpto", modificado.Domicilio.Depto);
+                basedatos.SetearParametro("@IDNacionalidad", modificado.Nacionalidad.ID);
+                basedatos.SetearParametro("@TipoPerfil", 2);
+                basedatos.SetearParametro("@FechaNac", modificado.FechaNacimiento);
+                basedatos.SetearParametro("@UrlImagen", modificado.UrlImagen);
+
+                basedatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
         }
     }
 }

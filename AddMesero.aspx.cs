@@ -87,18 +87,23 @@ namespace TP_Cuatrimestral
             nuevoUser.Domicilio.Calle = txtCalle.Text;
             nuevoUser.Domicilio.Numero = txtNumero.Text;
 
-            if (!String.IsNullOrEmpty(txtPiso.Text)) { nuevoUser.Domicilio.Piso = int.Parse(txtPiso.Text); } else { nuevoUser.Domicilio.Piso = null; }
+            if (!String.IsNullOrEmpty(txtPiso.Text)) { nuevoUser.Domicilio.Piso = int.Parse(txtPiso.Text); } else { nuevoUser.Domicilio.Piso = 1; }
 
-            if (!String.IsNullOrEmpty(txtDpto.Text)) { nuevoUser.Domicilio.Depto = txtDpto.Text; } else { nuevoUser.Domicilio.Depto = null; }
+            if (!String.IsNullOrEmpty(txtDpto.Text)) { nuevoUser.Domicilio.Depto = txtDpto.Text; } else { nuevoUser.Domicilio.Depto = "a"; }
 
             nuevoUser.Nacionalidad.ID = ddlPaises.SelectedIndex + 1;
 
             if (!String.IsNullOrEmpty(txtUrlImagen.Text)) nuevoUser.UrlImagen = txtUrlImagen.Text;
 
             if (Request.QueryString["Legajo"] != null)
+            {
+                nuevoUser.Legajo = int.Parse(Request.QueryString["Legajo"]);
                 negocio.modificar(nuevoUser);
+            }
             else
+            {
                 negocio.agregarConSp(nuevoUser);
+            }
 
             Response.Redirect("meseros.aspx", false);
 
