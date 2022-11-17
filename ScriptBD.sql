@@ -221,8 +221,9 @@ Select
 From Usuarios U Inner Join Paises P On U.IDNacionalidad = P.ID)
 GO
 
-Alter Procedure SpModificarUsuario
+Create Procedure SpModificarUsuario
 (
+	@Legajo int,
 	@Contraseña Varchar(10),
 	@Dni Varchar(15),
 	@Apellido Varchar(40),
@@ -242,7 +243,7 @@ As
 Begin
 	Begin Try
 	Begin Transaction
-		Update Usuarios set Contraseña = @Contraseña, Dni = @Dni, Apellidos = @Apellido, Nombre = @Nombre, Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, Piso = @Piso, Departamento = @Dpto, IDNacionalidad = @IDNacionalidad, FechaNac = @FechaNac, UrlImagen = @UrlImagen
+		Update Usuarios set Contraseña = @Contraseña, Dni = @Dni, Apellidos = @Apellido, Nombre = @Nombre, Telefono = @Telefono, Email = @Email, Calle = @Calle, Numero = @Numero, Piso = @Piso, Departamento = @Dpto, IDNacionalidad = @IDNacionalidad, FechaNac = @FechaNac, UrlImagen = @UrlImagen where Legajo = @Legajo
 		Commit Transaction
 	End Try
 	Begin Catch
