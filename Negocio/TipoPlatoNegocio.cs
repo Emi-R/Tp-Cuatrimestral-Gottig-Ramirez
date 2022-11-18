@@ -24,6 +24,7 @@ namespace Negocio
                 {
                     TipoPlato tipo = new TipoPlato();
 
+                    tipo.Id = baseDatos.Lector.GetInt32(0);
                     tipo.Nombre = baseDatos.Lector.GetString(1);
 
                     listaTipoPlato.Add(tipo);

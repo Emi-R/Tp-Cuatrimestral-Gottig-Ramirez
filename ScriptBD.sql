@@ -169,6 +169,23 @@ where ti.Id = 2
 end
 go
 
+create Procedure SpBuscarPlatoPorId(@id int)
+as
+begin
+
+Select I.Id, I.Nombre, I.Precio, I.Activo,  
+TP.Id AS IdTipoPlato, TP.Nombre AS TipoPlato
+from Insumos I
+inner join TipoInsumo TI
+on I.IdTipoInsumo = TI.Id
+inner join TipoPlatos TP
+on I.IdTipoPlato = TP.Id
+where i.id = @id
+and ti.Id = 2
+
+end
+go
+
 Create Procedure SpNuevoUsuario
 (
 	@Contraseña Varchar(10),

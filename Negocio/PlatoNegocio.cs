@@ -47,6 +47,66 @@ namespace Negocio
 
             return listaPlatos;
         }
+
+        public Plato ObtenerPlatoPorId(int id)
+        {
+
+            baseDatos.SetearProcedimiento("SpBuscarPlatoPorId");
+
+            baseDatos.SetearParametro("@id", id);
+            baseDatos.EjecutarLectura();
+
+            Plato plato = new Plato();
+            try
+            {
+                while (baseDatos.Lector.Read())
+                {
+                    plato.Id = baseDatos.Lector.GetInt32(0);
+                    plato.Nombre = baseDatos.Lector.GetString(1);
+                    plato.Precio = baseDatos.Lector.GetDecimal(2);
+                    plato.Activo = baseDatos.Lector.GetBoolean(3);
+
+                    plato.Tipo = new TipoPlato();
+                    plato.Tipo.Nombre = baseDatos.Lector.IsDBNull(baseDatos.Lector.GetOrdinal("TipoPlato")) ? "-" : baseDatos.Lector.GetString(5);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+
+            return plato;
+        }
+
+
+        public void AgregarPlato(Plato plato)
+        {
+
+            try
+            {
+                string idTipoPlato = plato.Tipo.Id == 0 ? "" : plato.Tipo.Id.ToString();
+
+                string consulta = $"Insert into Insumos(Nombre, Precio, IdTipoInsumo, IdTipoPlato)  values ('{plato.Nombre}', '{plato.Precio.ToString().Replace(',', '.')}', @idTipoInsumo ,'{idTipoPlato}')";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@idTipoInsumo", 2);
+
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
     }
 }
 

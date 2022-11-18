@@ -50,7 +50,7 @@ namespace TP_Cuatrimestral
 
                 ddlTipoPLato.DataSource = listaTipoPlatos;
                 ddlTipoPLato.DataTextField = "Nombre";
-                //ddlTipoPLato.DataValueField = "Id";
+                ddlTipoPLato.DataValueField = "Id";
 
                 ddlTipoPLato.DataBind();
             }

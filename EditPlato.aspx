@@ -25,9 +25,6 @@
                             <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Precio"></asp:Label>
                         </div>
 
-                        <div class="col">
-                            <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Tipo"></asp:Label>
-                        </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
@@ -40,21 +37,19 @@
 
                         </div>
 
-                        <div class="col ">
-                            <asp:DropDownList CssClass="form-select btn btn-outline-dark dropwdown-toggle bg-light" runat="server" ID="ddlTipoPlato">
-                            </asp:DropDownList>
-                        </div>
+
                     </div>
 
                     <div class="row mt-1">
+
                         <div class="col">
-                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Marca"></asp:Label>
+                            <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Tipo"></asp:Label>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col">
-                            <asp:DropDownList CssClass="form-select btn btn-outline-dark dropwdown-toggle bg-light" runat="server" ID="ddlMarcas">
+                        <div class="col ">
+                            <asp:DropDownList CssClass="form-select btn btn-outline-dark dropwdown-toggle bg-light" runat="server" ID="ddlTipoPlato">
                             </asp:DropDownList>
                         </div>
                     </div>
