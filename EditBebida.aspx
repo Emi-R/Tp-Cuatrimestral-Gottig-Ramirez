@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="row mt-5">
-                        <div class="col">
+                        <div class="col text-end">
                             <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
                         </div>
                     </div>

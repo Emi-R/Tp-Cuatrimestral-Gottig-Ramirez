@@ -115,3 +115,15 @@
     background-color: #c3cfe8 !important;
     border-radius: 6px;
 }
+
+.headerTitleMarcas {
+    color: white !important;
+    font-weight: bold !important;
+    background-color: #ab001c !important;
+}
+
+.container-platos_edit {
+    border: 1px solid black !important;
+    background-color: #f6d2d8 !important;
+    border-radius: 6px;
+}
