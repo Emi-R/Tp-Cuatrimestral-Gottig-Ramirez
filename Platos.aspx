@@ -60,13 +60,14 @@
                 <div class="col">
                     <div class="row">
                         <div class="col text-center ">
-                            <asp:Button OnClick="btnAgregar_Click" runat="server" ID="btnAgregar" CssClass="w-100 btn btn-danger" Text="Agregar Plato" />
+                            <a href="EditPlato.aspx" class="w-100 btn btn-danger">Agregar Plato</a>                      
                         </div>
 
                     </div>
                     <div class="row mt-3">
                         <div class="col text-center ">
-                            <asp:Button OnClick="btnAdministrarTipos_Click" runat="server" ID="btnAdministrarTipos" CssClass="w-100 btn btn-dark" Text="Administrar Tipos" />
+                            <a href="TiposPlato.aspx" class="w-100 btn btn-dark"> Administrar Tipos</a>
+                          
                         </div>
                     </div>
                 </div>

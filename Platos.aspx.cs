@@ -62,10 +62,6 @@ namespace TP_Cuatrimestral
             Response.Redirect("EditPlato.aspx?id=" + id, false);
         }
 
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EditPlato.aspx", false);
-        }
 
         protected void ddlTipoPLato_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -77,9 +73,5 @@ namespace TP_Cuatrimestral
             repeaterPlatos.DataBind();
         }
 
-        protected void btnAdministrarTipos_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("TiposPlato.aspx", false);
-        }
     }
 }

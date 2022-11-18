@@ -52,12 +52,13 @@
                 <div class="col">
                     <div class="row">
                         <div class="col text-center ">
-                            <asp:Button OnClick="btnAgregar_Click" runat="server" ID="btnAgregar" CssClass="w-100 btn btn-primary" Text="Agregar Bebida" />
+                            <a href="EditBebida.aspx" class="w-100 btn btn-primary">Agregar Bebida</a>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col text-center ">
-                            <asp:Button OnClick="btnAdministrarMarcas_Click" runat="server" ID="btnAdministrarMarcas" CssClass="w-100 btn btn-dark" Text="Administrar Marcas" />
+                            <a href="Marcas.aspx" class="w-100 btn btn-dark">Administrar Marcas</a>
+                          
                         </div>
                     </div>
                 </div>

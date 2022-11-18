@@ -18,7 +18,15 @@ namespace TP_Cuatrimestral
 
             try
             {
-                cargarGridMarcas();
+                lblNuevaMarca.Visible = false;
+                txtNuevaMarcaNombre.Visible = false;
+                btnAceptar.Visible = false;
+                btnAgregar.Visible = true;
+
+                if (!IsPostBack)
+                {
+                    cargarGridMarcas();
+                }
             }
             catch(Exception ex)
             {
@@ -34,10 +42,24 @@ namespace TP_Cuatrimestral
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            lblNuevaMarca.Visible = true;
+           txtNuevaMarcaNombre.Visible = true;
+            btnAceptar.Visible = true;
+
+            btnAgregar.Visible = false;
 
         }
 
         protected void txtFiltroNombre_TextChanged(object sender, EventArgs e)
+        {
+            string parametro = txtFiltroNombre.Text.ToUpper();
+
+            gdvMarcas.DataSource = null;
+            gdvMarcas.DataSource = marcaNegocio.ListarMarcas().Where(x => x.Nombre.ToUpper().Contains(parametro));
+            gdvMarcas.DataBind();
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
         {
 
         }

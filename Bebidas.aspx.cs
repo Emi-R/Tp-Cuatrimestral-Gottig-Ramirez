@@ -72,14 +72,6 @@ namespace TP_Cuatrimestral
             repeaterBebidas.DataBind();
         }
 
-        protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("EditBebida.aspx", false);
-        }
 
-        protected void btnAdministrarMarcas_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Marcas.aspx", false);
-        }
     }
 }
