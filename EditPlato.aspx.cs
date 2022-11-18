@@ -63,7 +63,37 @@ namespace TP_Cuatrimestral
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Plato plato = new Plato();
 
+                cargarPlato(plato);
+
+                if (plato.Id > 0)
+                {
+                    platoNegocio.ModificarPlato(plato);
+                }
+                else
+                {
+                    platoNegocio.AgregarPlato(plato);
+                }
+
+                Response.Redirect("Platos.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void cargarPlato(Plato plato)
+        {
+            plato.Id = lblId.Text != "" ? int.Parse(lblId.Text) : 0;
+            plato.Nombre = txtNombre.Text ?? "";
+            plato.Precio = txtPrecio.Text != "" ? decimal.Parse(txtPrecio.Text) : 0;
+
+            plato.Tipo = new TipoPlato();
+            plato.Tipo.Id = ddlTipoPlato.SelectedValue != null ? int.Parse(ddlTipoPlato.SelectedValue) : 0;
         }
     }
 }

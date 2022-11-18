@@ -107,6 +107,32 @@ namespace Negocio
                 baseDatos.CerrarConexion();
             }
         }
+
+
+        public void ModificarPlato(Plato plato)
+        {
+
+            try
+            {
+                string idTipoPlato = plato.Tipo.Id == 0 ? "" : plato.Tipo.Id.ToString();
+
+                string consulta = $"Update Insumos set Nombre = '{plato.Nombre}', Precio = '{plato.Precio.ToString().Replace(',', '.')}', IdTipoPlato = '{idTipoPlato}' where Id = {plato.Id}";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+
+
+        }
+
     }
 }
 
