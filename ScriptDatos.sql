@@ -67,12 +67,12 @@ Values
 ('Papas fritas', 1000, 1, 2)
 Go
 
-Insert Into Insumos (Nombre, Precio, IdTipoInsumo)
-Values 
-('Ensalada Cesar', 500, 2),
-('Ensalada Lechuga y Tomate', 300, 2),
-('Papas fritas', 1000, 2)
-Go
+--Insert Into Insumos (Nombre, Precio, IdTipoInsumo)
+--Values 
+--('Ensalada Cesar', 500, 2),
+--('Ensalada Lechuga y Tomate', 300, 2),
+--('Papas fritas', 1000, 2)
+--Go
 
 Insert Into Insumos (Nombre, Precio, IdTipoInsumo, Capacidad)
 Values 

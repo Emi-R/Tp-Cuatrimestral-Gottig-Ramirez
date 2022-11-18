@@ -21,6 +21,7 @@ namespace TP_Cuatrimestral
 
             try
             {
+                btnEliminar.Visible = false;
                 if (!IsPostBack)
                 {
 
@@ -59,6 +60,7 @@ namespace TP_Cuatrimestral
             ddlTipoPlato.SelectedIndex = ddlTipoPlato.Items.IndexOf((ddlTipoPlato.Items.FindByValue(plato.Tipo.Id.ToString())));
 
             btnAgregar.Text = "GUARDAR";
+            btnEliminar.Visible = true;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -94,6 +96,20 @@ namespace TP_Cuatrimestral
 
             plato.Tipo = new TipoPlato();
             plato.Tipo.Id = ddlTipoPlato.SelectedValue != null ? int.Parse(ddlTipoPlato.SelectedValue) : 0;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(lblId.Text);
+            try
+            {
+                platoNegocio.EliminarPlato(id);
+                Response.Redirect("Platos.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }

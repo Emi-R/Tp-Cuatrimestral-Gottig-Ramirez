@@ -165,6 +165,7 @@ on I.IdTipoInsumo = TI.Id
 left join TipoPlatos TP
 on I.IdTipoPlato = TP.Id
 where ti.Id = 2
+and i.Activo = 1
 
 end
 go
@@ -290,6 +291,7 @@ Begin
 	End Catch
 End
 Go
+
 EXEC SpListarPlatos
 go
 
