@@ -169,6 +169,7 @@ where ti.Id = 2
 end
 go
 
+
 create Procedure SpBuscarPlatoPorId(@id int)
 as
 begin
@@ -185,6 +186,7 @@ and ti.Id = 2
 
 end
 go
+
 
 Create Procedure SpNuevoUsuario
 (
@@ -218,7 +220,7 @@ Begin
 End
 Go
 
-Alter View VW_ListaUsuarios as(
+create View VW_ListaUsuarios as(
 Select 
     U.Legajo,
 	U.Contraseña,
