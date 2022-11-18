@@ -21,9 +21,9 @@ namespace TP_Cuatrimestral
 
             try
             {
+                btnEliminar.Visible = false;
                 if (!IsPostBack)
                 {
-
                     List<Marca> marcas = marcaNegocio.ListarMarcas();
                     ddlMarcas.DataSource = marcas;
                     ddlMarcas.DataTextField = "Nombre";
@@ -62,6 +62,7 @@ namespace TP_Cuatrimestral
             ckxAlcoholica.Checked = bebida.Alcoholica;
 
             btnAgregar.Text = "Modificar";
+            btnEliminar.Visible = true;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -100,6 +101,20 @@ namespace TP_Cuatrimestral
             bebida.Marca.Id = ddlMarcas.SelectedValue != null ? int.Parse(ddlMarcas.SelectedValue) : 0;
 
             bebida.Alcoholica = ckxAlcoholica.Checked;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(lblId.Text);
+            try
+            {
+                bebidaNegocio.EliminarBebida(id);
+                Response.Redirect("Bebidas.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }
