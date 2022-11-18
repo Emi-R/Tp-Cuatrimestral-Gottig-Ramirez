@@ -201,9 +201,10 @@ Begin
 End
 Go
 
-Create View VW_ListaUsuarios as(
+Alter View VW_ListaUsuarios as(
 Select 
     U.Legajo,
+	U.Contraseña,
     U.Apellidos,
     U.Nombre,
     U.Dni,
@@ -253,5 +254,21 @@ Begin
 End
 Go
 
+Alter Procedure SpEliminarUsuario(
+	@Legajo int
+)
+As
+Begin
+	Begin Try
+	Begin Transaction
+		Delete From Usuarios where Legajo = @Legajo
+		Commit Transaction
+	End Try
+	Begin Catch
+		Raiserror('Error al eliminar usuario', 16, 1)
+		Rollback 
+	End Catch
+End
+Go
 EXEC SpListarPlatos
 go

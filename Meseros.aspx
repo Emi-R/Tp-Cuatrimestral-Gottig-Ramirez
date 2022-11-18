@@ -28,13 +28,26 @@
                                 <li class="list-group-item px-4">Dni: <%# Eval("Dni") %></li>
                                 <li class="list-group-item px-4">Ingreso: <%# Eval("FechaRegistro") %></li>
                             </ul>
-                            <div class="card-body" style="text-align:center">
+                            <div class="card-body" style="text-align: center">
                                 <asp:LinkButton ID="btnDetalle" OnClick="btnDetalle_Click" runat="server" CommandArgument='<%#Eval("Legajo") %>' CommandName="Legajo" CssClass="btn btn-outline-info" Text="+ Info"></asp:LinkButton>
                             </div>
                         </div>
 
                     </ItemTemplate>
                 </asp:Repeater>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
             </div>
         </div>
     </div>
