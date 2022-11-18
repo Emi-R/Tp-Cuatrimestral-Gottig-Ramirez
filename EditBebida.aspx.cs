@@ -61,7 +61,7 @@ namespace TP_Cuatrimestral
 
             ckxAlcoholica.Checked = bebida.Alcoholica;
 
-            btnAgregar.Text = "Modificar";
+            btnAgregar.Text = "GUARDAR";
             btnEliminar.Visible = true;
         }
 

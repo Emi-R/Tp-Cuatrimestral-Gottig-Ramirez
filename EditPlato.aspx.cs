@@ -58,7 +58,7 @@ namespace TP_Cuatrimestral
 
             ddlTipoPlato.SelectedIndex = ddlTipoPlato.Items.IndexOf((ddlTipoPlato.Items.FindByValue(plato.Tipo.Id.ToString())));
 
-            btnAgregar.Text = "Modificar";
+            btnAgregar.Text = "GUARDAR";
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
