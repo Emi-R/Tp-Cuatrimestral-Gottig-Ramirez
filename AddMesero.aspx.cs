@@ -17,38 +17,20 @@ namespace TP_Cuatrimestral
             {
                 cargarPaises();
 
-                if (Request.QueryString["Legajo"] != null)
+                if (!IsPostBack)
                 {
-                    UsuarioNegocio negocio = new UsuarioNegocio();
+                    if (Request.QueryString["Legajo"] != null)
+                    {
+                        cargarTxtBox();
 
-                    Usuario aux = negocio.buscarPorLegajo(int.Parse(Request.QueryString["Legajo"]));
-
-                    txtApellido.Text = aux.Apellido;
-                    txtNombre.Text = aux.Nombre;
-                    txtPassword.Text = aux.Password;
-                    txtDni.Text = aux.Dni;
-                    txtFechaNac.Text = aux.FechaNacimiento;
-                    txtTelefono.Text = aux.Telefono;
-                    txtEmail.Text = aux.Email;
-                    txtCalle.Text = aux.Domicilio.Calle;
-                    txtNumero.Text = aux.Domicilio.Numero;
-                    ddlPaises.SelectedIndex = aux.Nacionalidad.ID - 1;
-                    txtPiso.Text = aux.Domicilio.Piso.ToString();
-                    txtDpto.Text = aux.Domicilio.Depto;
-                    txtUrlImagen.Text = aux.UrlImagen;
-                    imgPerfil.ImageUrl = aux.UrlImagen;
-
-                    titulo.Text = "Legajo #" + aux.Legajo;
-                    imgPerfil.Height = 150;
-
+                    }
+                    else
+                    {
+                        imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
+                        imgPerfil.Height = 150;
+                    }
 
                 }
-                else
-                {
-                    imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
-                    imgPerfil.Height = 150;
-                }
-
 
             }
             catch (Exception ex)
@@ -112,6 +94,31 @@ namespace TP_Cuatrimestral
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgPerfil.ImageUrl = txtUrlImagen.Text;
+            imgPerfil.Height = 150;
+        }
+
+        public void cargarTxtBox()
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            Usuario aux = negocio.buscarPorLegajo(int.Parse(Request.QueryString["Legajo"]));
+
+            txtApellido.Text = aux.Apellido;
+            txtNombre.Text = aux.Nombre;
+            txtPassword.Text = aux.Password;
+            txtDni.Text = aux.Dni;
+            txtFechaNac.Text = aux.FechaNacimiento.ToString();
+            txtTelefono.Text = aux.Telefono;
+            txtEmail.Text = aux.Email;
+            txtCalle.Text = aux.Domicilio.Calle;
+            txtNumero.Text = aux.Domicilio.Numero;
+            ddlPaises.SelectedIndex = aux.Nacionalidad.ID - 1;
+            txtPiso.Text = aux.Domicilio.Piso.ToString();
+            txtDpto.Text = aux.Domicilio.Depto;
+            txtUrlImagen.Text = aux.UrlImagen;
+            imgPerfil.ImageUrl = aux.UrlImagen;
+
+            titulo.Text = "Legajo #" + aux.Legajo;
             imgPerfil.Height = 150;
         }
     }

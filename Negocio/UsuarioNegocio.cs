@@ -124,6 +124,7 @@ namespace Negocio
             {
 
             aux.Legajo = (int)basedatos.Lector["Legajo"];
+            aux.Password = (string)basedatos.Lector["Contraseña"];
             aux.Apellido = (string)basedatos.Lector["Apellidos"];
             aux.Nombre = (string)basedatos.Lector["Nombre"];
             aux.Dni = (string)basedatos.Lector["Dni"];
@@ -158,7 +159,6 @@ namespace Negocio
                 basedatos.SetearParametro("@Dpto", modificado.Domicilio.Depto);
                 basedatos.SetearParametro("@IDNacionalidad", modificado.Nacionalidad.ID);
                 basedatos.SetearParametro("@TipoPerfil", 2);
-                basedatos.SetearParametro("@FechaNac", modificado.FechaNacimiento);
                 basedatos.SetearParametro("@UrlImagen", modificado.UrlImagen);
 
                 basedatos.EjecutarAccion();
