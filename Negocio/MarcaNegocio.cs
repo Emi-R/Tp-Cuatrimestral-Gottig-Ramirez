@@ -42,5 +42,25 @@ namespace Negocio
 
             return listaMarcas;
         }
+
+        public void AgregarMarca(Marca marca)
+        {
+            try
+            {
+                string consulta = $"INSERT INTO MARCAS(NOMBRE) VALUES ('{marca.Nombre}')";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.EjecutarLectura();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
     }
 }

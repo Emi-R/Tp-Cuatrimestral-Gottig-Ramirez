@@ -36,8 +36,18 @@ namespace TP_Cuatrimestral
 
         private void cargarGridMarcas()
         {
-            gdvMarcas.DataSource = marcaNegocio.ListarMarcas();
-            gdvMarcas.DataBind();
+            if (!IsPostBack)
+            {
+                gdvMarcas.DataSource = marcaNegocio.ListarMarcas();
+                gdvMarcas.DataBind();
+            }
+            else
+            {
+                gdvMarcas.DataSource = null;
+                gdvMarcas.DataSource = marcaNegocio.ListarMarcas();
+                gdvMarcas.DataBind();
+            }
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -61,7 +71,14 @@ namespace TP_Cuatrimestral
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            string nombre = txtNuevaMarcaNombre.Text;
+            txtNuevaMarcaNombre.Text = "";
 
+            Marca newMarca = new Marca();
+            newMarca.Nombre = nombre;
+            marcaNegocio.AgregarMarca(newMarca);
+
+            cargarGridMarcas();
         }
     }
 }
