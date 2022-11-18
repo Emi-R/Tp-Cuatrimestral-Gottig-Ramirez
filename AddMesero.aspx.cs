@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,8 +12,12 @@ namespace TP_Cuatrimestral
 {
     public partial class AddMesero : System.Web.UI.Page
     {
+
+        public bool confirm = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 cargarPaises();
@@ -22,12 +27,15 @@ namespace TP_Cuatrimestral
                     if (Request.QueryString["Legajo"] != null)
                     {
                         cargarTxtBox();
+                        btnAgregarMesero.Text = "Guardar";
+                        btnEliminar.Visible = true;
 
                     }
                     else
                     {
                         imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
                         imgPerfil.Height = 150;
+                        btnEliminar.Visible = false;
                     }
 
                 }
@@ -120,6 +128,21 @@ namespace TP_Cuatrimestral
 
             titulo.Text = "Legajo #" + aux.Legajo;
             imgPerfil.Height = 150;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            confirm = true;
+        }
+
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            UsuarioNegocio negocio = new UsuarioNegocio();
+
+            negocio.eliminar(int.Parse(Request.QueryString["Legajo"]));
+
+            Response.Redirect("Meseros.aspx", false);
+
         }
     }
 }

@@ -28,10 +28,8 @@
                                 <li class="list-group-item px-4">Dni: <%# Eval("Dni") %></li>
                                 <li class="list-group-item px-4">Ingreso: <%# Eval("FechaRegistro") %></li>
                             </ul>
-                            <div class="card-body">
+                            <div class="card-body" style="text-align:center">
                                 <asp:LinkButton ID="btnDetalle" OnClick="btnDetalle_Click" runat="server" CommandArgument='<%#Eval("Legajo") %>' CommandName="Legajo" CssClass="btn btn-outline-info" Text="+ Info"></asp:LinkButton>
-                                <a href="#" class="card-link">
-                                    <button type="button" class="btn btn-danger">Eliminar</button></a>
                             </div>
                         </div>
 

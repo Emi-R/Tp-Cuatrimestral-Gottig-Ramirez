@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
-        <div class="pt-2" style="text-align:center; margin-bottom:0.5cm">
-            <asp:Label id="titulo" CssClass="title-page display-2 pb-3" runat="server" Text="Nuevo Mesero"></asp:Label>
+        <div class="pt-2" style="text-align: center; margin-bottom: 0.5cm">
+            <asp:Label ID="titulo" CssClass="title-page display-2 pb-3" runat="server" Text="Nuevo Mesero"></asp:Label>
         </div>
     </div>
     <div class="row">
@@ -86,14 +86,14 @@
                     <div class="col">
                         <%-- Telefono --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Number" id="txtTelefono" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Number" ID="txtTelefono" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtTelefono">Telefono o Celular</label>
                         </div>
                     </div>
                     <div class="col">
                         <%-- Email --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Email" id="txtEmail" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Email" ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtEmail">Email</label>
                         </div>
                     </div>
@@ -102,28 +102,28 @@
                     <div class="col">
                         <%-- Calle --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox id="txtCalle" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCalle" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtCalle">Calle</label>
                         </div>
                     </div>
                     <div class="col">
                         <%-- Numero --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Number" id="txtNumero" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Number" ID="txtNumero" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtNumero">Número</label>
                         </div>
                     </div>
                     <div class="col">
                         <%-- Numero --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Number" id="txtPiso" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Number" ID="txtPiso" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtPiso">Piso</label>
                         </div>
                     </div>
                     <div class="col">
                         <%-- Calle --%>
                         <div class="form-outline form-white mb-4">
-                            <asp:TextBox id="txtDpto" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDpto" class="form-control" runat="server"></asp:TextBox>
                             <label class="form-label" for="txtDpto">Dpto</label>
                         </div>
                     </div>
@@ -152,7 +152,30 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
                 <!-- Boton Agregar -->
-                <asp:Button ID="btnAgregarMesero" CssClass="btn btn-primary btn-block mb-4" OnClick="btnAgregarMesero_Click" runat="server" Text="Agregar" />
+                <div class="row">
+                    <div class="col">
+                        <asp:Button ID="btnAgregarMesero" CssClass="btn btn-primary mb-4" OnClick="btnAgregarMesero_Click" runat="server" Text="Agregar" />
+                    </div>
+                    <div class="col">
+                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger mb-4" OnClick="btnEliminar_Click" runat="server" Text="Eliminar" />
+                    </div>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+
+                            <%if (confirm)
+                                { %>
+
+                            <div class="col">
+                                <asp:Label ID="lblConfirm" runat="server" CssClass="lead" Text="Desea eliminar?"></asp:Label>
+                            </div>
+                            <div class="col">
+                                <asp:Button ID="btnConfirmar" CssClass="btn btn-danger mb-4" OnClick="btnConfirmar_Click" runat="server" Text="Sí" />
+                            </div>
+
+                            <%} %>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
         </div>
         <div class="col-3"></div>
