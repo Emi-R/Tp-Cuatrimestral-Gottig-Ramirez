@@ -27,13 +27,9 @@
                             <ul class="list-group list-group-light list-group-small">
                                 <li class="list-group-item px-4">Dni: <%# Eval("Dni") %></li>
                                 <li class="list-group-item px-4">Ingreso: <%# Eval("FechaRegistro") %></li>
-<%--                                <li class="list-group-item px-4">Nacimiento: <%# Eval("FechaNacimiento") %></li>
-                                <li class="list-group-item px-4">Procedencia: <%# Eval("Nacionalidad") %></li>--%>
                             </ul>
                             <div class="card-body">
                                 <asp:LinkButton ID="btnDetalle" OnClick="btnDetalle_Click" runat="server" CommandArgument='<%#Eval("Legajo") %>' CommandName="Legajo" CssClass="btn btn-outline-info" Text="+ Info"></asp:LinkButton>
-                                <%--<a href="#" class="card-link">
-                                    <button type="button" class="btn btn-outline-info">+ Info</button></a>--%>
                                 <a href="#" class="card-link">
                                     <button type="button" class="btn btn-danger">Eliminar</button></a>
                             </div>
