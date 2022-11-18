@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -162,6 +163,28 @@ namespace Negocio
                 basedatos.SetearParametro("@UrlImagen", modificado.UrlImagen);
 
                 basedatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
+        }
+
+        public void eliminar(int legajo)
+        {
+            try
+            {
+                basedatos.SetearProcedimiento("SpEliminarUsuario");
+
+                basedatos.SetearParametro("@Legajo", legajo);
+
+                basedatos.EjecutarAccion();
+
             }
             catch (Exception ex)
             {

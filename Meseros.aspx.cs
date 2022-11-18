@@ -12,6 +12,7 @@ namespace TP_Cuatrimestral
     public partial class Meseros : System.Web.UI.Page
     {
         private UsuarioNegocio usuarioNegocio;
+        public bool confirm = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
