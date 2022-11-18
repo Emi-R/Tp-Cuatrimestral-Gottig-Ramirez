@@ -76,5 +76,10 @@ namespace TP_Cuatrimestral
             repeaterPlatos.DataSource = listaPlatos.Where(x => x.Tipo.Nombre.ToUpper().Contains(tipo));
             repeaterPlatos.DataBind();
         }
+
+        protected void btnAdministrarTipos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TiposPlato.aspx", false);
+        }
     }
 }

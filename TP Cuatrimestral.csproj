@@ -79,6 +79,7 @@
     <Content Include="Pedidos.aspx" />
     <Content Include="Platos.aspx" />
     <Content Include="Styles\estilos.css" />
+    <Content Include="TiposPlato.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +185,13 @@
       <DependentUpon>Platos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TiposPlato.aspx.cs">
+      <DependentUpon>TiposPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TiposPlato.aspx.designer.cs">
+      <DependentUpon>TiposPlato.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master.Master" />
