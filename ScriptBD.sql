@@ -254,13 +254,14 @@ Begin
 End
 Go
 
-Alter Procedure SpEliminarUsuario(
+Create Procedure SpEliminarUsuario(
 	@Legajo int
 )
 As
 Begin
 	Begin Try
 	Begin Transaction
+		Update Mesas Set MeseroAsignado = Null Where MeseroAsignado = @Legajo
 		Delete From Usuarios where Legajo = @Legajo
 		Commit Transaction
 	End Try
@@ -272,3 +273,5 @@ End
 Go
 EXEC SpListarPlatos
 go
+
+Exec SpEliminarUsuario 2
