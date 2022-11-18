@@ -35,7 +35,7 @@ namespace Negocio
                     user.Nombre = (string)basedatos.Lector["Nombre"];
                     user.Dni = (string)basedatos.Lector["Dni"];
                     user.Nacionalidad.Nombre = (string)basedatos.Lector["Pais"];
-                    user.FechaNacimiento = (string)basedatos.Lector["FechaNac"];
+                    user.FechaNacimiento = DateTime.Parse(basedatos.Lector["FechaNac"].ToString());
                     user.FechaRegistro = (string)basedatos.Lector["FechaRegistro"];
                     user.Telefono = (string)basedatos.Lector["Telefono"];
                     user.Email = (string)basedatos.Lector["Email"];
@@ -130,7 +130,7 @@ namespace Negocio
             aux.Nombre = (string)basedatos.Lector["Nombre"];
             aux.Dni = (string)basedatos.Lector["Dni"];
             aux.Nacionalidad.ID = (int)basedatos.Lector["Pais"];
-            aux.FechaNacimiento = (string)basedatos.Lector["FechaNac"];
+            aux.FechaNacimiento = DateTime.Parse(basedatos.Lector["FechaNac"].ToString());
             aux.Telefono = (string)basedatos.Lector["Telefono"];
             aux.Email = (string)basedatos.Lector["Email"];
             aux.Domicilio.Calle = (string)basedatos.Lector["Calle"];
@@ -158,6 +158,7 @@ namespace Negocio
                 basedatos.SetearParametro("@Numero", modificado.Domicilio.Numero);
                 basedatos.SetearParametro("@Piso", modificado.Domicilio.Piso);
                 basedatos.SetearParametro("@Dpto", modificado.Domicilio.Depto);
+                basedatos.SetearParametro("@FechaNac", modificado.FechaNacimiento);
                 basedatos.SetearParametro("@IDNacionalidad", modificado.Nacionalidad.ID);
                 basedatos.SetearParametro("@TipoPerfil", 2);
                 basedatos.SetearParametro("@UrlImagen", modificado.UrlImagen);

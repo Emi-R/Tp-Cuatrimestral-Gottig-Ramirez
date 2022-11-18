@@ -18,7 +18,7 @@ namespace Dominio
         public Pais Nacionalidad { get; set; }
         public Domicilio Domicilio { get; set; }
         public Perfil Perfil { get; set; }
-        public string FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public string FechaRegistro { get; set; }
         public string UrlImagen { get; set; }
         public bool Activo { get; set; }

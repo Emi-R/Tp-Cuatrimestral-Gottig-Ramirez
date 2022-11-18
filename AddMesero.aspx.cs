@@ -70,7 +70,7 @@ namespace TP_Cuatrimestral
             nuevoUser.Nombre = txtNombre.Text;
             nuevoUser.Password = txtPassword.Text;
             nuevoUser.Dni = txtDni.Text;
-            nuevoUser.FechaNacimiento = txtFechaNac.Text;
+            nuevoUser.FechaNacimiento = DateTime.Parse(txtFechaNac.Text);
             nuevoUser.Telefono = txtTelefono.Text;
             nuevoUser.Email = txtEmail.Text;
 
@@ -115,7 +115,7 @@ namespace TP_Cuatrimestral
             txtNombre.Text = aux.Nombre;
             txtPassword.Text = aux.Password;
             txtDni.Text = aux.Dni;
-            txtFechaNac.Text = aux.FechaNacimiento.ToString();
+            txtFechaNac.Text = aux.FechaNacimiento.ToString("yyyy-MM-dd"); 
             txtTelefono.Text = aux.Telefono;
             txtEmail.Text = aux.Email;
             txtCalle.Text = aux.Domicilio.Calle;
