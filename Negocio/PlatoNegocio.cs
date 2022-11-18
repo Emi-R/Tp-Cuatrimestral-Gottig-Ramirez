@@ -133,6 +133,26 @@ namespace Negocio
 
         }
 
+        public void EliminarPlato(int id)
+        {
+            try
+            {
+                string consulta = "Update Insumos set Activo = 0 where Id = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", id);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
     }
 }
 

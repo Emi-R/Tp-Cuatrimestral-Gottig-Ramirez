@@ -62,5 +62,25 @@ namespace Negocio
                 baseDatos.CerrarConexion();
             }
         }
+
+        public void EliminarMarca(int id)
+        {
+            try
+            {
+                string consulta = "Update MARCAS set Activo = 0 where Id = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", id);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
     }
 }
