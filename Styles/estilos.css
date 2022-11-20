@@ -122,6 +122,13 @@
     background-color: #ab001c !important;
 }
 
+.itemMarcas {
+    background-color: #ffe2e7 !important;
+    color: white !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .container-platos_edit {
     border: 1px solid black !important;
     background-color: #f6d2d8 !important;

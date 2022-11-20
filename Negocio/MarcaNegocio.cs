@@ -10,9 +10,11 @@ namespace Negocio
     public class MarcaNegocio
     {
         private AccesoDatos baseDatos = new AccesoDatos();
-        public List<Marca> ListarMarcas()
+        public List<Marca> ListarMarcas(string id = "")
         {
-            string consulta = "SELECT ID, NOMBRE FROM MARCAS";
+            string consulta = "SELECT ID, NOMBRE, ACTIVO FROM MARCAS";
+            if (!string.IsNullOrEmpty(id))
+                consulta += $" WHERE ID = {id}";
 
             baseDatos.SetearConsulta(consulta);
             baseDatos.EjecutarLectura();
@@ -27,6 +29,7 @@ namespace Negocio
 
                     marca.Id = baseDatos.Lector.GetInt32(0);
                     marca.Nombre = baseDatos.Lector.GetString(1);
+                    marca.Activo = baseDatos.Lector.GetBoolean(2);
 
                     listaMarcas.Add(marca);
                 }

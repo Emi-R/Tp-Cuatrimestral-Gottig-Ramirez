@@ -38,14 +38,14 @@ namespace TP_Cuatrimestral
         {
             if (!IsPostBack)
             {
-                gdvMarcas.DataSource = marcaNegocio.ListarMarcas();
-                gdvMarcas.DataBind();
+                repeaterMarcas.DataSource = marcaNegocio.ListarMarcas();
+                repeaterMarcas.DataBind();
             }
             else
             {
-                gdvMarcas.DataSource = null;
-                gdvMarcas.DataSource = marcaNegocio.ListarMarcas();
-                gdvMarcas.DataBind();
+                repeaterMarcas.DataSource = null;
+                repeaterMarcas.DataSource = marcaNegocio.ListarMarcas();
+                repeaterMarcas.DataBind();
             }
 
         }
@@ -64,9 +64,9 @@ namespace TP_Cuatrimestral
         {
             string parametro = txtFiltroNombre.Text.ToUpper();
 
-            gdvMarcas.DataSource = null;
-            gdvMarcas.DataSource = marcaNegocio.ListarMarcas().Where(x => x.Nombre.ToUpper().Contains(parametro));
-            gdvMarcas.DataBind();
+            repeaterMarcas.DataSource = null;
+            repeaterMarcas.DataSource = marcaNegocio.ListarMarcas().Where(x => x.Nombre.ToUpper().Contains(parametro));
+            repeaterMarcas.DataBind();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -80,5 +80,12 @@ namespace TP_Cuatrimestral
 
             cargarGridMarcas();
         }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            Response.Redirect("EditMarca.aspx?id=" + id, false);
+        }
+
     }
 }

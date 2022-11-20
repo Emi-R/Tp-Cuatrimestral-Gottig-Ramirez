@@ -12,13 +12,31 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-6">
-                    <asp:GridView runat="server" ID="gdvMarcas" CssClass="table table-light align-middle" AutoGenerateColumns="false">
-                        <Columns>
-                            <asp:BoundField HeaderText="Nombre" HeaderStyle-CssClass="headerTitleMarcas" DataField="Nombre" />
-
-                            <asp:CheckBoxField ReadOnly="false" HeaderText="Activo" HeaderStyle-CssClass="headerTitleMarcas" DataField="Activo" />
-                        </Columns>
-                    </asp:GridView>
+                    <div class="row headerTitleMarcas">
+                        <div class="col-4">
+                            <asp:Label runat="server" Text="Nombre"></asp:Label>
+                        </div>
+                        <div class="col">
+                            <asp:Label runat="server" Text="Activo"></asp:Label>
+                        </div>
+                        <div class="col-6">
+                        </div>
+                    </div>
+                    <asp:Repeater runat="server" ID="repeaterMarcas">
+                        <ItemTemplate>
+                            <div class="row itemMarcas">
+                                <div class="col m-auto w-100">
+                                    <asp:label runat="server" ID="txtMarca" Text='<%#Eval("Nombre")%>' CssClass="text-dark" Enabled="false"></asp:label>
+                                </div>
+                                <div class="col m-auto">
+                                    <asp:CheckBox runat="server" ID="cbxMarca" Enabled="false" Checked='<%#Eval("Activo") %>' />
+                                </div>
+                                <div class="col m-auto">
+                                      <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("Id")%>' CommandName="idMarca" ID="btnModificar" OnClick="btnModificar_Click" Text="Modificar"/>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
 
