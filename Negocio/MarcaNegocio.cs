@@ -66,11 +66,50 @@ namespace Negocio
             }
         }
 
-        public void EliminarMarca(int id)
+        public void EditarMarca(Marca marca)
+        {
+            try
+            {
+                string consulta = $"UPDATE MARCAS SET NOMBRE = '{marca.Nombre}' WHERE ID = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", marca.Id);
+                baseDatos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+        public void DesactivarMarca(int id)
         {
             try
             {
                 string consulta = "Update MARCAS set Activo = 0 where Id = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", id);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
+        public void ReactivarMarca(int id)
+        {
+            try
+            {
+                string consulta = "Update MARCAS set Activo = 1 where Id = @Id";
 
                 baseDatos.SetearConsulta(consulta);
                 baseDatos.SetearParametro("@Id", id);

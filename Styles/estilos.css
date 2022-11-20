@@ -127,6 +127,9 @@
     color: white !important;
     padding-left: 10px;
     padding-right: 10px;
+    border-right: 1px solid #ab001c;
+    border-left: 1px solid #ab001c;
+    border-bottom: 1px solid #ab001c;
 }
 
 .container-platos_edit {

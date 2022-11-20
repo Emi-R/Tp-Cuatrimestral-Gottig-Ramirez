@@ -24,7 +24,7 @@
                     <div class="col-2">
                         <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("Id")%>' CommandName="idMarca" OnClick="btnEliminar_Click" ID="btnEliminar" Text="Eliminar" />
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("Id")%>' Visible="false" CommandName="idMarca" OnClick="btnReActivar_Click" ID="btnReActivar" Text="Re activar" />
                     </div>
                     <div class="col-2">

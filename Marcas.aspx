@@ -6,8 +6,11 @@
     <div class="row m-5">
         <div class="col p-5">
             <div class="row m-3 justify-content-center">
-                <div class="col-6">
+                <div class="col-4">
                     <asp:TextBox runat="server" CssClass="w100 form-control" ID="txtFiltroNombre" AutoPostBack="true" OnTextChanged="txtFiltroNombre_TextChanged"></asp:TextBox>
+                </div>
+                <div class="col-2">
+                    <asp:Button runat="server" ID="btnLimpiarFiltro" OnClick="btnLimpiarFiltro_Click" Text="Limpiar Filtro" CssClass="btn btn-info"/>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -44,7 +47,7 @@
 
                 <div class="col-6 text-end">
                     <div class="row justify-content-end pe-5">
-                        <div class="col-1">
+                        <div class="col-2">
                             <asp:Label runat="server" ID="lblNuevaMarca" CssClass="fs-5 fw-normal text-dark" Text="Nombre"></asp:Label>
                         </div>
                         <div class="col-4">

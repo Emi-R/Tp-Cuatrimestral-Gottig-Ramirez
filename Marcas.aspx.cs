@@ -87,5 +87,10 @@ namespace TP_Cuatrimestral
             Response.Redirect("EditMarca.aspx?id=" + id, false);
         }
 
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            txtFiltroNombre.Text = "";
+            cargarGridMarcas();
+        }
     }
 }

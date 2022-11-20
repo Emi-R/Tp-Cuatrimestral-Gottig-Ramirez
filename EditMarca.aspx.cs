@@ -44,7 +44,7 @@ namespace TP_Cuatrimestral
             int id = int.Parse(lblId.Text);
             try
             {
-                negocio.EliminarMarca(id);
+                negocio.DesactivarMarca(id);
                 Response.Redirect("Marcas.aspx");
             }
             catch (Exception ex)
@@ -55,12 +55,34 @@ namespace TP_Cuatrimestral
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Marca marca = new Marca();
 
+                marca.Id = int.Parse(lblId.Text);
+                marca.Nombre = txtNombre.Text;
+
+                negocio.EditarMarca(marca);
+                Response.Redirect("Marcas.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
 
         protected void btnReActivar_Click(object sender, EventArgs e)
         {
-
+            int id = int.Parse(lblId.Text);
+            try
+            {
+                negocio.ReactivarMarca(id);
+                Response.Redirect("Marcas.aspx");
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }
