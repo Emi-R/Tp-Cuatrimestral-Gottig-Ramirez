@@ -66,15 +66,38 @@
                             </asp:DropDownList>
                         </div>
                     </div>
+                    <asp:UpdatePanel runat="server" ID="UpdatePanel2">
+                        <ContentTemplate>
+                            <div class="row mt-5 justify-content-end">
 
-                    <div class="row mt-5 justify-content-end">
-                        <div class="col-3 text-end">
-                             <asp:Button runat="server" Text="Desactivar" ID="btnEliminar" OnClick="btnEliminar_Click"  CssClass="btn btn-danger mb-4" />
-                        </div>
-                        <div class="col-3 text-end">
-                            <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
-                        </div>
-                    </div>
+                                <div class="col-3 text-end">
+                                    <asp:Button runat="server" Text="Desactivar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger mb-4" />
+                                </div>
+                                <%if (ConfirmaEliminacion)
+                                    {  %>
+
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <asp:Label runat="server" ID="lblConfirmaDesactivar" Text="¿Confirmar desactivar la Bebida?"></asp:Label>
+                                    </div>
+                                    <div class="col">
+                                        <asp:Button runat="server" CssClass="btn btn-danger" CommandArgument='<%#Eval("Id")%>' CommandName="IdBebida" Text="Confirmar" ID="btnConfirmaDesactivar" OnClick="btnConfirmaDesactivar_Click" />
+                                    </div>
+                                    <div class="col">
+                                        <asp:Button runat="server" CssClass="btn btn-secondary" CommandArgument='<%#Eval("Id")%>' CommandName="IdBebida" Text="Cancelar" ID="btnCancelaDesactivar" OnClick="btnCancelaDesactivar_Click" />
+                                    </div>
+
+                                </div>
+                                <%} %>
+
+
+                                <div class="col-3 text-end">
+                                    <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
+                                </div>
+
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </ContentTemplate>

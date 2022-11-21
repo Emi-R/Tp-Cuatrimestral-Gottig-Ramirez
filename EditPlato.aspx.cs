@@ -14,6 +14,8 @@ namespace TP_Cuatrimestral
 
         private TipoPlatoNegocio tipoPlatoNegocio;
         private PlatoNegocio platoNegocio;
+
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             tipoPlatoNegocio = new TipoPlatoNegocio();
@@ -100,6 +102,15 @@ namespace TP_Cuatrimestral
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            ConfirmaEliminacion = true;
+            btnEliminar.Visible = false;
+            btnAgregar.Visible = false;
+
+
+        }
+
+        protected void btnConfirmaDesactivar_Click(object sender, EventArgs e)
+        {
             int id = int.Parse(lblId.Text);
             try
             {
@@ -110,6 +121,13 @@ namespace TP_Cuatrimestral
             {
                 Session.Add("error", ex);
             }
+        }
+
+        protected void btnCancelaDesactivar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = false;
+            btnEliminar.Visible = true;
+            btnAgregar.Visible = true;
         }
     }
 }

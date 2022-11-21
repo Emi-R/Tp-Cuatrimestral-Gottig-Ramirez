@@ -105,6 +105,15 @@ namespace TP_Cuatrimestral
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            ConfirmaEliminacion = true;
+            btnEliminar.Visible = false;
+            btnAgregar.Visible = false;
+
+        }
+
+        protected void btnConfirmaDesactivar_Click(object sender, EventArgs e)
+        {
+
             int id = int.Parse(lblId.Text);
             try
             {
@@ -115,6 +124,13 @@ namespace TP_Cuatrimestral
             {
                 Session.Add("error", ex);
             }
+        }
+
+        protected void btnCancelaDesactivar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = false;
+            btnEliminar.Visible = true;
+            btnAgregar.Visible = true;
         }
     }
 }

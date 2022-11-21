@@ -53,7 +53,7 @@ namespace Negocio
                 string consulta = $"INSERT INTO MARCAS(NOMBRE) VALUES ('{marca.Nombre}')";
 
                 baseDatos.SetearConsulta(consulta);
-                baseDatos.EjecutarLectura();
+                baseDatos.EjecutarAccion();
 
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace Negocio
 
                 baseDatos.SetearConsulta(consulta);
                 baseDatos.SetearParametro("@Id", marca.Id);
-                baseDatos.EjecutarLectura();
+                baseDatos.EjecutarAccion();
             }
             catch (Exception ex)
             {
