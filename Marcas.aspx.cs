@@ -28,7 +28,7 @@ namespace TP_Cuatrimestral
                     cargarGridMarcas();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Session.Add("error", ex);
             }
@@ -53,7 +53,7 @@ namespace TP_Cuatrimestral
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             lblNuevaMarca.Visible = true;
-           txtNuevaMarcaNombre.Visible = true;
+            txtNuevaMarcaNombre.Visible = true;
             btnAceptar.Visible = true;
 
             btnAgregar.Visible = false;
