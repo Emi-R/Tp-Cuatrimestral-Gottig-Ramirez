@@ -20,7 +20,7 @@ insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Call
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('pelf', 43611217, 'Magdalène', 'Parkhouse', '4735875523', 'sparkhouse4@themeforest.net', 'Rieder', '4333', null, null, 9, 2, '1998-01-01', '2020-06-09', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('amub', 38931946, 'Daphnée', 'Gascoigne', '4783653726', 'jgascoigne5@moonfruit.com', 'Mcguire', '5895', null, null, 1, 2, '1998-09-02', '2022-08-05', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('inwj', 20736674, 'Örjan', 'Tandy', '7976930835', 'mtandy6@noaa.gov', 'Pearson', '9215', null, null, 2, 2, '1994-05-19', '2019-09-14', 2);
-insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('rxgf', 23367514, 'Judicaël', 'Cordie', '5508976418', 'jcordie7@domainmarket.com', 'Nelson', '00', null, null, 3, 2, '1995-08-17', '2021-05-21', 2);
+insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('rxgf', 23367514, 'Judicaël', 'Cordie', '5508976418', 'jcordie7@domainmarket.com', 'Nelson', '64', null, null, 3, 2, '1995-08-17', '2021-05-21', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('cjjb', 36909435, 'Adèle', 'Westwell', '4933840137', 'swestwell8@hp.com', 'Crest Line', '806', null, null, 5, 2, '1999-06-09', '2021-12-24', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 2);
 Go
@@ -82,5 +82,3 @@ Values
 Go
 
 exec splistarusuarios
-
-Insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 2);
