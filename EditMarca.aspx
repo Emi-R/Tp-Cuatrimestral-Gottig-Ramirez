@@ -22,10 +22,10 @@
 
                 <div class="row justify-content-end mt-2">
                     <div class="col-2">
-                        <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("Id")%>' CommandName="idMarca" OnClick="btnEliminar_Click" ID="btnEliminar" Text="Eliminar" />
+                        <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("Id")%>' CommandName="idMarca" OnClick="btnEliminar_Click" ID="btnEliminar" Text="Inactivar" />
                     </div>
                     <div class="col-3">
-                        <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("Id")%>' Visible="false" CommandName="idMarca" OnClick="btnReActivar_Click" ID="btnReActivar" Text="Re activar" />
+                        <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("Id")%>' Visible="false" CommandName="idMarca" OnClick="btnReActivar_Click" ID="btnReActivar" Text="Reactivar" />
                     </div>
                     <div class="col-2">
                         <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("Id")%>' CommandName="idMarca" OnClick="btnGuardar_Click" ID="btnGuardar" Text="Guardar" />

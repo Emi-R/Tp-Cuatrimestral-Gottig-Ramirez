@@ -42,11 +42,71 @@ namespace Negocio
             return listaTipoPlato;
         }
 
-        public void EliminarTipoPlato(int id)
+        public void AgregarTipoPlato(TipoPlato tipo)
+        {
+            try
+            {
+                string consulta = $"INSERT INTO TIPOPLATOS(NOMBRE) VALUES ('{tipo.Nombre}')";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.EjecutarLectura();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
+        public void EditarTipoPlato(TipoPlato tipo)
+        {
+            try
+            {
+                string consulta = $"UPDATE TIPOPLATOS SET NOMBRE = '{tipo.Nombre}' WHERE ID = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", tipo.Id);
+                baseDatos.EjecutarLectura();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
+        public void DesactivarTipoPlato(int id)
         {
             try
             {
                 string consulta = "Update TipoPlatos set Activo = 0 where Id = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", id);
+                baseDatos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
+
+        public void ReactivarTipoPlato(int id)
+        {
+            try
+            {
+                string consulta = "Update TipoPlatos set Activo = 1 where Id = @Id";
 
                 baseDatos.SetearConsulta(consulta);
                 baseDatos.SetearParametro("@Id", id);

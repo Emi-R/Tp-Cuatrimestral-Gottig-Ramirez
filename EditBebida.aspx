@@ -46,7 +46,7 @@
 
 
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <asp:Label runat="server" ID="lblAlcoholica" CssClass="text-dark" Text="Es alcoholica?"></asp:Label>
                         </div>
                         <div class="col-2 p-0">
@@ -69,7 +69,7 @@
 
                     <div class="row mt-5 justify-content-end">
                         <div class="col-3 text-end">
-                             <asp:Button runat="server" Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click"  CssClass="btn btn-danger mb-4" />
+                             <asp:Button runat="server" Text="Desactivar" ID="btnEliminar" OnClick="btnEliminar_Click"  CssClass="btn btn-danger mb-4" />
                         </div>
                         <div class="col-3 text-end">
                             <asp:Button runat="server" Text="Agregar" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="btn btn-warning mb-4" />
