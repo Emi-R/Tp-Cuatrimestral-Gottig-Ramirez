@@ -146,10 +146,10 @@ Select P.ID, P.Nombre from Paises P
 End 
 Go
 
-Create Procedure SpListarTipoPlato
+Create Procedure SpListarTiposPlato
 as
 Begin
-Select Id, Nombre from TipoPlatos
+Select Id, Nombre, Activo from TipoPlatos
 End
 go
 
@@ -292,7 +292,7 @@ Begin
 End
 Go
 
-EXEC SpListarPlatos
-go
+--EXEC SpListarPlatos
+--go
 
 Exec SpEliminarUsuario 2

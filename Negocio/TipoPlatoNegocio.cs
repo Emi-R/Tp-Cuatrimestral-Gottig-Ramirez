@@ -13,7 +13,7 @@ namespace Negocio
         public List<TipoPlato> ListarTiposPlatos()
         {
 
-            baseDatos.SetearProcedimiento("SpListarTipoPlato");
+            baseDatos.SetearProcedimiento("SpListarTiposPlato");
             baseDatos.EjecutarLectura();
 
             List<TipoPlato> listaTipoPlato = new List<TipoPlato>();
@@ -26,6 +26,7 @@ namespace Negocio
 
                     tipo.Id = baseDatos.Lector.GetInt32(0);
                     tipo.Nombre = baseDatos.Lector.GetString(1);
+                    tipo.Activo = baseDatos.Lector.GetBoolean(2);
 
                     listaTipoPlato.Add(tipo);
                 }
@@ -42,6 +43,37 @@ namespace Negocio
             return listaTipoPlato;
         }
 
+        public TipoPlato ObtenerTipoPlatoPorId(int id)
+        {
+            TipoPlato tipo = new TipoPlato();
+
+            try
+            {
+                string consulta = $"SELECT ID, NOMBRE, ACTIVO FROM TIPOPLATOS WHERE ID = @Id";
+
+                baseDatos.SetearConsulta(consulta);
+                baseDatos.SetearParametro("@Id", id);
+                baseDatos.EjecutarLectura();
+
+                while (baseDatos.Lector.Read())
+                {
+                    tipo.Id = baseDatos.Lector.GetInt32(0);
+                    tipo.Nombre = baseDatos.Lector.GetString(1);
+                    tipo.Activo = baseDatos.Lector.GetBoolean(2);
+                }
+
+                return tipo;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+        }
         public void AgregarTipoPlato(TipoPlato tipo)
         {
             try
@@ -49,7 +81,7 @@ namespace Negocio
                 string consulta = $"INSERT INTO TIPOPLATOS(NOMBRE) VALUES ('{tipo.Nombre}')";
 
                 baseDatos.SetearConsulta(consulta);
-                baseDatos.EjecutarLectura();
+                baseDatos.EjecutarAccion();
 
             }
             catch (Exception ex)
@@ -70,7 +102,7 @@ namespace Negocio
 
                 baseDatos.SetearConsulta(consulta);
                 baseDatos.SetearParametro("@Id", tipo.Id);
-                baseDatos.EjecutarLectura();
+                baseDatos.EjecutarAccion();
             }
             catch (Exception ex)
             {
