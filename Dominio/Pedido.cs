@@ -10,12 +10,13 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Mesa Mesa { get; set; }
-        public List<DetalleInsumo> ListDetalleInsumo { get; set; }
+        public List<DetallePedido> ListDetallePedido { get; set; }
         public bool Entregado { get; set; }
+        public float Total { get; set; }
 
         public Pedido()
         {
-            ListDetalleInsumo = new List<DetalleInsumo>();
+            ListDetallePedido = new List<DetallePedido>();
         }
     }
 }
