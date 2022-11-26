@@ -87,6 +87,7 @@ Create table Pedidos (
 Id int primary key identity(1,1),
 IdMesa int foreign key references Mesas(Id) not null,
 IdMeseroAsignado int foreign key references Usuarios(Legajo) not null,
+Fecha Date Not Null,
 Entregado bit not null default 0,
 Total money not null
 )
