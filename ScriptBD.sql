@@ -83,6 +83,24 @@ Activo bit not null default 1
 )
 Go
 
+Create table Pedidos (
+Id int primary key identity(1,1),
+IdMesa int foreign key references Mesas(Id) not null,
+IdMeseroAsignado int foreign key references Usuarios(Legajo) not null,
+Entregado bit not null default 0,
+Total money not null
+)
+GO
+
+Create table DetallePedidos (
+Id int primary key identity(1,1),
+IdPedido int foreign key references Pedidos(Id),
+IdInsumo int foreign key references Insumos(Id),
+Cantidad int not null,
+PrecioUnitario money not null
+)
+GO
+
 -- Store Procedures
 
 Create Procedure SpListarInsumos
