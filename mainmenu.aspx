@@ -25,6 +25,7 @@
                                         <%--<h5 class="card-title">Primary card title</h5>--%>
                                         <p class="card-text" >Mesero: <%#: Eval("MeseroAsignado") %></p
                                         <p class="card-text" >Asientos: <%#: Eval("Capacidad") %></p>
+                                        <asp:Button ID="btnVerDetallePedido" cssclass="btn btn-secondary btn-rounded" runat="server" Text="Ver Pedidos" />
 
                                     </div>
                                 </div>
