@@ -11,13 +11,18 @@ namespace TP_Cuatrimestral
 {
     public partial class mainmenu : System.Web.UI.Page
     {
+        public string cont;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             MesaNegocio negocio = new MesaNegocio();
 
             if (!IsPostBack)
             {
-                RepeaterMesas.DataSource = negocio.ListarMesas();
+                List<Mesa> lista = negocio.ListarMesas();
+
+                RepeaterMesas.DataSource = lista;
+                cont = (lista.Where(x => x.Ocupado == false && x.Reservado == false).Count()).ToString();
                 RepeaterMesas.DataBind();
             }
         }

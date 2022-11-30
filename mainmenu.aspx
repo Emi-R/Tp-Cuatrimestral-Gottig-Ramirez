@@ -7,7 +7,10 @@
         <div class="col-2"></div>
         <div class="col-8">
             <div class="title-page">
-                <h1 style="color:whitesmoke">Bienvenido</h1>
+                <h1 style="color:palevioletred">Bienvenido</h1>
+            </div>
+            <div class="">
+                <p>Cantidad de mesas libres: <%: cont %></p>
             </div>
             <div class="container pt-3">
                 <div class="row">
