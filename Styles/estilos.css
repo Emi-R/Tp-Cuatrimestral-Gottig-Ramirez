@@ -158,3 +158,12 @@
 .confElim {
     padding-left: -0.5cm !important;
 }
+
+.cardMesas {
+    max-width: 18rem !important;
+    min-height: 180px !important;
+    border-radius: 60% !important;
+    border-style: solid !important;
+    border-width: 3px !important;
+    border-color: ghostwhite !important;
+}

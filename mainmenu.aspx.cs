@@ -15,11 +15,10 @@ namespace TP_Cuatrimestral
         {
             MesaNegocio negocio = new MesaNegocio();
 
-
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-            RepeaterMesas.DataSource = negocio.ListarMesas();
-            RepeaterMesas.DataBind();
+                RepeaterMesas.DataSource = negocio.ListarMesas();
+                RepeaterMesas.DataBind();
             }
         }
     }

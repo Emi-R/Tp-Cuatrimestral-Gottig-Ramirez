@@ -13,11 +13,15 @@ namespace Negocio
     {
         private AccesoDatos basedatos = new AccesoDatos();
 
-        public List<Mesa> ListarMesas()
+        public List<Mesa> ListarMesas(bool gerente = false)
         {
             List<Mesa> listaMesas = new List<Mesa>();
 
-            basedatos.SetearProcedimiento("SpListarMesas");
+            if(gerente)
+                basedatos.SetearProcedimiento("SpListarMesas");
+            else
+                basedatos.SetearProcedimiento("SpListarMesasActivas");
+
             basedatos.EjecutarLectura();
 
             try
