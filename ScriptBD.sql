@@ -156,7 +156,25 @@ Select
 From Mesas M 
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 End
-Go 
+Go
+
+Create Procedure SpListarMesasActivas
+As
+Begin
+Select 
+    M.Numero, 
+    U.Legajo, 
+    U.Apellidos, 
+    U.Nombre,
+    M.Capacidad, 
+    M.Ocupado, 
+    M.Reservado, 
+    M.Activo 
+From Mesas M 
+Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
+Where M.Activo = 1
+End
+
 
 Create Procedure SpListarPaises
 As
