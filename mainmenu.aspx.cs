@@ -15,8 +15,12 @@ namespace TP_Cuatrimestral
         {
             MesaNegocio negocio = new MesaNegocio();
 
-            dgvMesas.DataSource = negocio.ListarMesas();
-            dgvMesas.DataBind();
+
+            if(!IsPostBack)
+            {
+            RepeaterMesas.DataSource = negocio.ListarMesas();
+            RepeaterMesas.DataBind();
+            }
         }
     }
 }

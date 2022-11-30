@@ -15,12 +15,12 @@ namespace TP_Cuatrimestral
     {
 
         /// <summary>
-        /// dgvMesas control.
+        /// RepeaterMesas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvMesas;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterMesas;
     }
 }

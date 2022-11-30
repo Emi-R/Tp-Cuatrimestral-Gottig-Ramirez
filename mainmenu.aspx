@@ -4,13 +4,33 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-2"></div>
+        <div class="col-8">
             <div class="title-page">
-                <h1>Mesas</h1>
+                <h1>Bienvenido</h1>
             </div>
             <div class="container pt-3">
-                <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0" ID="dgvMesas" AutoGenerateColumns="false">
+                <div class="row">
+
+                    <asp:Repeater ID="RepeaterMesas" runat="server">
+                        <ItemTemplate>
+                            <div class="col-4">
+                                
+                                <div class="card text-white bg-primary mb-3 text-center" style="max-width: 18rem; min-height: 160px; border-radius: 40%">
+                                    <div class="card-title" style="margin-top:20px">#<%#: Eval("Numero") %></div>
+                                    <div class="card-body" style="padding:0">
+                                        <%--<h5 class="card-title">Primary card title</h5>--%>
+                                        <p class="card-text" >Mesero: <%#: Eval("MeseroAsignado") %></p
+                                        <p class="card-text" >Asientos: <%#: Eval("Capacidad") %></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+                </div>
+                <%--<asp:GridView runat="server" CssClass="table table-primary align-middle mb-0" ID="dgvMesas" AutoGenerateColumns="false">
                     <Columns>
                         <asp:BoundField HeaderText="Nro. Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero"/>
                         <asp:BoundField HeaderText="Legajo"  HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado.Legajo" />
@@ -20,9 +40,9 @@
                         <asp:CheckBoxField HeaderText="Reservada" HeaderStyle-CssClass="headerTitle" DataField="Reservado" />
                         <asp:CheckBoxField HeaderText="Activa" HeaderStyle-CssClass="headerTitle" DataField="Activo" />
                     </Columns>
-                </asp:GridView>
+                </asp:GridView>--%>
             </div>
         </div>
-        <div class="col-3"></div>
+        <div class="col-2"></div>
     </div>
 </asp:Content>
