@@ -26,5 +26,11 @@ namespace TP_Cuatrimestral
                 RepeaterMesas.DataBind();
             }
         }
+
+        protected void btnVerDetallePedido_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            Response.Redirect($"Pedidos.aspx?NumeroMesa={id}", false);
+        }
     }
 }
