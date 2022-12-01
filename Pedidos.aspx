@@ -26,7 +26,7 @@
                     </div>
                     <asp:Repeater runat="server" ID="repeaterPedidos">
                         <ItemTemplate>
-                            <div class="row">
+                            <div class="row item-listaPedidos">
                                 <div class="col-2 ">
                                     <asp:Label runat="server" ID="txtIdPedido" Text='<%#Eval("ID")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                 </div>

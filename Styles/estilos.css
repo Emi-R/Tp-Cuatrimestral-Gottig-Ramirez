@@ -167,3 +167,18 @@
     border-width: 3px !important;
     border-color: ghostwhite !important;
 }
+
+.listaPedidos {
+    
+}
+
+.item-listaPedidos {
+    background: aliceblue;
+    border-right: 1px solid #008fab;
+    border-left: 1px solid #008fab;
+    border-bottom: 1px solid #008fab;
+}
+
+.item-listaPedidos div{
+    margin:auto;
+}
