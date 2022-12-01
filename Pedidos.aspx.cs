@@ -11,12 +11,28 @@ namespace TP_Cuatrimestral
 {
     public partial class Pedidos : System.Web.UI.Page
     {
+        private PedidoNegocio negocio;
         protected void Page_Load(object sender, EventArgs e)
         {
+            negocio = new PedidoNegocio();
+
             if (!IsPostBack)
             {
-
+                cargarRepeaterPedidos();
             }
+
+        }
+
+        private void cargarRepeaterPedidos()
+        {
+
+            List<Pedido> listaPedidos = negocio.ListarPedidos();
+            repeaterPedidos.DataSource = listaPedidos;
+            repeaterPedidos.DataBind();
+        }
+
+        protected void btnVerPedido_Click(object sender, EventArgs e)
+        {
 
         }
     }
