@@ -21,12 +21,19 @@ namespace TP_Cuatrimestral
                 cargarRepeaterPedidos();
             }
 
+
+
         }
 
         private void cargarRepeaterPedidos()
         {
+            List<Pedido> listaPedidos = new List<Pedido>();
+            string numeroMesa = Request.QueryString["NumeroMesa"] != null ? Request.QueryString["NumeroMesa"] : "";
+            if (numeroMesa != "")
+                listaPedidos = negocio.ListarPedidos(numeroMesa);
+            else
+                listaPedidos = negocio.ListarPedidos();
 
-            List<Pedido> listaPedidos = negocio.ListarPedidos();
             repeaterPedidos.DataSource = listaPedidos;
             repeaterPedidos.DataBind();
         }
