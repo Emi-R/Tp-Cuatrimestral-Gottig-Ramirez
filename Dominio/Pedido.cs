@@ -10,9 +10,12 @@ namespace Dominio
     {
         public int ID { get; set; }
         public Mesa Mesa { get; set; }
+
+        public Usuario MeseroAsignado { get; set; }
         public List<DetallePedido> ListDetallePedido { get; set; }
+        public DateTime FechaPedido { get; set; }
         public bool Entregado { get; set; }
-        public float Total { get; set; }
+        public decimal Total { get; set; }
 
         public Pedido()
         {
