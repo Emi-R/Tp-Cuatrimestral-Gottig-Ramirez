@@ -28,29 +28,31 @@
                             <label class="form-label" for="txtNumeroMesa">Numero de Mesa</label>
                         </div>
                     </div>
-                    <!-- Nombre -->
+                    <!-- Dropdown Meseros -->
                     <div class="col">
                         <div class="form-outline form-white">
-                            <asp:Label runat="server" style="color:white" CssClass="h6" Text="Mesero a asignar: "></asp:Label>
+                            <asp:Label runat="server" Style="color: white" CssClass="h6" Text="Mesero a asignar: "></asp:Label>
                             <asp:DropDownList ID="ddlMeseros" CssClass="btn btn-info dropdown-toggle" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contraseña -->
+                <!-- Chk Reserva -->
                 <div class="row mb-4">
                     <div class="col">
-                        <div class="form-outline form-white mb-4">
-                            <asp:CheckBox id="chkReservado" text="Es reserva?" runat="server"></asp:CheckBox>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="chkReservada" />
+                            <label class="form-check-label" for="chkReservada">Es reserva?</label>
                         </div>
                     </div>
-                    <!-- DNI -->
+                    <!-- Chk Ocupado -->
                     <div class="col">
-                        <div class="form-outline form-white mb-4">
-                            <asp:CheckBox id="chkOcupado" text="Esta ocupada?" runat="server"></asp:CheckBox>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="chkOcupada" />
+                            <label class="form-check-label" for="chkOcupada">Esta ocupada?</label>
                         </div>
                     </div>
-                    <%-- Fecha Nac --%>
+                    <%-- Capacidad --%>
                     <div class="col">
                         <div class="form-outline form-white">
                             <asp:TextBox ID="txtCapacidad" CssClass="form-control" runat="server"></asp:TextBox>
@@ -62,81 +64,53 @@
                 <div class="row">
                     <div class="col">
                         <%-- Telefono --%>
-
                     </div>
                     <div class="col">
                         <%-- Email --%>
-                        <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Email" ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
-                            <label class="form-label" for="txtEmail">Email</label>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <%-- Calle --%>
-                        <div class="form-outline form-white mb-4">
-                            <asp:TextBox ID="txtCalle" class="form-control" runat="server"></asp:TextBox>
-                            <label class="form-label" for="txtCalle">Calle</label>
-                        </div>
+                        
                     </div>
                     <div class="col">
                         <%-- Numero --%>
-                        <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Number" ID="txtNumero" class="form-control" runat="server"></asp:TextBox>
-                            <label class="form-label" for="txtNumero">Número</label>
-                        </div>
+                        
                     </div>
                     <div class="col">
                         <%-- Numero --%>
-                        <div class="form-outline form-white mb-4">
-                            <asp:TextBox TextMode="Number" ID="txtPiso" class="form-control" runat="server"></asp:TextBox>
-                            <label class="form-label" for="txtPiso">Piso</label>
-                        </div>
+                        
                     </div>
                     <div class="col">
                         <%-- Calle --%>
-                        <div class="form-outline form-white mb-4">
-                            <asp:TextBox ID="txtDpto" class="form-control" runat="server"></asp:TextBox>
-                            <label class="form-label" for="txtDpto">Dpto</label>
-                        </div>
+                        
                     </div>
                     <div class="col">
-                        <div class="row">
-                            <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle dropdown-toggle2" Style="width: 95%" ID="ddlPaises" runat="server"></asp:DropDownList>
-                        </div>
+                        
                     </div>
 
 
                 </div>
                 <!-- Ruta Imagen con update panel -->
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <contenttemplate>
-                        <div class="row mb-4">
-                            <div class="col" style="align-self: center">
-                                <div class="form-outline form-white">
-                                    <asp:TextBox TextMode="Url" CssClass="form-control" ID="txtUrlImagen" AutoPostBack="true" runat="server"></asp:TextBox>
-                                    <label class="form-label" for="txtUrlImagen">Ruta Imagen</label>
-                                </div>
-                            </div>
-                            <div class="col" style="text-align: center;">
-                                <asp:Image ID="imgPerfil" runat="server" />
-                            </div>
-                        </div>
-                    </contenttemplate>
+                    <ContentTemplate>
+    
+                    </ContentTemplate>
                 </asp:UpdatePanel>
                 <!-- Boton Agregar -->
                 <div class="row">
                     <div class="col">
-                        <asp:Button ID="btnAgregarMesero" CssClass="btn btn-primary mb-4" runat="server" Text="Agregar" />
+                        <asp:Button ID="btnEditarMesa" CssClass="btn btn-primary mb-4" runat="server" Text="Guardar" />
                     </div>
                     <div class="col">
-                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger mb-4" runat="server" Text="Eliminar" />
+                        <asp:Button ID="btnEliminarMesa" CssClass="btn btn-danger mb-4" runat="server" Text="Eliminar" />
                     </div>
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                        <contenttemplate>
+                        <ContentTemplate>
 
-                            <%if (true)
+                            <%if (confirm)
                                 { %>
 
                             <div class="col">
@@ -147,7 +121,7 @@
                             </div>
 
                             <%} %>
-                        </contenttemplate>
+                        </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
             </div>

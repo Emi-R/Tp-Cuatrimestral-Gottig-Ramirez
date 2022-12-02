@@ -11,6 +11,8 @@ namespace TP_Cuatrimestral
 {
     public partial class AddMesa : System.Web.UI.Page
     {
+        public bool confirm;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             UsuarioNegocio negocio = new UsuarioNegocio();
