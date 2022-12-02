@@ -63,21 +63,6 @@ namespace Negocio
         public void agregarConSp(Usuario nuevo)
         {
 
-            // @Contraseña Varchar(10),
-            // @Dni Varchar(15),
-            // @Apellido Varchar(40),
-            // @Nombre Varchar(40),
-            // @Telefono Varchar(20),
-            // @Email Varchar(40),
-            // @Calle Varchar(40),
-            // @Numero Varchar(5),
-            // @Piso Varchar(5),
-            // @Dpto char(1),
-            // @IDNacionalidad int,
-            // @TipoPerfil tinyint,
-            // @FechaNac date,
-            // UrlImagen Varchar(max)
-
             try
             {
                 basedatos.SetearProcedimiento("SpNuevoUsuario");
@@ -108,34 +93,32 @@ namespace Negocio
             {
                 basedatos.CerrarConexion();
             }
-
-
         }
 
         public Usuario buscarPorLegajo(int legajo)
         {
-            
+
             Usuario aux = new Usuario();
-            
+
 
             basedatos.SetearConsulta($"Select * from VW_ListaUsuarios V where V.Legajo = {legajo}");
             basedatos.EjecutarLectura();
 
-            while(basedatos.Lector.Read())
+            while (basedatos.Lector.Read())
             {
 
-            aux.Legajo = (int)basedatos.Lector["Legajo"];
-            aux.Password = (string)basedatos.Lector["Contraseña"];
-            aux.Apellido = (string)basedatos.Lector["Apellidos"];
-            aux.Nombre = (string)basedatos.Lector["Nombre"];
-            aux.Dni = (string)basedatos.Lector["Dni"];
-            aux.Nacionalidad.ID = (int)basedatos.Lector["Pais"];
-            aux.FechaNacimiento = DateTime.Parse(basedatos.Lector["FechaNac"].ToString());
-            aux.Telefono = (string)basedatos.Lector["Telefono"];
-            aux.Email = (string)basedatos.Lector["Email"];
-            aux.Domicilio.Calle = (string)basedatos.Lector["Calle"];
-            aux.Domicilio.Numero = (string)basedatos.Lector["Numero"];
-            aux.UrlImagen = (string)basedatos.Lector["UrlImagen"];
+                aux.Legajo = (int)basedatos.Lector["Legajo"];
+                aux.Password = (string)basedatos.Lector["Contraseña"];
+                aux.Apellido = (string)basedatos.Lector["Apellidos"];
+                aux.Nombre = (string)basedatos.Lector["Nombre"];
+                aux.Dni = (string)basedatos.Lector["Dni"];
+                aux.Nacionalidad.ID = (int)basedatos.Lector["Pais"];
+                aux.FechaNacimiento = DateTime.Parse(basedatos.Lector["FechaNac"].ToString());
+                aux.Telefono = (string)basedatos.Lector["Telefono"];
+                aux.Email = (string)basedatos.Lector["Email"];
+                aux.Domicilio.Calle = (string)basedatos.Lector["Calle"];
+                aux.Domicilio.Numero = (string)basedatos.Lector["Numero"];
+                aux.UrlImagen = (string)basedatos.Lector["UrlImagen"];
 
             }
             return aux;
@@ -195,6 +178,38 @@ namespace Negocio
             finally
             {
                 basedatos.CerrarConexion();
+            }
+        }
+
+        public bool Loguear(Usuario usuario)
+        {
+            AccesoDatos db = new AccesoDatos();
+
+            try
+            {
+                db.SetearConsulta("Select Legajo, TipoPerfil from Usuarios Where Legajo = @Legajo And Contraseña = @Pass");
+                db.SetearParametro("@Legajo", usuario.Legajo);
+                db.SetearParametro("@Pass", usuario.Password);
+
+                db.EjecutarLectura();
+
+                while (db.Lector.Read())
+                {
+                    usuario.Perfil.Id = (int)db.Lector["TipoPerfil"];
+                    return true;
+
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.CerrarConexion();
             }
         }
     }

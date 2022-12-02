@@ -30,6 +30,13 @@ namespace Dominio
             Nacionalidad = new Pais();
         }
 
+        public Usuario(int legajo, string password, bool gerente)
+        {
+            Legajo = legajo;
+            Password = password;
+            Perfil.Id = gerente ? 1 : 2;
+        }
+
         public override string ToString()
         {
             return (Apellido + ", " + Nombre).ToString();

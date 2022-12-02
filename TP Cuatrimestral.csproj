@@ -73,6 +73,7 @@
     <Content Include="EditMarca.aspx" />
     <Content Include="EditPlato.aspx" />
     <Content Include="EditTipoPlato.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="mainmenu.aspx" />
     <Content Include="Marcas.aspx" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="EditTipoPlato.aspx.designer.cs">
       <DependentUpon>EditTipoPlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
