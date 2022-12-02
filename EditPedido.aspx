@@ -39,6 +39,8 @@
                         </div>
                     </div>
 
+
+
                     <div class="row mb-3 justify-content-end">
                         <div class="col-3">
                             <asp:Button runat="server" Text="Agregar Bebida" ID="btnAgregarBebida" OnClick="btnAgregarBebida_Click" CssClass=" btn btn-primary mb-1" />
@@ -90,6 +92,43 @@
                 <div class="col-6 text-end">
                     <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                 </div>
+            </div>
+
+            <div id="rowAgregarInsumo" runat="server" visible="false" class="row justify-content-center m-auto" style="width: 100%; position: fixed; z-index: 100; top: 30%">
+                <div class="col-6 p-5 container-bebidas_edit text-dark" >
+                    <div class="row">
+                        <div class="col" >
+                            <asp:Label Text="Insumo" runat="server" ID="lblDetalleInsumo" />
+                        </div>
+                        <div class="col">
+                            Cantidad
+                        </div>
+                        <div class="col">
+                            Total
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlDetalleInsumo"></asp:DropDownList>
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtCantidad" TextMode="Number" />
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="txtPrecioTotalInsumos" Enabled="false" />
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 justify-content-end">
+                        <div class="col-4 text-end">
+                            <asp:Button Visible="true" runat="server" Text="Cancelar" OnClick="btnCancelarDetalle_Click" ID="btnCancelarDetalle" CssClass="w-200px btn btn-danger" />
+                        </div>
+                        <div class="col-4 text-end">
+                            <asp:Button Visible="true" runat="server" Text="Agregar" ID="btnAgregarDetalle" CssClass="w-200px btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </ContentTemplate>

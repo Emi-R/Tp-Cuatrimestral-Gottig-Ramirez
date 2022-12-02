@@ -113,11 +113,23 @@ namespace TP_Cuatrimestral
         }
         protected void btnAgregarBebida_Click(object sender, EventArgs e)
         {
+            rowAgregarInsumo.Visible = true;
             //List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
             //detallePedidoList.Add();
         }
 
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
+        {
+            rowAgregarInsumo.Visible = true;
+        }
+
+        protected void btnCancelarDetalle_Click(object sender, EventArgs e)
+        {
+            rowAgregarInsumo.Visible = false;
+            LimpiarCampos();
+        }
+
+        private void LimpiarCampos()
         {
 
         }
