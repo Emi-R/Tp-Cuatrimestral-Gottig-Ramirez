@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace TP_Cuatrimestral
 {
@@ -11,12 +13,37 @@ namespace TP_Cuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                Session.Add("errorLogin", false);
+            }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Mesas.aspx");
+            Usuario usuario;
+            UsuarioNegocio negocio = new UsuarioNegocio();   
+
+            try
+            {
+                usuario = new Usuario(int.Parse(txtLegajo.Text), txtPass.Text, false);
+
+                if(negocio.Loguear(usuario))
+                {
+                    Session.Add("usuario", usuario);
+                    Response.Redirect("mainmenu.aspx");
+                }
+                else
+                {
+                    Session.Add("errorLogin", true );
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex.ToString());
+                throw;
+            }
         }
     }
 }

@@ -31,7 +31,10 @@ namespace Dominio
         }
 
         public Usuario(int legajo, string password, bool gerente)
-        {
+        { 
+
+
+            Perfil = new Perfil();
             Legajo = legajo;
             Password = password;
             Perfil.Id = gerente ? 1 : 2;

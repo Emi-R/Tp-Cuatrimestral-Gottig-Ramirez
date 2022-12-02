@@ -195,10 +195,11 @@ namespace Negocio
 
                 while (db.Lector.Read())
                 {
-                    usuario.Perfil.Id = (int)db.Lector["TipoPerfil"];
+                    usuario.Perfil.Id = (byte)db.Lector["TipoPerfil"];
                     return true;
 
                 }
+
                 return false;
 
             }
