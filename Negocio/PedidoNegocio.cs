@@ -95,7 +95,6 @@ namespace Negocio
             {
                 _db.CerrarConexion();
             }
-
         }
     }
 }

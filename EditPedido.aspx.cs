@@ -67,6 +67,9 @@ namespace TP_Cuatrimestral
             lblId.Text = pedido.ID.ToString();
 
             ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(pedido.Mesa.Numero.ToString())));
+
+            cargarDgvDetallePedido(idPedido);
+
             txtFechaPedido.Text = pedido.FechaPedido.ToString("yyyy-MM-dd");
             txtPrecio.Text = pedido.Total.ToString();
 
@@ -85,9 +88,24 @@ namespace TP_Cuatrimestral
 
             int IdPedido = negocio.AgregarPedido(pedido);
             lblId.Text = IdPedido.ToString();
-
             btnAgregar.Visible = false;
-            sectionInsumos.Visible = true;
+        }
+
+        private void cargarDgvDetallePedido(string IdPedido)
+        {
+            DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
+            repeaterDetallePedido.DataSource = detalleNegocio.ListarDetallePedido(IdPedido);
+            repeaterDetallePedido.DataBind();
+        }
+
+        protected void btnAgregarBebida_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAgregarPlato_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

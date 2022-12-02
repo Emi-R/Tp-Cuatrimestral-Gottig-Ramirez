@@ -6,7 +6,7 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="row m-5 justify-content-center">          
+            <div class="row mb-3 m-5 justify-content-center">
                 <div class="col-6 p-5 container-pedidos_edit">
                     <div class="row bg-light br-6">
                         <div class="col text-center">
@@ -39,6 +39,39 @@
                         </div>
                     </div>
 
+                    <div class="row mb-3 justify-content-end">
+                        <div class="col-3">
+                            <asp:Button runat="server" Text="Agregar Bebida" ID="btnAgregarBebida" OnClick="btnAgregarBebida_Click" CssClass=" btn btn-primary mb-1" />
+                        </div>
+                        <div class="col-3">
+                            <asp:Button runat="server" Text="Agregar Plato" ID="btnAgregarPlato" OnClick="btnAgregarPlato_Click" CssClass=" btn btn-danger mb-1" />
+                        </div>
+                    </div>
+                    <div class="row mb-3 mx-2">
+                        <div class="col">
+                            <div class="row headerTitleDetallePedido">
+                                <div class="col-6">
+                                    <asp:Label runat="server" Text="Nombre"></asp:Label>
+                                </div>
+                                <div class="col">
+                                    <asp:Label runat="server" Text="Cantidad"></asp:Label>
+                                </div>
+                            </div>
+                            <asp:Repeater runat="server" ID="repeaterDetallePedido">
+                                <ItemTemplate>
+                                    <div class="row itemDetallePedido">
+                                        <div class="col m-auto w-100">
+                                            <asp:Label runat="server" ID="txtNombreInsumo" Text='<%#Eval("Insumo.Nombre")%>' CssClass="text-dark" Enabled="false"></asp:Label>
+                                        </div>
+                                        <div class="col m-auto w-100">
+                                            <asp:Label runat="server" ID="lblCantidad" Text='<%#Eval("Cantidad")%>' CssClass="text-dark" Enabled="false"></asp:Label>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+
                     <div class="row mt-1">
                         <div class="col">
                             <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Total"></asp:Label>
@@ -53,17 +86,12 @@
                 </div>
             </div>
 
-            <div class="row m-5 justify-content-center">
+            <div class="row m-5 mt-2 justify-content-center">
                 <div class="col-6 text-end">
                     <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                 </div>
             </div>
 
-            <div class="row" runat="server" ID="sectionInsumos" Visible="false">
-                <div class="col" >
-                    asdsad
-                </div>
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 

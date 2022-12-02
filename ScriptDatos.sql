@@ -89,6 +89,8 @@ values (3, 5, GETDATE(), 0, 0),
 (2, 2, GETDATE(), 0, 10000),
 (2, 1, GETDATE(), 0, 100)
 
+insert into DetallePedidos(IdPedido, IdInsumo, Cantidad, PrecioUnitario) values(1,2,12,10)
+
 
 
 

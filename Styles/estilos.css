@@ -190,3 +190,21 @@
 .w-200px{
     width:200px !important;
 }
+
+.itemDetallePedido {
+    background-color: #ffffff !important;
+    color: white !important;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+
+.headerTitleDetallePedido {
+    color: white !important;
+    font-weight: bold !important;
+    background-color: #008fab !important;
+    border:1px solid black;
+}
