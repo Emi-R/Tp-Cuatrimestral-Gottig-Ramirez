@@ -12,13 +12,13 @@ namespace TP_Cuatrimestral
     public partial class EditPedido : System.Web.UI.Page
     {
         private PedidoNegocio negocio;
+        private Pedido pedido;
         protected void Page_Load(object sender, EventArgs e)
         {
             negocio = new PedidoNegocio();
             try
             {
                 string idPedido = Request.QueryString["Id"] != null ? Request.QueryString["Id"] : "";
-
 
                 if(!IsPostBack)
                 {
@@ -29,7 +29,11 @@ namespace TP_Cuatrimestral
                 if (!String.IsNullOrEmpty(idPedido) && !IsPostBack)
                     PrecargarCampos(idPedido);
                 else
+                {
                     txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    crearSessionDetallePedido();
+                }
+                   
 
 
             }
@@ -98,9 +102,19 @@ namespace TP_Cuatrimestral
             repeaterDetallePedido.DataBind();
         }
 
+        private void crearSessionDetallePedido()
+        {
+            if (Session["Pedido"] == null)
+            {
+                pedido = new Pedido();
+                Session.Add("Pedido", pedido);
+            }
+
+        }
         protected void btnAgregarBebida_Click(object sender, EventArgs e)
         {
-
+            //List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
+            //detallePedidoList.Add();
         }
 
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
