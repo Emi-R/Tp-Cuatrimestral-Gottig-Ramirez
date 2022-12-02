@@ -34,7 +34,7 @@
                     <div class="row">
                         <a class="navbar-brand" href="mainmenu.aspx">
                             <i class="fas fa-utensils"></i>
-                            <h5>Fressen</h5>
+                            <h5>Ir a Menu Fressen</h5>
                         </a>
                     </div>
                 </div>
@@ -51,30 +51,30 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Mesas.aspx">Mesas</a>
+                            <a class="nav-link" aria-current="page" href="Mesas.aspx">Mesas</a>
                         </li>
 
                         <%if (Session["usuario"] != null && ((Dominio.Usuario)Session["usuario"]).Perfil.Id == 1)
                             { %>
                         <li class="nav-item">
-                            <a class="nav-link active" href="Pedidos.aspx">Pedidos</a>
+                            <a class="nav-link" href="Pedidos.aspx">Pedidos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="Meseros.aspx">Meseros</a>
+                            <a class="nav-link" href="Meseros.aspx">Meseros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="Platos.aspx">Platos</a>
+                            <a class="nav-link" href="Platos.aspx">Platos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="Bebidas.aspx">Bebidas</a>
+                            <a class="nav-link" href="Bebidas.aspx">Bebidas</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="Administracion.aspx">Administrar</a>
                         </li>
                         <% }
-                        else
-                        { %>
+                            else
+                            { %>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="Pedidos.aspx">Pedidos</a>
                         </li>
@@ -91,14 +91,21 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="Administracion.aspx">Administrar</a>
                         </li>
-                        <% } %>
+                        <% }%>
                     </ul>
                 </div>
 
-
                 <div class="d-flex align-items-center">
-                    <a class="btn btn-dark px-3" style="background-color: black !important" href="Default.aspx" role="button"><i class="far fa-user-circle"></i>
+                    <%if (Session["usuario"] != null)
+                        { %>
+
+                    <a class="btn btn-dark px-3" style="background-color: black !important"><i class="far fa-user-circle">Legajo usuario actual: <%: ((Dominio.Usuario)Session["usuario"]).Legajo %></i>
                     </a>
+                    <%}%>
+                    <div style="margin-left: 0.5cm">
+                        <asp:Button ID="btnSalir" CssClass="btn btn-dark btn-rounded btn-sm" OnClick="btnSalir_Click" runat="server" Text="Cerrar Sesión" />
+
+                    </div>
                 </div>
             </div>
         </nav>

@@ -13,5 +13,12 @@ namespace TP_Cuatrimestral
         {
 
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+
+            Response.Redirect("Default.aspx", false);
+        }
     }
 }
