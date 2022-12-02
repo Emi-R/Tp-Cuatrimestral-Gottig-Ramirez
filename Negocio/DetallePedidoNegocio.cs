@@ -67,9 +67,27 @@ namespace Negocio
 
         public void AgregarDetallesPedido(int idPedido, List<DetallePedido> detallePedidoList)
         {
-            foreach (var item in detallePedidoList)
+            try
             {
+                string consulta = $"Insert into DetallePedidos (IdPedido, IdInsumo, Cantidad, PrecioUnitario) values ";
 
+                foreach (var item in detallePedidoList)
+                {
+                    consulta += $"({idPedido}, {item.Insumo.Id}, {item.Cantidad}, '{item.PrecioUnitario.ToString().Replace(",",".")}'),";
+                }
+
+                consulta = consulta.TrimEnd(',');
+
+                _db.SetearConsulta(consulta);
+                _db.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
             }
         }
     }

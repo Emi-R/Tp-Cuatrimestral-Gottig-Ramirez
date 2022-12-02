@@ -55,18 +55,24 @@
                                 <div class="col-6">
                                     <asp:Label runat="server" Text="Nombre"></asp:Label>
                                 </div>
-                                <div class="col">
+                                <div class="col-2">
                                     <asp:Label runat="server" Text="Cantidad"></asp:Label>
+                                </div>
+                                <div class="col">
+                                    <asp:Label runat="server" Text="Precio Unitario"></asp:Label>
                                 </div>
                             </div>
                             <asp:Repeater runat="server" ID="repeaterDetallePedido">
                                 <ItemTemplate>
                                     <div class="row itemDetallePedido">
-                                        <div class="col m-auto w-100">
+                                        <div class="col-6 m-auto">
                                             <asp:Label runat="server" ID="txtNombreInsumo" Text='<%#Eval("Insumo.Nombre")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
-                                        <div class="col m-auto w-100">
+                                        <div class="col-2 m-auto ">
                                             <asp:Label runat="server" ID="lblCantidad" Text='<%#Eval("Cantidad")%>' CssClass="text-dark" Enabled="false"></asp:Label>
+                                        </div>
+                                        <div class="col m-auto ">
+                                            <asp:Label runat="server" ID="lblPrecioUnitario" Text='<%#Eval("PrecioUnitario")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
                                     </div>
                                 </ItemTemplate>
@@ -114,10 +120,10 @@
                             <asp:DropDownList OnSelectedIndexChanged="ddlDetalleInsumo_SelectedIndexChanged" AutoPostBack="true" CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlDetalleInsumo"></asp:DropDownList>
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecioUnitario" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
+                            <asp:TextBox runat="server" AutoPostBack="true" ID="txtPrecioUnitario" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" AutoPostBack="true" ID="txtCantidad" OnTextChanged="txtCantidad_TextChanged"  CssClass="form-label br-6 w-100 btn-outline-dark bg-light" TextMode="Number" />
+                            <asp:TextBox runat="server" AutoPostBack="true" ID="txtCantidad" OnTextChanged="txtCantidad_TextChanged" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" TextMode="Number" />
                         </div>
 
                     </div>
@@ -126,7 +132,7 @@
                             Total 
                         </div>
                         <div class="col-6">
-                            <asp:TextBox AutoPostBack="true" runat="server" ID="txtPrecioTotalInsumos"  CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
+                            <asp:TextBox AutoPostBack="true" runat="server" ID="txtPrecioTotalInsumos" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
                         </div>
                     </div>
                     <div class="row mt-2 justify-content-end">

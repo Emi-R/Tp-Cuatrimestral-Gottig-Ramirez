@@ -20,20 +20,20 @@ namespace TP_Cuatrimestral
             {
                 string idPedido = Request.QueryString["Id"] != null ? Request.QueryString["Id"] : "";
 
-                if(!IsPostBack)
+                if (!IsPostBack)
                 {
                     cargarDdlMesas();
                     cargarDdlEmpleados();
+                    crearSessionDetallePedido();
                 }
 
                 if (!String.IsNullOrEmpty(idPedido) && !IsPostBack)
                     PrecargarCampos(idPedido);
                 else
                 {
-                    txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                    crearSessionDetallePedido();
+                    txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");             
                 }
-                   
+
 
 
             }
@@ -101,19 +101,35 @@ namespace TP_Cuatrimestral
             btnAgregar.Visible = false;
         }
 
-        private void cargarDgvDetallePedido(string IdPedido)
+        private void cargarDgvDetallePedido(string IdPedido = "")
         {
-            DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
-            repeaterDetallePedido.DataSource = detalleNegocio.ListarDetallePedido(IdPedido);
-            repeaterDetallePedido.DataBind();
+            if (!string.IsNullOrEmpty(IdPedido))
+            {
+                DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
+                repeaterDetallePedido.DataSource = null;
+                repeaterDetallePedido.DataSource = detalleNegocio.ListarDetallePedido(IdPedido);
+                repeaterDetallePedido.DataBind();
+            }
+            else
+            {
+                List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
+                repeaterDetallePedido.DataSource = null;
+                repeaterDetallePedido.DataSource = detallePedidoList;
+                repeaterDetallePedido.DataBind();
+            }
+
         }
 
         private void crearSessionDetallePedido()
         {
+            pedido = new Pedido();
             if (Session["Pedido"] == null)
-            {
-                pedido = new Pedido();
+            {        
                 Session.Add("Pedido", pedido);
+            }
+            else
+            {
+                Session["Pedido"] = pedido;
             }
 
         }
@@ -146,7 +162,7 @@ namespace TP_Cuatrimestral
         private void LimpiarCampos()
         {
             txtPrecioUnitario.Text = "";
-            txtPrecioTotalInsumos.Text ="";
+            txtPrecioTotalInsumos.Text = "";
             txtCantidad.Text = "";
         }
 
@@ -171,15 +187,33 @@ namespace TP_Cuatrimestral
 
         protected void btnAgregarDetalle_Click(object sender, EventArgs e)
         {
+            int idSelected = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
+            string nombreSelected = (ddlDetalleInsumo.SelectedItem.Text);
 
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
-            DetallePedido detalle = new DetallePedido();
-            detalle.Insumo = new Insumo();
-            detalle.Insumo.Id = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
-            detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
-            detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
 
-            detallePedidoList.Add(detalle);
+            if (!detallePedidoList.Any(x => x.Insumo.Id == idSelected))
+            {
+                DetallePedido detalle = new DetallePedido();
+                detalle.Insumo = new Insumo();
+                detalle.Insumo.Id = idSelected;
+                detalle.Insumo.Nombre = nombreSelected;
+
+                detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
+                detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
+
+                detallePedidoList.Add(detalle);
+            }
+            else
+            {
+                detallePedidoList.Where(x => x.Insumo.Id == idSelected).First().Cantidad += Convert.ToInt32(txtCantidad.Text);
+            }
+
+            rowAgregarInsumo.Visible = false;
+            LimpiarCampos();
+
+            cargarDgvDetallePedido();
+
         }
     }
 }
