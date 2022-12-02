@@ -4,14 +4,29 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <div class="title-page">
+        <div class="col">
+                        <div class="title-page">
                 <h1 style="color:palevioletred">Bienvenido</h1>
             </div>
-            <div class="">
-                <p>Cantidad de mesas libres: <%: cont %></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 px-4 pt-5">
+                        <div class="">
+                <p>Mesas libres: <%: cont %></p>
+                             
             </div>
+
+            <div>
+                 <p>Mesas ocupadas: <%: cont %></p>
+            </div>
+
+                        <div>
+                 <p>Mesas reservadas: <%: cont %></p>
+            </div>
+        </div>
+        <div class="col-8">
+
             <div class="container pt-3">
                 <div class="row">
 
