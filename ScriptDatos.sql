@@ -23,16 +23,18 @@ insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Call
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('rxgf', 23367514, 'Judicaël', 'Cordie', '5508976418', 'jcordie7@domainmarket.com', 'Nelson', '64', null, null, 3, 2, '1995-08-17', '2021-05-21', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('cjjb', 36909435, 'Adèle', 'Westwell', '4933840137', 'swestwell8@hp.com', 'Crest Line', '806', null, null, 5, 2, '1999-06-09', '2021-12-24', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 2);
+insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('', 39488879, 'Emiliano', 'Ramirez', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 1);
+
 Go
 
 
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (5, 1, 6);
-insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 2, 1);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 2, 2);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (3, 3, 5);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (10, 4, 3);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (6, 5, 5);
-insert into Mesas (MeseroAsignado, Numero, Capacidad) values (2, 6, 1);
-insert into Mesas (MeseroAsignado, Numero, Capacidad) values (8, 7, 1);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (2, 6, 2);
+insert into Mesas (MeseroAsignado, Numero, Capacidad) values (8, 7, 2);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (2, 8, 3);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (5, 9, 6);
 insert into Mesas (MeseroAsignado, Numero, Capacidad) values (4, 10, 6);
@@ -92,6 +94,6 @@ values (3, 5, GETDATE(), 0, 0),
 insert into DetallePedidos(IdPedido, IdInsumo, Cantidad, PrecioUnitario) values(1,2,12,10)
 
 
-
+update usuarios set TipoPerfil = 1 where Legajo = 11
 
 exec splistarusuarios

@@ -60,6 +60,39 @@ namespace Negocio
             return listaUsuarios;
         }
 
+        public List<Usuario> listarMeseros()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            basedatos.SetearProcedimiento("SpListarMeseros");
+            basedatos.EjecutarLectura();
+
+            try
+            {
+                while (basedatos.Lector.Read())
+                {
+                    Usuario user = new Usuario();
+
+                    user.Legajo = (int)basedatos.Lector["Legajo"];
+                    user.Apellido = (string)basedatos.Lector["Apellidos"];
+                    user.Nombre = (string)basedatos.Lector["Nombre"];
+
+                    listaUsuarios.Add(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
+
+            return listaUsuarios;
+        }
+
         public void agregarConSp(Usuario nuevo)
         {
 

@@ -147,8 +147,8 @@ Begin
 Select 
     M.Numero, 
     U.Legajo, 
-    U.Apellidos, 
-    U.Nombre,
+    Coalesce(U.Apellidos, 'S/ Mesero'),
+    Coalesce(U.Nombre, 'S/ Mesero'),
     M.Capacidad, 
     M.Ocupado, 
     M.Reservado, 
@@ -342,6 +342,14 @@ output inserted.Id
 values (@IdMesa, @LegajoMeseroAsignado, GETDATE(), 0, 0)
 End
 Go
+
+Create Procedure SpListarMeseros
+As
+Begin
+Select * From Usuarios Where TipoPerfil = 2
+End
+Go
+
 
 --EXEC SpListarPlatos
 --go
