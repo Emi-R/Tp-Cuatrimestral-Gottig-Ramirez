@@ -71,6 +71,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EditBebida.aspx" />
     <Content Include="EditMarca.aspx" />
+    <Content Include="EditPedido.aspx" />
     <Content Include="EditPlato.aspx" />
     <Content Include="EditTipoPlato.aspx" />
     <Content Include="Error.aspx" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="EditMarca.aspx.designer.cs">
       <DependentUpon>EditMarca.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditPedido.aspx.cs">
+      <DependentUpon>EditPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditPedido.aspx.designer.cs">
+      <DependentUpon>EditPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditPlato.aspx.cs">
       <DependentUpon>EditPlato.aspx</DependentUpon>

@@ -20,9 +20,6 @@ namespace TP_Cuatrimestral
             {
                 cargarRepeaterPedidos();
             }
-
-
-
         }
 
         private void cargarRepeaterPedidos()
@@ -40,7 +37,8 @@ namespace TP_Cuatrimestral
 
         protected void btnVerPedido_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(((Button)sender).CommandArgument);
+            Response.Redirect($"EditPedido.aspx?Id={id}", false);
         }
     }
 }

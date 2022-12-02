@@ -15,7 +15,7 @@ namespace Negocio
         {
             _db = new AccesoDatos();
         }
-        public List<Pedido> ListarPedidos(string numeroMesa = "")
+        public List<Pedido> ListarPedidos(string numeroMesa = "", string IdPedido = "")
         {          
             string consulta = @"
                                SELECT P.Id AS [Id Pedido], P.Fecha as [Fecha Pedido], 
@@ -32,6 +32,8 @@ namespace Negocio
 
             if (!String.IsNullOrEmpty(numeroMesa))
                 consulta += $" AND M.Numero = {numeroMesa}";
+            else if (!String.IsNullOrEmpty(IdPedido))
+                consulta += $" AND P.Id = {IdPedido}";
 
             _db.SetearConsulta(consulta);
             _db.EjecutarLectura();
@@ -71,7 +73,6 @@ namespace Negocio
             {
                 _db.CerrarConexion();
             }
-
         }
     }
 }
