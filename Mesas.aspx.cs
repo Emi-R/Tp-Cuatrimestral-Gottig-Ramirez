@@ -15,6 +15,17 @@ namespace TP_Cuatrimestral
         {
             MesaNegocio negocio = new MesaNegocio();
 
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes logearte para acceder a esta area.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else if ((int)Session["usuario.Perfil"] != 1)
+            {
+                Session.Add("error", "No posee los permisos suficientes para acceder.");
+                Response.Redirect("Error.aspx", false);
+            }
+
             dgvMesas.DataSource = negocio.ListarMesas();
             dgvMesas.DataBind();
         }

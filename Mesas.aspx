@@ -26,6 +26,7 @@
                         <asp:CheckBoxField HeaderText="Ocupada" HeaderStyle-CssClass="headerTitle" DataField="Ocupado" />
                         <asp:CheckBoxField HeaderText="Reservada" HeaderStyle-CssClass="headerTitle" DataField="Reservado" />
                         <asp:CheckBoxField HeaderText="Activa" HeaderStyle-CssClass="headerTitle" DataField="Activo" />
+                        <asp:CommandField HeaderText="Editar" HeaderStyle-CssClass="headerTitle" ShowSelectButton="true" SelectText="✍" />
                     </Columns>
                 </asp:GridView>
             </div>
