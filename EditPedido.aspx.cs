@@ -164,6 +164,15 @@ namespace TP_Cuatrimestral
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
         {
             rowAgregarInsumo.Visible = true;
+            PlatoNegocio neogocioPlato = new PlatoNegocio();
+            List<Plato> listaPlatos = neogocioPlato.ListarPlatos();
+
+            ddlDetalleInsumo.DataSource = listaPlatos;
+            ddlDetalleInsumo.DataTextField = "Detalle";
+            ddlDetalleInsumo.DataValueField = "Id";
+            ddlDetalleInsumo.DataBind();
+
+            txtPrecioUnitario.Text = listaPlatos[0].Precio.ToString();
         }
 
         protected void btnCancelarDetalle_Click(object sender, EventArgs e)

@@ -88,5 +88,10 @@ namespace TP_Cuatrimestral
         {
             cargarRepeaterPedidos(0);
         }
+
+        protected void btnEntregado_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

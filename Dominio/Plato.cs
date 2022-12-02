@@ -9,7 +9,7 @@ namespace Dominio
     public class Plato : Insumo
     {
         public TipoPlato Tipo { get; set; }
-
+        public string Detalle { get; set; }
         public Plato()
         {
             Tipo = new TipoPlato();
