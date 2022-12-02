@@ -11,7 +11,9 @@ namespace TP_Cuatrimestral
 {
     public partial class mainmenu : System.Web.UI.Page
     {
-        public string cont;
+        public string contMesasOcupadas;
+        public string contMesasReservadas;
+        public string contMesasLibres;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +24,10 @@ namespace TP_Cuatrimestral
                 List<Mesa> lista = negocio.ListarMesas();
 
                 RepeaterMesas.DataSource = lista;
-                cont = (lista.Where(x => x.Ocupado == false && x.Reservado == false).Count()).ToString();
+                contMesasOcupadas = (lista.Where(x => x.Ocupado).Count()).ToString();
+                contMesasReservadas = (lista.Where(x => x.Reservado).Count()).ToString();
+                contMesasLibres = (lista.Where(x => !x.Ocupado && !x.Reservado).Count()).ToString();
+
                 RepeaterMesas.DataBind();
             }
         }
