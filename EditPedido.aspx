@@ -11,7 +11,7 @@
                 <div class="col-6 p-5 container-platos_edit">
                     <div class="row bg-light br-6">
                         <div class="col text-center">
-                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Pedido N° "></asp:Label>
+                            <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Pedido N°"></asp:Label>
                             <asp:Label runat="server" ID="lblId" CssClass="form-label br-6 w-100"></asp:Label>
                         </div>
                     </div>

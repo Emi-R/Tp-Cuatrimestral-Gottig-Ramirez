@@ -18,6 +18,10 @@ namespace TP_Cuatrimestral
             try
             {
                 string idPedido = Request.QueryString["Id"] != null ? Request.QueryString["Id"] : "";
+
+
+                cargarDdlMesas();
+
                 if(!String.IsNullOrEmpty(idPedido) && !IsPostBack)
                     PrecargarCampos(idPedido);
 
@@ -29,9 +33,19 @@ namespace TP_Cuatrimestral
 
         }
 
+        private void cargarDdlMesas()
+        {
+            //MesaNegocio negocioMesa = new MesaNegocio();
+
+            //ddlMesas.DataSource = negocioMesa.ListarMesas();
+            //ddlMesas.DataBind();
+        }
         private void PrecargarCampos(string idPedido)
         {
             Pedido pedido = negocio.ListarPedidos(IdPedido: idPedido)[0];
+
+            lblId.Text = pedido.ID.ToString();
+            
         }
     }
 }
