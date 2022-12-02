@@ -37,7 +37,7 @@ namespace TP_Cuatrimestral
                 if(negocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    Session.Add("activeUser", usuario.Apellido + usuario.Nombre);
+                    Session.Add("activeUser", usuario.Apellido);
                     Response.Redirect("mainmenu.aspx");
                 }
                 else
