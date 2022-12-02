@@ -86,7 +86,7 @@ Go
 Create table Pedidos (
 Id int primary key identity(1,1),
 IdMesa int foreign key references Mesas(Id) not null,
-IdMeseroAsignado int foreign key references Usuarios(Legajo) not null,
+LegajoMeseroAsignado int foreign key references Usuarios(Legajo) not null,
 Fecha Date Not Null,
 Entregado bit not null default 0,
 Total money not null
@@ -152,7 +152,8 @@ Select
     M.Capacidad, 
     M.Ocupado, 
     M.Reservado, 
-    M.Activo 
+    M.Activo,
+	M.ID
 From Mesas M 
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 End
@@ -169,11 +170,13 @@ Select
     M.Capacidad, 
     M.Ocupado, 
     M.Reservado, 
-    M.Activo 
+    M.Activo,
+	M.ID
 From Mesas M 
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 Where M.Activo = 1
 End
+Go
 
 
 Create Procedure SpListarPaises
@@ -326,6 +329,17 @@ Begin
 		Raiserror('Error al eliminar usuario', 16, 1)
 		Rollback 
 	End Catch
+End
+Go
+
+create Procedure SpAgregarPedido(
+ @IdMesa int,
+ @LegajoMeseroAsignado int)
+As
+Begin 
+INSERT INTO PEDIDOS (IdMesa, LegajoMeseroAsignado, Fecha, Entregado, Total)
+output inserted.Id   
+values (@IdMesa, @LegajoMeseroAsignado, GETDATE(), 0, 0)
 End
 Go
 

@@ -6,9 +6,8 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div class="row m-5">
-                <div class="col-3"></div>
-                <div class="col-6 p-5 container-platos_edit">
+            <div class="row m-5 justify-content-center">          
+                <div class="col-6 p-5 container-pedidos_edit">
                     <div class="row bg-light br-6">
                         <div class="col text-center">
                             <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Pedido N°"></asp:Label>
@@ -30,13 +29,13 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <asp:DropDownList runat="server" ID="ddlMesas"></asp:DropDownList>
+                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlMesas"></asp:DropDownList>
                         </div>
                         <div class="col">
-                            <asp:DropDownList runat="server" ID="ddlMeseros"></asp:DropDownList>
+                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlMeseros"></asp:DropDownList>
                         </div>
                         <div class="col ">
-                            <asp:TextBox runat="server" ID="txtFechaPedido" Enabled="false" Text="" TextMode="DateTime"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-label br-6 w-100 btn-outline-dark bg-light p-1" ID="txtFechaPedido" Enabled="false" Text="" TextMode="Date"></asp:TextBox>
                         </div>
                     </div>
 
@@ -48,10 +47,21 @@
 
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecio" Enabled="false" Text="123" TextMode="Number"></asp:TextBox>
+                            <asp:TextBox runat="server" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" ID="txtPrecio" Enabled="false" Text=""></asp:TextBox>
                         </div>
                     </div>
+                </div>
+            </div>
 
+            <div class="row m-5 justify-content-center">
+                <div class="col-6 text-end">
+                    <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
+                </div>
+            </div>
+
+            <div class="row" runat="server" ID="sectionInsumos" Visible="false">
+                <div class="col" >
+                    asdsad
                 </div>
             </div>
         </ContentTemplate>

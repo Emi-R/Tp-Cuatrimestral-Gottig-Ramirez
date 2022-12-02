@@ -26,7 +26,7 @@ namespace Negocio
                                inner join Mesas M
                                ON P.IdMesa = M.ID
                                INNER JOIN Usuarios U
-                               ON P.IdMeseroAsignado = U.Legajo
+                               ON P.LegajoMeseroAsignado = U.Legajo
                                WHERE U.TipoPerfil = 2
                                ";
 
@@ -73,6 +73,29 @@ namespace Negocio
             {
                 _db.CerrarConexion();
             }
+        }
+
+        public int AgregarPedido(Pedido pedido)
+        {
+            try
+            {
+                _db.SetearProcedimiento("SpAgregarPedido");
+                _db.SetearParametro("@IdMesa", pedido.Mesa.ID);
+                _db.SetearParametro("@LegajoMeseroAsignado", pedido.MeseroAsignado.Legajo);
+                int id = _db.EjecutarAccionEscalar();
+
+                return id;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+
         }
     }
 }

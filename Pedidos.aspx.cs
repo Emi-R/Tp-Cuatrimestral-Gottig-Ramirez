@@ -22,14 +22,31 @@ namespace TP_Cuatrimestral
             }
         }
 
-        private void cargarRepeaterPedidos()
+        private void cargarRepeaterPedidos(int estado = 2)
         {
+            //if (IsPostBack)
+            //    repeaterPedidos.DataSource = null;
+
             List<Pedido> listaPedidos = new List<Pedido>();
             string numeroMesa = Request.QueryString["NumeroMesa"] != null ? Request.QueryString["NumeroMesa"] : "";
             if (numeroMesa != "")
                 listaPedidos = negocio.ListarPedidos(numeroMesa);
             else
                 listaPedidos = negocio.ListarPedidos();
+
+            switch (estado)
+            {
+                case 0:
+                    listaPedidos = listaPedidos.Where(x => !x.Entregado).ToList() ;
+                    break;
+
+                case 1:
+                    listaPedidos = listaPedidos.Where(x => x.Entregado).ToList();
+                    break;
+
+                default:
+                    break;
+            }
 
             repeaterPedidos.DataSource = listaPedidos;
             repeaterPedidos.DataBind();
@@ -39,6 +56,28 @@ namespace TP_Cuatrimestral
         {
             int id = Convert.ToInt32(((Button)sender).CommandArgument);
             Response.Redirect($"EditPedido.aspx?Id={id}", false);
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"EditPedido.aspx", false);
+
+
+        }
+
+        protected void btnTodosLosEstados_Click(object sender, EventArgs e)
+        {
+            cargarRepeaterPedidos();
+        }
+
+        protected void btnEstadoEntregados_Click(object sender, EventArgs e)
+        {
+            cargarRepeaterPedidos(1);
+        }
+
+        protected void btnEstadoPendiente_Click(object sender, EventArgs e)
+        {
+            cargarRepeaterPedidos(0);
         }
     }
 }

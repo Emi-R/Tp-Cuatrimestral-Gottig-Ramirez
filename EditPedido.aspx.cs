@@ -20,10 +20,17 @@ namespace TP_Cuatrimestral
                 string idPedido = Request.QueryString["Id"] != null ? Request.QueryString["Id"] : "";
 
 
-                cargarDdlMesas();
+                if(!IsPostBack)
+                {
+                    cargarDdlMesas();
+                    cargarDdlEmpleados();
+                }
 
-                if(!String.IsNullOrEmpty(idPedido) && !IsPostBack)
+                if (!String.IsNullOrEmpty(idPedido) && !IsPostBack)
                     PrecargarCampos(idPedido);
+                else
+                    txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
 
             }
             catch (Exception ex)
@@ -35,17 +42,52 @@ namespace TP_Cuatrimestral
 
         private void cargarDdlMesas()
         {
-            //MesaNegocio negocioMesa = new MesaNegocio();
+            MesaNegocio negocioMesa = new MesaNegocio();
 
-            //ddlMesas.DataSource = negocioMesa.ListarMesas();
-            //ddlMesas.DataBind();
+            ddlMesas.DataSource = negocioMesa.ListarMesas();
+            ddlMesas.DataTextField = "Numero";
+            ddlMesas.DataValueField = "ID";
+            ddlMesas.DataBind();
+        }
+
+        private void cargarDdlEmpleados()
+        {
+            UsuarioNegocio negocioUsuario = new UsuarioNegocio();
+
+            ddlMeseros.DataSource = negocioUsuario.listarUsuarios().Where(x => x.Perfil.Id == (int)Perfiles.Mesero);
+            ddlMeseros.DataTextField = "Legajo";
+            ddlMeseros.DataValueField = "Legajo";
+            ddlMeseros.DataBind();
+
         }
         private void PrecargarCampos(string idPedido)
         {
             Pedido pedido = negocio.ListarPedidos(IdPedido: idPedido)[0];
 
             lblId.Text = pedido.ID.ToString();
-            
+
+            ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(pedido.Mesa.Numero.ToString())));
+            txtFechaPedido.Text = pedido.FechaPedido.ToString("yyyy-MM-dd");
+            txtPrecio.Text = pedido.Total.ToString();
+
+            btnAgregar.Visible = false;
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = new Pedido();
+
+            pedido.Mesa = new Mesa();
+            pedido.Mesa.ID = Convert.ToInt32(ddlMesas.SelectedItem.Value);
+
+            pedido.MeseroAsignado = new Usuario();
+            pedido.MeseroAsignado.Legajo = Convert.ToInt32(ddlMeseros.SelectedItem.Value);
+
+            int IdPedido = negocio.AgregarPedido(pedido);
+            lblId.Text = IdPedido.ToString();
+
+            btnAgregar.Visible = false;
+            sectionInsumos.Visible = true;
         }
     }
 }

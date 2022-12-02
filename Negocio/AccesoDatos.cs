@@ -60,6 +60,21 @@ namespace Negocio
             }
         }
 
+        public int EjecutarAccionEscalar()
+        {
+            Comando.Connection = Conexion;
+
+            try
+            {
+                Conexion.Open();
+                return (int)Comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void SetearProcedimiento(string sp)
         {
             Comando.CommandType = System.Data.CommandType.StoredProcedure;

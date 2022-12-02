@@ -46,6 +46,8 @@ namespace Negocio
 
                     mesa.Activo = (bool)basedatos.Lector["Activo"];
 
+                    mesa.ID = (int)basedatos.Lector["ID"];
+
                     listaMesas.Add(mesa);
                 }
 
