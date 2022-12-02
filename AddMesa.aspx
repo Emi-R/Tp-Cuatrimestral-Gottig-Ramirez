@@ -41,14 +41,14 @@
                 <div class="row mb-4">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="chkReservada" />
+                            <asp:CheckBox ID="chkReservada" CssClass="form-check-input" runat="server" />
                             <label class="form-check-label" for="chkReservada">Es reserva?</label>
                         </div>
                     </div>
                     <!-- Chk Ocupado -->
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="chkOcupada" />
+                            <asp:CheckBox ID="chkOcupada" CssClass="form-check-input" runat="server" />
                             <label class="form-check-label" for="chkOcupada">Esta ocupada?</label>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                 <!-- Boton Agregar -->
                 <div class="row">
                     <div class="col">
-                        <asp:Button ID="btnEditarMesa" CssClass="btn btn-primary mb-4" runat="server" Text="Guardar" />
+                        <asp:Button ID="btnEditarMesa" CssClass="btn btn-primary mb-4" OnClick="btnEditarMesa_Click" runat="server" Text="Guardar" />
                     </div>
                     <div class="col">
                         <asp:Button ID="btnEliminarMesa" CssClass="btn btn-danger mb-4" runat="server" Text="Eliminar" />

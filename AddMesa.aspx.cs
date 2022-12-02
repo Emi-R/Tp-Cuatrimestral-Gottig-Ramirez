@@ -25,5 +25,36 @@ namespace TP_Cuatrimestral
             }
 
         }
+
+        protected void btnEditarMesa_Click(object sender, EventArgs e)
+        {
+            MesaNegocio negocio = new MesaNegocio();
+            Mesa nuevaMesa = new Mesa();
+
+            nuevaMesa.Numero = int.Parse(txtNumeroMesa.Text);
+            nuevaMesa.Capacidad = int.Parse(txtCapacidad.Text);
+
+            if(chkOcupada.Checked)
+            {
+                nuevaMesa.Ocupado = true;
+            }
+            else
+            {
+                nuevaMesa.Ocupado = false;
+            }
+
+            if(chkReservada.Checked)
+            {
+                nuevaMesa.Reservado = true;
+            }
+            else
+            {
+                nuevaMesa.Reservado = false;
+            }
+
+            nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex - 1;
+
+
+        }
     }
 }

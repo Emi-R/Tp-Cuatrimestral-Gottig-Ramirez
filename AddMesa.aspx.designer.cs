@@ -42,6 +42,24 @@ namespace TP_Cuatrimestral
         protected global::System.Web.UI.WebControls.DropDownList ddlMeseros;
 
         /// <summary>
+        /// chkReservada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkReservada;
+
+        /// <summary>
+        /// chkOcupada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkOcupada;
+
+        /// <summary>
         /// txtCapacidad control.
         /// </summary>
         /// <remarks>

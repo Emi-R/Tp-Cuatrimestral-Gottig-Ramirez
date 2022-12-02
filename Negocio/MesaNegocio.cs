@@ -17,7 +17,7 @@ namespace Negocio
         {
             List<Mesa> listaMesas = new List<Mesa>();
 
-            if(gerente)
+            if (gerente)
                 basedatos.SetearProcedimiento("SpListarMesas");
             else
                 basedatos.SetearProcedimiento("SpListarMesasActivas");
@@ -65,5 +65,13 @@ namespace Negocio
 
 
         }
+
+        //    public void agregarMesa(Mesa nueva)
+        //    {
+        //        AccesoDatos db = new AccesoDatos();
+
+        //        db.SetearProcedimiento();
+        //    }
+        //}
     }
 }
