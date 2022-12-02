@@ -21,7 +21,8 @@ namespace Negocio
                                SELECT P.Id AS [Id Pedido], P.Fecha as [Fecha Pedido], 
                                P.Entregado, P.Total,
                                M.ID AS [Id Mesa], M.Numero AS [Numero Mesa], M.Capacidad,
-                               U.Nombre AS [Mesero Nombre], U.Apellidos AS [Mesero Apellido]
+                               U.Nombre AS [Mesero Nombre], U.Apellidos AS [Mesero Apellido],
+                               U.Legajo as Legajo
                                 FROM PEDIDOS P
                                inner join Mesas M
                                ON P.IdMesa = M.ID
@@ -59,6 +60,7 @@ namespace Negocio
                     pedido.MeseroAsignado = new Usuario();
                     pedido.MeseroAsignado.Nombre = _db.Lector.GetString(7);
                     pedido.MeseroAsignado.Apellido = _db.Lector.GetString(8);
+                    pedido.MeseroAsignado.Legajo = _db.Lector.GetInt32(9);
 
                     listaPedidos.Add(pedido);
                 }

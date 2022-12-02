@@ -71,6 +71,10 @@ namespace TP_Cuatrimestral
             lblId.Text = pedido.ID.ToString();
 
             ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(pedido.Mesa.Numero.ToString())));
+            ddlMesas.Enabled = false;
+
+            ddlMeseros.SelectedIndex = ddlMeseros.Items.IndexOf((ddlMeseros.Items.FindByValue(pedido.MeseroAsignado.Legajo.ToString())));
+            ddlMeseros.Enabled = false;
 
             cargarDgvDetallePedido(idPedido);
 
