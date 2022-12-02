@@ -6,6 +6,16 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
+            <div class="row pt-4">
+                <div class="col-2"></div>
+                <div class="col-8 " style="background-color: #92aedb !important; border-radius: 50px">
+                    <div class="title-page">
+                        <h1 class="mt-4 mb-4" style="color: #e2e1e5fc;">Bebidas</h1>
+                        <%--<hr style="background-color:red">--%>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
             <div class="row m-5">
                 <div class="col mt-3">
                     <div class="row">
@@ -58,7 +68,7 @@
                     <div class="row mt-3">
                         <div class="col text-center ">
                             <a href="Marcas.aspx" class="w-100 btn btn-dark">Administrar Marcas</a>
-                          
+
                         </div>
                     </div>
                 </div>

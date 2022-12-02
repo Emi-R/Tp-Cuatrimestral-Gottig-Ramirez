@@ -2,8 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-     <div class="row m-5">
+    <div class="row pt-4">
+        <div class="col-2"></div>
+        <div class="col-8 text-center justify-content-center" style="background-color:#92aedb !important;border-radius:50px;">
+            <div class="title-page" style="max-height:2cm">
+                <h1 class="mt-4" style="color:#e2e1e5fc;">Tipos Platos</h1>
+                <%--<hr style="background-color:red">--%>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+     <div class="row m-2">
         <div class="col p-5">
             <div class="row m-3 justify-content-center">
                 <div class="col-4">

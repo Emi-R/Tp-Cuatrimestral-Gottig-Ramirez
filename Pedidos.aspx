@@ -4,7 +4,16 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" ID="scrpManager"></asp:ScriptManager>
-
+    <div class="row pt-4">
+        <div class="col-2"></div>
+        <div class="col-8 " style="background-color:#92aedb !important;border-radius:50px">
+            <div class="title-page">
+                <h1 class="mt-4 mb-4" style="color:#e2e1e5fc;">Pedidos</h1>
+                <%--<hr style="background-color:red">--%>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
     <asp:UpdatePanel runat="server" ID="updatePanel">
         <ContentTemplate>
             <div class="row m-5">

@@ -26,6 +26,12 @@ namespace TP_Cuatrimestral
 
             try
             {
+                if(String.IsNullOrEmpty(txtLegajo.Text))
+                {
+                    lblError.Text = "Ingrese legajo, por favor";
+                    Session.Add("errorLogin", true);
+                    return;
+                }
                 usuario = new Usuario(int.Parse(txtLegajo.Text), txtPass.Text, false);
 
                 if(negocio.Loguear(usuario))
@@ -35,6 +41,7 @@ namespace TP_Cuatrimestral
                 }
                 else
                 {
+                    lblError.Text = "Legajo o contraseña incorrectos";
                     Session.Add("errorLogin", true );
                 }
 

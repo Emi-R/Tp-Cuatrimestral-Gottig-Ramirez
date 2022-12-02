@@ -3,6 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="row pt-4">
+        <div class="col-2"></div>
+        <div class="col-8 " style="background-color:#92aedb !important;border-radius:50px">
+            <div class="title-page">
+                <h1 class="mt-4 mb-4" style="color:#e2e1e5fc;">Meseros</h1>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
     <div class="row m-5">
         <div class="pb-4">
         </div>

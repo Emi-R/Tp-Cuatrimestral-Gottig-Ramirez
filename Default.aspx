@@ -43,7 +43,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="note note-danger mb-3">
-                                            <strong>Error: </strong>Legajo o contraseña incorrectos
+                                            <strong>Error: </strong>
+                                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                                         </div>
                                     </div>
                                 </div>
