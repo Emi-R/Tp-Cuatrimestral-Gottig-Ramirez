@@ -20,19 +20,31 @@ namespace TP_Cuatrimestral
             
             try
             {
-                cargarPaises();
+                
 
                 if (!IsPostBack)
                 {
-                    if (Request.QueryString["Legajo"] != null)
+                    if (Session["usuario"] == null)
+                    {
+                        Session.Add("error", "Debes logearte para acceder a esta area.");
+                        Response.Redirect("Error.aspx", false);
+                    }
+                    else if ((int)Session["usuario.Perfil"] != 1)
+                    {
+                        Session.Add("error", "No posee los permisos suficientes para acceder.");
+                        Response.Redirect("Error.aspx", false);
+                    }
+                    else if (Request.QueryString["Legajo"] != null)
                     {
                         cargarTxtBox();
+                        cargarPaises();
                         btnAgregarMesero.Text = "Guardar";
                         btnEliminar.Visible = true;
 
                     }
                     else
                     {
+                        cargarPaises();
                         imgPerfil.ImageUrl = "https://static.vecteezy.com/system/resources/previews/000/439/863/non_2x/vector-users-icon.jpg";
                         imgPerfil.Height = 150;
                         btnEliminar.Visible = false;

@@ -53,12 +53,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Mesas.aspx">Mesas</a>
                         </li>
+
+                        <%if (Session["usuario"] != null && ((Dominio.Usuario)Session["usuario"]).Perfil.Id == 1)
+                            { %>
                         <li class="nav-item">
                             <a class="nav-link active" href="Pedidos.aspx">Pedidos</a>
                         </li>
-                        <%if (Session["usuario"] != null && ((Dominio.Usuario)Session["usuario"]).Perfil.Id == 1)
-                            { %>
-
                         <li class="nav-item">
                             <a class="nav-link active" href="Meseros.aspx">Meseros</a>
                         </li>
@@ -72,16 +72,33 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Administracion.aspx">Administrar</a>
                         </li>
+                        <% }
+                        else
+                        { %>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="Pedidos.aspx">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="Meseros.aspx">Meseros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="Platos.aspx">Platos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="Bebidas.aspx">Bebidas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="Administracion.aspx">Administrar</a>
+                        </li>
                         <% } %>
                     </ul>
                 </div>
 
 
                 <div class="d-flex align-items-center">
-                    <a
-                        class="btn btn-dark px-3" style="background-color: black !important"
-                        href="Default.aspx"
-                        role="button"><i class="far fa-user-circle"></i>Mesero: <%#: (Dominio.Usuario)Session["usuario"] %></a>
+                    <a class="btn btn-dark px-3" style="background-color: black !important" href="Default.aspx" role="button"><i class="far fa-user-circle"></i>
+                    </a>
                 </div>
             </div>
         </nav>

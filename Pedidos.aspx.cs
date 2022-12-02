@@ -18,7 +18,21 @@ namespace TP_Cuatrimestral
 
             if (!IsPostBack)
             {
-                cargarRepeaterPedidos();
+                if (Session["usuario"] == null)
+                {
+                    Session.Add("error", "Debes logearte para acceder a esta area.");
+                    Response.Redirect("Error.aspx", false);
+                }
+                else if (((Dominio.Usuario)Session["usuario"]).Perfil.Id != 1)
+                {
+                    Session.Add("error", "No posee los permisos suficientes para acceder.");
+                    Response.Redirect("Error.aspx", false);
+                }
+                else
+                {
+                    cargarRepeaterPedidos();
+
+                }
             }
         }
 
