@@ -91,6 +91,9 @@ namespace TP_Cuatrimestral
 
         protected void btnEntregado_Click(object sender, EventArgs e)
         {
+            int idSelected = Convert.ToInt32(((Button)sender).CommandArgument);
+            negocio.CambiarEstadoPedido(idSelected, true);
+            cargarRepeaterPedidos();
 
         }
     }

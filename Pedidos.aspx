@@ -80,9 +80,12 @@
                                             <asp:Button runat="server" CssClass="btn btn-warning m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnVerPedido" OnClick="btnVerPedido_Click" Text="Ver Pedido" />
                                         </div>
 
-                                        <div class="col-2 m-auto">
-                                            <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEntregado" OnClick="btnEntregado_Click" Visible="false" Text="Entregar Pedido" />
+                                        
+                                            
+                                       <div class="col-2 m-auto">
+                                            <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEntregado" OnClick="btnEntregado_Click" Text="Entregar Pedido" />
                                         </div>
+
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>

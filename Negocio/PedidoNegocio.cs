@@ -116,5 +116,23 @@ namespace Negocio
                 _db.CerrarConexion();
             }
         }
+
+        public void CambiarEstadoPedido(int idPedido, bool entregado = false)
+        {
+            try
+            {
+                string consulta = $"Update Pedidos set Entregado = {(entregado ? '1' : '0')} where Id = {idPedido}";
+                _db.SetearConsulta(consulta);
+                _db.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
     }
 }
