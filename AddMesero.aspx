@@ -4,16 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="row">
-        <div class="pt-2" style="text-align: center; margin-bottom: 0.5cm">
-            <asp:Label ID="titulo" CssClass="title-page display-2 pb-3" runat="server" Text="Nuevo Mesero"></asp:Label>
+<div class="row pt-4 mb-4">
+        <div class="col-2"></div>
+        <div class="col-8 " style="background-color:#92aedb !important;border-radius:50px">
+            <div class="title-page">
+                <h1 class="mt-4 mb-4" style="color:#e2e1e5fc;"><asp:Label ID="titulo" runat="server" Text="Nuevo Mesero"></asp:Label></h1>
+            </div>
         </div>
+        <div class="col-2"></div>
     </div>
+
+
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6">
             <div class="boxForm">
-                <!-- 2 column grid layout with text inputs for the first and last names -->
+
                 <div class="row mb-4">
                     <!-- Apellido -->
                     <div class="col">

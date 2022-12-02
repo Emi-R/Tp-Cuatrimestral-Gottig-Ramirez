@@ -78,7 +78,7 @@
                     <a
                         class="btn btn-dark px-3" style="background-color:black !important"
                         href="Default.aspx"
-                        role="button"><i class="far fa-user-circle"></i></a>
+                        role="button"><i class="far fa-user-circle"></i> Mesero: <%#: (Dominio.Usuario)Session["usuario"] %></a>
                 </div>
             </div>
         </nav>
