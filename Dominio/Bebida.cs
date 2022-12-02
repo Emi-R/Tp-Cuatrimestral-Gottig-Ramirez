@@ -11,5 +11,7 @@ namespace Dominio
         public float Capacidad { get; set; }
         public Marca Marca { get; set; }
         public bool Alcoholica { get; set; }
+
+        public string Detalle { get; set; }
     }
 }

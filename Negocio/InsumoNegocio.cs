@@ -43,5 +43,35 @@ namespace Negocio
             return listaInsumos;
         }
 
+
+        public Insumo ObtenerInsumoPorId(int id)
+        {
+            string consulta = $"SELECT Id, Nombre, Precio From Insumos Where Id = {id}";
+            baseDatos.SetearConsulta(consulta);
+            baseDatos.EjecutarLectura();
+
+            Insumo insumo = new Insumo();
+            try
+            {
+                while (baseDatos.Lector.Read())
+                {
+                    insumo.Id = baseDatos.Lector.GetInt32(0);
+                    insumo.Nombre = baseDatos.Lector.GetString(1);
+                    insumo.Precio = baseDatos.Lector.GetDecimal(2);
+                }
+
+                return insumo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                baseDatos.CerrarConexion();
+            }
+
+        }
+
     }
 }

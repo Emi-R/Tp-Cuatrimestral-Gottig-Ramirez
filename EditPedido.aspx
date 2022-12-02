@@ -95,36 +95,46 @@
             </div>
 
             <div id="rowAgregarInsumo" runat="server" visible="false" class="row justify-content-center m-auto" style="width: 100%; position: fixed; z-index: 100; top: 30%">
-                <div class="col-6 p-5 container-bebidas_edit text-dark" >
+                <div class="col-6 p-5 container-bebidas_edit text-dark">
                     <div class="row">
-                        <div class="col" >
+                        <div class="col">
                             <asp:Label Text="Insumo" runat="server" ID="lblDetalleInsumo" />
+                        </div>
+
+
+                        <div class="col">
+                            Precio Unitario
                         </div>
                         <div class="col">
                             Cantidad
                         </div>
-                        <div class="col">
-                            Total
-                        </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlDetalleInsumo"></asp:DropDownList>
+                        <div class="col-4">
+                            <asp:DropDownList OnSelectedIndexChanged="ddlDetalleInsumo_SelectedIndexChanged" AutoPostBack="true" CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlDetalleInsumo"></asp:DropDownList>
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtCantidad" TextMode="Number" />
+                            <asp:TextBox runat="server" ID="txtPrecioUnitario" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="txtPrecioTotalInsumos" Enabled="false" />
+                            <asp:TextBox runat="server" AutoPostBack="true" ID="txtCantidad" OnTextChanged="txtCantidad_TextChanged"  CssClass="form-label br-6 w-100 btn-outline-dark bg-light" TextMode="Number" />
+                        </div>
+
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            Total 
+                        </div>
+                        <div class="col-6">
+                            <asp:TextBox AutoPostBack="true" runat="server" ID="txtPrecioTotalInsumos"  CssClass="form-label br-6 w-100 btn-outline-dark bg-light" Enabled="false" />
                         </div>
                     </div>
-
                     <div class="row mt-2 justify-content-end">
                         <div class="col-4 text-end">
                             <asp:Button Visible="true" runat="server" Text="Cancelar" OnClick="btnCancelarDetalle_Click" ID="btnCancelarDetalle" CssClass="w-200px btn btn-danger" />
                         </div>
                         <div class="col-4 text-end">
-                            <asp:Button Visible="true" runat="server" Text="Agregar" ID="btnAgregarDetalle" CssClass="w-200px btn btn-success" />
+                            <asp:Button Visible="true" runat="server" Text="Agregar" ID="btnAgregarDetalle" OnClick="btnAgregarDetalle_Click" CssClass="w-200px btn btn-success" />
                         </div>
                     </div>
                 </div>

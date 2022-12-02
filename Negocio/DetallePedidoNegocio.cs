@@ -64,5 +64,13 @@ namespace Negocio
                 _db.CerrarConexion();
             }
         }
+
+        public void AgregarDetallesPedido(int idPedido, List<DetallePedido> detallePedidoList)
+        {
+            foreach (var item in detallePedidoList)
+            {
+
+            }
+        }
     }
 }

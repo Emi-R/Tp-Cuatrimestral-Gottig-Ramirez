@@ -123,6 +123,15 @@ namespace TP_Cuatrimestral
         protected global::System.Web.UI.WebControls.DropDownList ddlDetalleInsumo;
 
         /// <summary>
+        /// Control txtPrecioUnitario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrecioUnitario;
+
+        /// <summary>
         /// Control txtCantidad.
         /// </summary>
         /// <remarks>

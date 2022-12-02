@@ -48,6 +48,7 @@ namespace Negocio
 
                     bebida.Alcoholica = baseDatos.Lector.GetBoolean(6);
 
+                    bebida.Detalle = String.Format("{0} {1}lts - {2}", bebida.Nombre, bebida.Capacidad, bebida.Marca.Nombre);
                     listaBebidas.Add(bebida);
                 }
             }

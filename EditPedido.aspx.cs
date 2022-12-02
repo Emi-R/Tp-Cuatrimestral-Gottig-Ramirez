@@ -91,6 +91,12 @@ namespace TP_Cuatrimestral
             pedido.MeseroAsignado.Legajo = Convert.ToInt32(ddlMeseros.SelectedItem.Value);
 
             int IdPedido = negocio.AgregarPedido(pedido);
+
+            DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
+
+            List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
+            detalleNegocio.AgregarDetallesPedido(IdPedido, detallePedidoList);
+
             lblId.Text = IdPedido.ToString();
             btnAgregar.Visible = false;
         }
@@ -114,8 +120,16 @@ namespace TP_Cuatrimestral
         protected void btnAgregarBebida_Click(object sender, EventArgs e)
         {
             rowAgregarInsumo.Visible = true;
-            //List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
-            //detallePedidoList.Add();
+            BebidaNegocio neogocioBebida = new BebidaNegocio();
+            List<Bebida> listaBebidas = neogocioBebida.ListarBebidas();
+
+            ddlDetalleInsumo.DataSource = listaBebidas;
+            ddlDetalleInsumo.DataTextField = "Detalle";
+            ddlDetalleInsumo.DataValueField = "Id";
+            ddlDetalleInsumo.DataBind();
+
+            txtPrecioUnitario.Text = listaBebidas[0].Precio.ToString();
+
         }
 
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
@@ -131,7 +145,41 @@ namespace TP_Cuatrimestral
 
         private void LimpiarCampos()
         {
+            txtPrecioUnitario.Text = "";
+            txtPrecioTotalInsumos.Text ="";
+            txtCantidad.Text = "";
+        }
 
+        protected void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            int cantidad = Convert.ToInt32(txtCantidad.Text);
+            decimal precio = Convert.ToDecimal(txtPrecioUnitario.Text);
+            txtPrecioTotalInsumos.Text = (cantidad * precio).ToString();
+        }
+
+        protected void ddlDetalleInsumo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            InsumoNegocio negocioInsumo = new InsumoNegocio();
+            int idSelected = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
+
+            Insumo selected = negocioInsumo.ObtenerInsumoPorId(idSelected);
+            txtPrecioUnitario.Text = selected.Precio.ToString();
+            txtPrecioTotalInsumos.Text = selected.Precio.ToString();
+            txtCantidad.Text = "1";
+
+        }
+
+        protected void btnAgregarDetalle_Click(object sender, EventArgs e)
+        {
+
+            List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
+            DetallePedido detalle = new DetallePedido();
+            detalle.Insumo = new Insumo();
+            detalle.Insumo.Id = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
+            detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
+            detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
+
+            detallePedidoList.Add(detalle);
         }
     }
 }
