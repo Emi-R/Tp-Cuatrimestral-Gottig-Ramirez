@@ -65,21 +65,26 @@ namespace Negocio
             }
         }
 
-        public void AgregarDetallesPedido(int idPedido, List<DetallePedido> detallePedidoList)
+        public decimal AgregarDetallesPedido(int idPedido, List<DetallePedido> detallePedidoList)
         {
             try
             {
+                decimal total = 0;
                 string consulta = $"Insert into DetallePedidos (IdPedido, IdInsumo, Cantidad, PrecioUnitario) values ";
 
                 foreach (var item in detallePedidoList)
                 {
                     consulta += $"({idPedido}, {item.Insumo.Id}, {item.Cantidad}, '{item.PrecioUnitario.ToString().Replace(",",".")}'),";
+
+                    total += (item.Cantidad * item.PrecioUnitario);
                 }
 
                 consulta = consulta.TrimEnd(',');
 
                 _db.SetearConsulta(consulta);
                 _db.EjecutarAccion();
+
+                return total;
             }
             catch (Exception ex)
             {

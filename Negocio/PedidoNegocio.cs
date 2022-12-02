@@ -96,5 +96,23 @@ namespace Negocio
                 _db.CerrarConexion();
             }
         }
+
+        public void ActualizarTotalPedido(int IdPedido, decimal total)
+        {
+            try
+            {
+                string consulta = $"Update Pedidos set Total = {total.ToString().Replace(",", ".")} where Id = {IdPedido}";
+                _db.SetearConsulta(consulta);
+                _db.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
     }
 }

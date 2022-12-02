@@ -88,7 +88,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <asp:TextBox runat="server" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" ID="txtPrecio" Enabled="false" Text=""></asp:TextBox>
+                            <asp:TextBox runat="server" AutoPostBack="true" CssClass="form-label br-6 w-100 btn-outline-dark bg-light" ID="txtPrecio" Enabled="false" Text="0"></asp:TextBox>
                         </div>
                     </div>
                 </div>

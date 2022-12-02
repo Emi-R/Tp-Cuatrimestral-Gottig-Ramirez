@@ -78,6 +78,8 @@ namespace TP_Cuatrimestral
             txtPrecio.Text = pedido.Total.ToString();
 
             btnAgregar.Visible = false;
+            btnAgregarBebida.Visible = false;
+            btnAgregarPlato.Visible = false;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -95,10 +97,18 @@ namespace TP_Cuatrimestral
             DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
 
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
-            detalleNegocio.AgregarDetallesPedido(IdPedido, detallePedidoList);
+            decimal total = detalleNegocio.AgregarDetallesPedido(IdPedido, detallePedidoList);
+
+            
+            negocio.ActualizarTotalPedido(IdPedido, total);
+
+            txtPrecioTotalInsumos.Text = total.ToString();
 
             lblId.Text = IdPedido.ToString();
             btnAgregar.Visible = false;
+
+            btnAgregarBebida.Visible = false;
+            btnAgregarPlato.Visible = false;
         }
 
         private void cargarDgvDetallePedido(string IdPedido = "")
@@ -145,7 +155,6 @@ namespace TP_Cuatrimestral
             ddlDetalleInsumo.DataBind();
 
             txtPrecioUnitario.Text = listaBebidas[0].Precio.ToString();
-
         }
 
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
@@ -190,6 +199,7 @@ namespace TP_Cuatrimestral
             int idSelected = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
             string nombreSelected = (ddlDetalleInsumo.SelectedItem.Text);
 
+            Pedido pedido = ((Pedido)Session["Pedido"]);
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
 
             if (!detallePedidoList.Any(x => x.Insumo.Id == idSelected))
@@ -203,10 +213,16 @@ namespace TP_Cuatrimestral
                 detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
 
                 detallePedidoList.Add(detalle);
+                decimal total = detalle.Cantidad * detalle.PrecioUnitario;
+                total += Convert.ToDecimal(txtPrecio.Text);
+                txtPrecio.Text = total.ToString();
             }
             else
             {
                 detallePedidoList.Where(x => x.Insumo.Id == idSelected).First().Cantidad += Convert.ToInt32(txtCantidad.Text);
+                decimal total = detallePedidoList.Where(x => x.Insumo.Id == idSelected).First().PrecioUnitario * Convert.ToInt32(txtCantidad.Text);
+                total += Convert.ToDecimal(txtPrecio.Text);
+                txtPrecio.Text = total.ToString();
             }
 
             rowAgregarInsumo.Visible = false;
