@@ -99,7 +99,7 @@
                     <%if (Session["usuario"] != null)
                         { %>
 
-                    <a class="btn btn-dark px-3" style="background-color: black !important"><i class="far fa-user-circle"> Legajo usuario actual: <%: ((Dominio.Usuario)Session["usuario"]).Legajo %></i>
+                    <a class="btn btn-dark px-3" style="background-color: black !important"><i class="far fa-user-circle";"> <%: ((Dominio.Usuario)Session["usuario"]) %></i>
                     </a>
                                         <div style="margin-left: 0.5cm">
                         <asp:Button ID="btnSalir" CssClass="btn btn-dark btn-rounded btn-sm" OnClick="btnSalir_Click" runat="server" Text="Cerrar Sesión" />

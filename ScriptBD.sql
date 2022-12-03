@@ -350,6 +350,22 @@ Select * From Usuarios Where TipoPerfil = 2
 End
 Go
 
+Create Procedure SpAgregarMesa 
+(
+	@NumMesa int,
+	@LegajoMeseroAsignado int,
+	@Capacidad int,
+	@Ocupado bit,
+	@Reservado bit
+)
+As
+Begin
+
+Insert into Mesas (MeseroAsignado, Numero, Capacidad, Ocupado, Reservado, Activo) values
+(@LegajoMeseroAsignado, @NumMesa, @Capacidad, @Ocupado, @Reservado, 1)
+
+End
+Go
 
 --EXEC SpListarPlatos
 --go

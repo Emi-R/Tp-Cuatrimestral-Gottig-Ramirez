@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0" ID="dgvMesas" AutoGenerateColumns="false">
+                        <asp:GridView runat="server" CssClass="table table-primary align-middle mb-0"  OnSelectedIndexChanged="dgvMesas_SelectedIndexChanged" DataKeyNames="Numero" ID="dgvMesas" AutoGenerateColumns="false">
                             <Columns>
                                 <asp:BoundField HeaderText="Nro. Mesa" HeaderStyle-CssClass="headerTitle" DataField="Numero" />
                                 <asp:BoundField HeaderText="Legajo" HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado.Legajo" />

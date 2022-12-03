@@ -29,5 +29,11 @@ namespace TP_Cuatrimestral
             dgvMesas.DataSource = negocio.ListarMesas();
             dgvMesas.DataBind();
         }
+
+        protected void dgvMesas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string num = dgvMesas.SelectedDataKey.Value.ToString();
+            Response.Redirect("AddMesa.aspx?id=" + num);
+        }
     }
 }

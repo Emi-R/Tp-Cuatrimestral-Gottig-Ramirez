@@ -220,7 +220,7 @@ namespace Negocio
 
             try
             {
-                db.SetearConsulta("Select Legajo, TipoPerfil from Usuarios Where Legajo = @Legajo And Contraseña = @Pass");
+                db.SetearConsulta("Select Legajo, Apellidos, Nombre, TipoPerfil from Usuarios Where Legajo = @Legajo And Contraseña = @Pass");
                 db.SetearParametro("@Legajo", usuario.Legajo);
                 db.SetearParametro("@Pass", usuario.Password);
 
@@ -228,6 +228,8 @@ namespace Negocio
 
                 while (db.Lector.Read())
                 {
+                    usuario.Apellido = (string)db.Lector["Apellidos"];
+                    usuario.Nombre = (string)db.Lector["Nombre"];
                     usuario.Perfil.Id = (byte)db.Lector["TipoPerfil"];
                     return true;
 

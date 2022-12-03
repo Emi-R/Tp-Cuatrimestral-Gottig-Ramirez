@@ -66,12 +66,31 @@ namespace Negocio
 
         }
 
-        //    public void agregarMesa(Mesa nueva)
-        //    {
-        //        AccesoDatos db = new AccesoDatos();
+        public void agregarMesa(Mesa nueva)
+        {
+            AccesoDatos db = new AccesoDatos();
 
-        //        db.SetearProcedimiento();
-        //    }
-        //}
+            try
+            {
+                db.SetearProcedimiento("SpAgregarMesa");
+                db.SetearParametro("@NumMesa", nueva.Numero);
+                db.SetearParametro("@LegajoMeseroAsignado", nueva.MeseroAsignado.Legajo);
+                db.SetearParametro("@Capacidad", nueva.Capacidad);
+                db.SetearParametro("@Ocupado", nueva.Ocupado);
+                db.SetearParametro("@Reservado", nueva.Reservado);
+
+                db.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                 
+                throw ex;
+            }
+            finally
+            {
+                db.CerrarConexion();
+            }
+        }
     }
 }
