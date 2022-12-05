@@ -182,7 +182,7 @@
 
 .container-pedidos_edit {
     border: 1px solid black !important;
-    background-color: #fff8a6 !important;
+    background-color: aliceblue !important;
     border-radius: 6px;
     color: white !important;
 }
@@ -207,4 +207,12 @@
     font-weight: bold !important;
     background-color: #008fab !important;
     border:1px solid black;
+}
+
+.border-solid-b{
+    border:solid 1px black;
+}
+
+.align-self-fs {
+    align-self: flex-start !important;
 }

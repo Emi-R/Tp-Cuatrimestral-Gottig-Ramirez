@@ -8,10 +8,19 @@
         <ContentTemplate>
             <div class="row mb-3 m-5 justify-content-center">
                 <div class="col-6 p-5 container-pedidos_edit">
-                    <div class="row bg-light br-6">
-                        <div class="col text-center">
+                    <div class="row  br-6">
+                        <div class="col align-self-fs bg-light text-center">
                             <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Pedido N°"></asp:Label>
                             <asp:Label runat="server" ID="lblId" CssClass="form-label br-6 w-100"></asp:Label>
+                        </div>
+                        <div runat="server" id="divAgregarPedido" class="col-3 text-end">
+                            <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
+                        </div>
+                        <div runat="server" id="divEntregarPedido" class="col-3 text-end">
+                            <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEntregarPedido" OnClick="btnEntregarPedido_Click" Text="Entregar Pedido" />
+                        </div>
+                        <div runat="server" id="divCancelarPedido" class="col-3 text-end">
+                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnCancelarPedido" Text="Cancelar Pedido" />
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -96,7 +105,6 @@
 
             <div class="row m-5 mt-2 justify-content-center">
                 <div class="col-6 text-end">
-                    <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                 </div>
             </div>
 

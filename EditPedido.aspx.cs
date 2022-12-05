@@ -27,11 +27,12 @@ namespace TP_Cuatrimestral
                     crearSessionDetallePedido();
                 }
 
-                if (!String.IsNullOrEmpty(idPedido) && !IsPostBack)
+                if (!String.IsNullOrEmpty(idPedido))
                     PrecargarCampos(idPedido);
                 else
                 {
-                    txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");             
+                    txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                    divEntregarPedido.Visible = false;
                 }
 
 
@@ -81,9 +82,15 @@ namespace TP_Cuatrimestral
             txtFechaPedido.Text = pedido.FechaPedido.ToString("yyyy-MM-dd");
             txtPrecio.Text = pedido.Total.ToString();
 
-            btnAgregar.Visible = false;
-            btnAgregarBebida.Visible = false;
-            btnAgregarPlato.Visible = false;
+            if (pedido.Entregado)
+            {
+                btnAgregarBebida.Visible = false;
+                btnAgregarPlato.Visible = false;
+                divEntregarPedido.Visible = false;
+            }
+            divAgregarPedido.Visible = false;
+
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -109,10 +116,9 @@ namespace TP_Cuatrimestral
             txtPrecioTotalInsumos.Text = total.ToString();
 
             lblId.Text = IdPedido.ToString();
-            btnAgregar.Visible = false;
 
-            btnAgregarBebida.Visible = false;
-            btnAgregarPlato.Visible = false;
+            divAgregarPedido.Visible = false;
+            divEntregarPedido.Visible = true;
         }
 
         private void cargarDgvDetallePedido(string IdPedido = "")
@@ -242,6 +248,11 @@ namespace TP_Cuatrimestral
             LimpiarCampos();
 
             cargarDgvDetallePedido();
+
+        }
+
+        protected void btnEntregarPedido_Click(object sender, EventArgs e)
+        {
 
         }
     }
