@@ -13,9 +13,12 @@ namespace TP_Cuatrimestral
     {
         private PedidoNegocio negocio;
         private Pedido pedido;
+        private DetallePedidoNegocio negocioDetalle;
         protected void Page_Load(object sender, EventArgs e)
         {
             negocio = new PedidoNegocio();
+            negocioDetalle = new DetallePedidoNegocio();
+
             try
             {
                 string idPedido = Request.QueryString["Id"] != null ? Request.QueryString["Id"] : "";
@@ -27,12 +30,13 @@ namespace TP_Cuatrimestral
                     crearSessionDetallePedido();
                 }
 
-                if (!String.IsNullOrEmpty(idPedido))
+                if (!IsPostBack && !String.IsNullOrEmpty(idPedido))
                     PrecargarCampos(idPedido);
                 else
                 {
                     txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
                     divEntregarPedido.Visible = false;
+                    divCancelarPedido.Visible = false;
                 }
 
 
@@ -99,35 +103,29 @@ namespace TP_Cuatrimestral
 
             pedido.Mesa = new Mesa();
             pedido.Mesa.ID = Convert.ToInt32(ddlMesas.SelectedItem.Value);
-
             pedido.MeseroAsignado = new Usuario();
             pedido.MeseroAsignado.Legajo = Convert.ToInt32(ddlMeseros.SelectedItem.Value);
 
             int IdPedido = negocio.AgregarPedido(pedido);
-
-            DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
+            lblId.Text = IdPedido.ToString();
 
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
-            decimal total = detalleNegocio.AgregarDetallesPedido(IdPedido, detallePedidoList);
+            decimal total = negocioDetalle.AgregarDetallesPedido(IdPedido, detallePedidoList);
 
-            
             negocio.ActualizarTotalPedido(IdPedido, total);
-
             txtPrecioTotalInsumos.Text = total.ToString();
-
-            lblId.Text = IdPedido.ToString();
 
             divAgregarPedido.Visible = false;
             divEntregarPedido.Visible = true;
+            divCancelarPedido.Visible = true;
         }
 
         private void cargarDgvDetallePedido(string IdPedido = "")
         {
             if (!string.IsNullOrEmpty(IdPedido))
             {
-                DetallePedidoNegocio detalleNegocio = new DetallePedidoNegocio();
                 repeaterDetallePedido.DataSource = null;
-                repeaterDetallePedido.DataSource = detalleNegocio.ListarDetallePedido(IdPedido);
+                repeaterDetallePedido.DataSource = negocioDetalle.ListarDetallePedido(IdPedido);
                 repeaterDetallePedido.DataBind();
             }
             else
@@ -144,7 +142,7 @@ namespace TP_Cuatrimestral
         {
             pedido = new Pedido();
             if (Session["Pedido"] == null)
-            {        
+            {
                 Session.Add("Pedido", pedido);
             }
             else
@@ -218,7 +216,26 @@ namespace TP_Cuatrimestral
             int idSelected = (Convert.ToInt32(ddlDetalleInsumo.SelectedItem.Value));
             string nombreSelected = (ddlDetalleInsumo.SelectedItem.Text);
 
-            Pedido pedido = ((Pedido)Session["Pedido"]);
+            //si el pedido no existe, agrega los detalles en la Session
+            if(lblId.Text == "")
+            {
+                agregarDetalleEnSession(idSelected, nombreSelected);
+            }
+            //si no, hace el insert directo en DB
+            else
+            {
+                agregarDetalleEnDB(idSelected);
+                divEntregarPedido.Visible = true;
+            }
+
+            rowAgregarInsumo.Visible = false;
+            LimpiarCampos();
+
+
+        }
+
+        private void agregarDetalleEnSession(int idSelected, string nombreSelected = "")
+        {
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
 
             if (!detallePedidoList.Any(x => x.Insumo.Id == idSelected))
@@ -227,33 +244,107 @@ namespace TP_Cuatrimestral
                 detalle.Insumo = new Insumo();
                 detalle.Insumo.Id = idSelected;
                 detalle.Insumo.Nombre = nombreSelected;
-
                 detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
                 detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
 
                 detallePedidoList.Add(detalle);
-                decimal total = detalle.Cantidad * detalle.PrecioUnitario;
-                total += Convert.ToDecimal(txtPrecio.Text);
-                txtPrecio.Text = total.ToString();
+                actualizarTextTotalPedido(detalle.Cantidad, detalle.PrecioUnitario, true);
             }
             else
             {
+                //si existe, busca el detalle en la lista e incrementa la cantidad
                 detallePedidoList.Where(x => x.Insumo.Id == idSelected).First().Cantidad += Convert.ToInt32(txtCantidad.Text);
-                decimal total = detallePedidoList.Where(x => x.Insumo.Id == idSelected).First().PrecioUnitario * Convert.ToInt32(txtCantidad.Text);
-                total += Convert.ToDecimal(txtPrecio.Text);
-                txtPrecio.Text = total.ToString();
+                actualizarTextTotalPedido(Convert.ToInt32(txtCantidad.Text), Convert.ToDecimal(txtPrecioUnitario.Text), true);
             }
 
-            rowAgregarInsumo.Visible = false;
-            LimpiarCampos();
-
             cargarDgvDetallePedido();
+        }
+
+        private void agregarDetalleEnDB(int idSelected)
+        {
+            List<DetallePedido> detallePedidoList = negocioDetalle.ListarDetallePedido(lblId.Text);
+
+            DetallePedido detalle = new DetallePedido();
+            detalle.Insumo = new Insumo();
+
+            if (!detallePedidoList.Any(x => x.Insumo.Id == idSelected))
+            {             
+                detalle.Insumo.Id = idSelected;
+                detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
+                detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
+
+                negocioDetalle.AgregarDetallePedido(Convert.ToInt32(lblId.Text), detalle);
+
+                actualizarTextTotalPedido(detalle.Cantidad, detalle.PrecioUnitario, true);
+                negocio.ActualizarTotalPedido(Convert.ToInt32(lblId.Text), Convert.ToDecimal(txtPrecio.Text));
+            }
+            else
+            {
+                detalle = detallePedidoList.Find(x => x.Insumo.Id == idSelected);
+                detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
+                detalle.Cantidad += (Convert.ToInt32(txtCantidad.Text));
+
+                negocioDetalle.ActualizarDetallePedido(Convert.ToInt32(lblId.Text), detalle);
+
+                actualizarTextTotalPedido((Convert.ToInt32(txtCantidad.Text)), detalle.PrecioUnitario, true);
+                negocio.ActualizarTotalPedido(Convert.ToInt32(lblId.Text), Convert.ToDecimal(txtPrecio.Text));
+
+            }
+
+            cargarDgvDetallePedido(lblId.Text);
 
         }
 
+
         protected void btnEntregarPedido_Click(object sender, EventArgs e)
         {
+            int idSelected = Convert.ToInt32(((Button)sender).CommandArgument);
+            negocio.CambiarEstadoPedido(idSelected, true);
+        }
 
+        protected void btnEliminarDetalle_Click(object sender, EventArgs e)
+        {
+            int idDetalleSelected = Convert.ToInt32(((Button)sender).CommandArgument);
+            DetallePedido detalleDeleted;
+            //aaca logica
+
+            if (lblId.Text != "")
+            {
+                detalleDeleted = negocioDetalle.ListarDetallePedido(lblId.Text).Find(x => x.Insumo.Id == idDetalleSelected);
+                negocioDetalle.EliminarDetallePedido(detalleDeleted.Id);
+                cargarDgvDetallePedido(lblId.Text);
+
+                actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
+                negocio.ActualizarTotalPedido(Convert.ToInt32(lblId.Text), Convert.ToDecimal(txtPrecio.Text));
+            }
+            else
+            {
+                List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
+                detalleDeleted = detallePedidoList.Where(x => x.Insumo.Id == idDetalleSelected).FirstOrDefault();
+                detallePedidoList.Remove(detalleDeleted);
+                actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
+                cargarDgvDetallePedido();
+            }
+
+            divEntregarPedido.Visible = true;
+        }
+
+        protected void btnCancelarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void actualizarTextTotalPedido(int cantidad, decimal precioUnitario, bool suma)
+        {
+            decimal total = Convert.ToDecimal(txtPrecio.Text);
+            decimal totalDetalle = cantidad * precioUnitario;
+
+            if (suma)
+                total += totalDetalle;
+            else
+                total -= totalDetalle;
+
+            txtPrecio.Text = total.ToString();
         }
     }
 }

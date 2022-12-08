@@ -44,11 +44,11 @@ namespace Negocio
                     detalle.Insumo = new Insumo();
                     detalle.Insumo.Id = _db.Lector.GetInt32(1);
                     detalle.Insumo.Nombre = _db.Lector.GetString(2);
-                    //detalle.Insumo.Precio = _db.Lector.GetDecimal(3);
+                    detalle.Insumo.Precio = _db.Lector.GetDecimal(3);
                     detalle.Insumo.Activo = _db.Lector.GetBoolean(4);
                     
                     detalle.Cantidad = _db.Lector.GetInt32(5);
-                    //detalle.PrecioUnitario = _db.Lector.GetDecimal(6);
+                    detalle.PrecioUnitario = _db.Lector.GetDecimal(6);
 
                     listaDetallePedido.Add(detalle);
                 }
@@ -85,6 +85,64 @@ namespace Negocio
                 _db.EjecutarAccion();
 
                 return total;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
+
+        public void AgregarDetallePedido(int idPedido, DetallePedido detalle)
+        {
+            try
+            {
+                string consulta = $"Insert into DetallePedidos (IdPedido, IdInsumo, Cantidad, PrecioUnitario) values ({idPedido}, {detalle.Insumo.Id}, {detalle.Cantidad}, '{detalle.PrecioUnitario.ToString().Replace(",",".")}') ";
+                _db.SetearConsulta(consulta);
+
+                _db.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
+
+        public void ActualizarDetallePedido(int idPedido, DetallePedido detalle)
+        {
+            try
+            {
+                string consulta = $"Update DetallePedidos Set Cantidad = '{detalle.Cantidad}', PrecioUnitario = '{detalle.PrecioUnitario.ToString().Replace(",", ".")}' where IdPedido = {idPedido} AND IdInsumo = {detalle.Insumo.Id} ";
+
+                _db.SetearConsulta(consulta);
+                _db.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
+        public void EliminarDetallePedido(int idDetalle)
+        {
+            try
+            {
+                string consulta = "Delete From DetallePedidos where Id = @Id";
+
+                _db.SetearConsulta(consulta);
+                _db.SetearParametro("@Id", idDetalle);
+
+                _db.EjecutarAccion();
             }
             catch (Exception ex)
             {

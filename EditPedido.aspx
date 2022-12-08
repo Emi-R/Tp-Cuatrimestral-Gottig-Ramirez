@@ -17,10 +17,10 @@
                             <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                         </div>
                         <div runat="server" id="divEntregarPedido" class="col-3 text-end">
-                            <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEntregarPedido" OnClick="btnEntregarPedido_Click" Text="Entregar Pedido" />
+                            <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEntregarPedido" OnClick="btnEntregarPedido_Click" Text="Entregar Pedido" />
                         </div>
                         <div runat="server" id="divCancelarPedido" class="col-3 text-end">
-                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnCancelarPedido" Text="Cancelar Pedido" />
+                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnCancelarPedido" OnClick="btnCancelarPedido_Click" Text="Cancelar Pedido" />
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -52,23 +52,26 @@
 
                     <div class="row mb-3 justify-content-end">
                         <div class="col-3">
-                            <asp:Button runat="server" Text="Agregar Bebida" ID="btnAgregarBebida" OnClick="btnAgregarBebida_Click" CssClass=" btn btn-primary mb-1" />
+                            <asp:Button runat="server" Text="Agregar Bebida" ID="btnAgregarBebida" OnClick="btnAgregarBebida_Click" CssClass=" btn btn-info mb-1" />
                         </div>
                         <div class="col-3">
-                            <asp:Button runat="server" Text="Agregar Plato" ID="btnAgregarPlato" OnClick="btnAgregarPlato_Click" CssClass=" btn btn-danger mb-1" />
+                            <asp:Button runat="server" Text="Agregar Plato" ID="btnAgregarPlato" OnClick="btnAgregarPlato_Click" CssClass=" btn btn-info mb-1" />
                         </div>
                     </div>
                     <div class="row mb-3 mx-2">
                         <div class="col">
                             <div class="row headerTitleDetallePedido">
-                                <div class="col-6">
+                                <div class="col-6 align-self-center">
                                     <asp:Label runat="server" Text="Nombre"></asp:Label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 align-self-center">
                                     <asp:Label runat="server" Text="Cantidad"></asp:Label>
                                 </div>
-                                <div class="col">
+                                <div class="col align-self-center">
                                     <asp:Label runat="server" Text="Precio Unitario"></asp:Label>
+                                </div>
+                                <div class="col-2">
+                                    <asp:Label runat="server" Text=""></asp:Label>
                                 </div>
                             </div>
                             <asp:Repeater runat="server" ID="repeaterDetallePedido">
@@ -82,6 +85,9 @@
                                         </div>
                                         <div class="col m-auto ">
                                             <asp:Label runat="server" ID="lblPrecioUnitario" Text='<%#Eval("PrecioUnitario")%>' CssClass="text-dark" Enabled="false"></asp:Label>
+                                        </div>
+                                        <div class="col-2 m-auto">
+                                            <asp:Button runat="server" CssClass="btn btn-danger m-1" OnClick="btnEliminarDetalle_Click" CommandArgument='<%# Eval("Insumo.Id")%>' CommandName="idDetallePedido" ID="btnEliminarDetalle" Text="Eliminar" />
                                         </div>
                                     </div>
                                 </ItemTemplate>

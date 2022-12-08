@@ -24,6 +24,7 @@ insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Call
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('cjjb', 36909435, 'Adèle', 'Westwell', '4933840137', 'swestwell8@hp.com', 'Crest Line', '806', null, null, 5, 2, '1999-06-09', '2021-12-24', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('acyc', 14509792, 'Irène', 'Garthside', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('', 39488879, 'Emiliano', 'Ramirez', '1724077704', 'sgarthside9@dion.ne.jp', 'Crowley', '4', null, null, 8, 2, '1994-05-10', '2019-10-16', 1);
+insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('test123', 44095935, 'Marianella', 'Gottig', '1224077704', 'marie@dion.ne.jp', 'Test', '1', null, null, 8, 1, '1994-05-11', '2019-10-16', 1);
 
 Go
 
