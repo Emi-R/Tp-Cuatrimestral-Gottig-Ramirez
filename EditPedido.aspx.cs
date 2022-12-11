@@ -333,6 +333,8 @@ namespace TP_Cuatrimestral
 
                 actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
                 negocio.ActualizarTotalPedido(Convert.ToInt32(lblId.Text), Convert.ToDecimal(txtPrecio.Text));
+                divEntregarPedido.Visible = true;
+                divEliminarPedido.Visible = true;
             }
             else
             {
@@ -341,15 +343,7 @@ namespace TP_Cuatrimestral
                 detallePedidoList.Remove(detalleDeleted);
                 actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
                 cargarDgvDetallePedido();
-            }
-
-            divEntregarPedido.Visible = true;
-            divEliminarPedido.Visible = true;
-        }
-
-        protected void btnCancelarPedido_Click(object sender, EventArgs e)
-        {
-
+            }        
         }
 
         private void actualizarTextTotalPedido(int cantidad, decimal precioUnitario, bool suma)
@@ -366,11 +360,6 @@ namespace TP_Cuatrimestral
         }
 
         protected void btnEliminarPedido_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnEliminarPedido_Click1(object sender, EventArgs e)
         {
 
         }
