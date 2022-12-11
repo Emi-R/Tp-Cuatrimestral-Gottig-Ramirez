@@ -13,7 +13,7 @@
                             <asp:Label runat="server" CssClass="form-label text-dark fw-semibold" Text="Pedido N°"></asp:Label>
                             <asp:Label runat="server" ID="lblId" CssClass="form-label br-6 w-100"></asp:Label>
                         </div>
-                        <div runat="server" id="divAgregarPedido" class="col-3 text-end">
+                        <div runat="server" id="divAgregarPedido" class="col-4 text-end">
                             <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                         </div>
                         <div runat="server" id="divEliminarPedido" class="col-3 text-end">

@@ -72,6 +72,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Administracion.aspx">Administrar</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="Reportes.aspx">Reportes</a>
+                        </li>
                         <% }
                             else
                             { %>
@@ -91,7 +95,8 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="Administracion.aspx">Administrar</a>
                         </li>
-                        <% }%>
+
+                        <% }%>
                     </ul>
                 </div>
 
@@ -99,14 +104,12 @@
                     <%if (Session["usuario"] != null)
                         { %>
 
-                    <a class="btn btn-dark px-3" style="background-color: black !important"><i class="far fa-user-circle";"> <%: ((Dominio.Usuario)Session["usuario"]) %></i>
+                    <a class="btn btn-dark px-3" style="background-color: black !important"><i class="far fa-user-circle"><%: ((Dominio.Usuario)Session["usuario"]) %></i>
                     </a>
-                                        <div style="margin-left: 0.5cm">
+                    <div style="margin-left: 0.5cm">
                         <asp:Button ID="btnSalir" CssClass="btn btn-dark btn-rounded btn-sm" OnClick="btnSalir_Click" runat="server" Text="Cerrar Sesión" />
-                    <%}%>
-
-
                     </div>
+                    <%}%>
                 </div>
             </div>
         </nav>

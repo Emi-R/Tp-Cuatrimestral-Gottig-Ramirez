@@ -32,25 +32,22 @@ namespace TP_Cuatrimestral
 
         private void cargarRepeaterPedidos(int estado = 2)
         {
-            //if (IsPostBack)
-            //    repeaterPedidos.DataSource = null;
-
             List<Pedido> listaPedidos = new List<Pedido>();
             string numeroMesa = Request.QueryString["NumeroMesa"] != null ? Request.QueryString["NumeroMesa"] : "";
+
             if (numeroMesa != "")
-            {
                 listaPedidos = negocio.ListarPedidos(numeroMesa);
-                if (((Usuario)Session["usuario"]).Perfil.Id == (int)Perfiles.Mesero)
-                {
-                    listaPedidos = listaPedidos.Where(e => e.FechaPedido.Date == DateTime.Now.Date).ToList();
-                }           
-            }
             else
-            {
                 listaPedidos = negocio.ListarPedidos();
-            }
 
+            //si la fecha del filtro contiene algo, lo filtra por fecha, si no filtra los pedidos de la fecha actual
+            string fechaFiltro = txtFechaPedido.Text;
+            if (fechaFiltro == "")
+                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date == DateTime.Now.Date).ToList();
+            else
+                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date == DateTime.Parse(fechaFiltro).Date).ToList();
 
+            //filtra dependiendo si el pedido esta entregado o no
             switch (estado)
             {
                 case 0:
@@ -117,6 +114,11 @@ namespace TP_Cuatrimestral
         protected void btnEliminarPedido_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void txtFechaPedido_TextChanged(object sender, EventArgs e)
+        {
+            cargarRepeaterPedidos();
         }
     }
 }

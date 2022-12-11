@@ -337,9 +337,20 @@ create Procedure SpAgregarPedido(
  @LegajoMeseroAsignado int)
 As
 Begin 
-INSERT INTO PEDIDOS (IdMesa, LegajoMeseroAsignado, Fecha, Entregado, Total)
-output inserted.Id   
-values (@IdMesa, @LegajoMeseroAsignado, GETDATE(), 0, 0)
+	BEGIN TRY
+	BEGIN TRAN
+		INSERT INTO PEDIDOS (IdMesa, LegajoMeseroAsignado, Fecha, Entregado, Total)
+		output inserted.Id   
+		values (@IdMesa, @LegajoMeseroAsignado, GETDATE(), 0, 0)
+
+		UPDATE Mesas SET Ocupado = 1
+		Where ID = @IdMesa
+	COMMIT TRAN
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRAN
+	END CATCH
+
 End
 Go
 

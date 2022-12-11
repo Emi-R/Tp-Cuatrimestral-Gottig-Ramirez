@@ -9,23 +9,23 @@
         <div class="col-8 " style="background-color: #92aedb !important; border-radius: 50px">
             <div class="title-page">
                 <h1 class="mt-4 mb-4" style="color: #e2e1e5fc;">Pedidos</h1>
-                <%--<hr style="background-color:red">--%>
             </div>
         </div>
         <div class="col-2"></div>
     </div>
     <asp:UpdatePanel runat="server" ID="updatePanel">
         <ContentTemplate>
-            <div class="row m-5">
+            <div class="row m-1 mt-3">
                 <div class="col">
                     <div class="row">
                         <div class="col-2">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <asp:Label runat="server" CssClass="text-dark" Text="Filtrar Pedidos por:"></asp:Label>
+                                    <asp:Label runat="server" CssClass="text-dark fw-bold" Text="Filtrar Pedidos por:"></asp:Label>
                                 </div>
                             </div>
                             <div class="row mb-2">
+                                <label class="form-label text-dark" for="lblFiltroEstado">Estado</label>
                                 <div class="btn-group-vertical w-200px" role="group" aria-label=" Basic radio toggle button group">
 
                                     <asp:Button CssClass="w-200px btn btn-outline-success bg-light p-2" OnClick="btnTodosLosEstados_Click" Text="Todos los Pedidos" runat="server" ID="btnTodosLosEstados"></asp:Button>
@@ -36,6 +36,14 @@
 
                                 </div>
                             </div>
+
+                            <div class="row mb-2">
+                                <div class=" form-dark w-200px ms-2">
+                                    <label class="form-label text-dark" for="lblFiltroFecha">Fecha</label>
+                                    <asp:TextBox TextMode="Date" ID="txtFechaPedido" OnTextChanged="txtFechaPedido_TextChanged" AutoPostBack="true" CssClass="form-control text-dark " runat="server"></asp:TextBox>
+
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-8">
@@ -43,13 +51,13 @@
                                 <div class="col-2">
                                     <asp:Label runat="server" Text="Pedido N°"></asp:Label>
                                 </div>
-                                <div class="col-1">
+                                <div class="col-2">
                                     <asp:Label runat="server" Text="Total"></asp:Label>
                                 </div>
                                 <div class="col-1">
                                     <asp:Label runat="server" Text="Mesa N°"></asp:Label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <asp:Label runat="server" Text="Estado"></asp:Label>
                                 </div>
                                 <div class="col-4">
@@ -62,18 +70,16 @@
                                             <asp:Label runat="server" ID="txtIdPedido" Text='<%#Eval("ID")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
 
-                                        <div class="col-1">
+                                        <div class="col-2">
                                             <asp:Label runat="server" ID="lblTotal" Text='<%#Eval("Total")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
 
                                         <div class="col-1 ">
                                             <asp:Label runat="server" ID="lblNumeroMesa" Text='<%# Eval("Mesa.Numero") %>'></asp:Label>
-                                            <%--                                    <asp:CheckBox runat="server" ID="cbxEntregado" Enabled="false" Checked='<%#Eval("Entregado") %>' />--%>
                                         </div>
 
-                                        <div class="col-2">
+                                        <div class="col-1">
                                             <asp:Label runat="server" ID="lblEntregado" Text='<%# (bool)Eval("Entregado") ? "Entregado" : "Pendiente"%>'></asp:Label>
-                                            <%--                                    <asp:CheckBox runat="server" ID="cbxEntregado" Enabled="false" Checked='<%#Eval("Entregado") %>' />--%>
                                         </div>
 
                                         <div class="col-2 m-auto">
