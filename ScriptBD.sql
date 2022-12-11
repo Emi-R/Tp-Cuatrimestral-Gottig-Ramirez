@@ -361,6 +361,27 @@ Create Procedure SpAgregarMesa
 As
 Begin
 
+
+Create Procedure SpObtenerMesaPorNumero (@NumeroMesa int)
+as
+begin 
+	Select   
+    M.Numero,   
+    U.Legajo,   
+    U.Apellidos,  
+    U.Nombre, 
+    M.Capacidad,   
+    M.Ocupado,   
+    M.Reservado,   
+    M.Activo,  
+    M.ID  
+From Mesas M   
+Inner Join Usuarios U On M.MeseroAsignado = U.Legajo  
+where M.Numero = @NumeroMesa
+end
+go
+
+
 Insert into Mesas (MeseroAsignado, Numero, Capacidad, Ocupado, Reservado, Activo) values
 (@LegajoMeseroAsignado, @NumMesa, @Capacidad, @Ocupado, @Reservado, 1)
 

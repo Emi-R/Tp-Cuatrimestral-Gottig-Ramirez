@@ -16,12 +16,13 @@
                         <div runat="server" id="divAgregarPedido" class="col-3 text-end">
                             <asp:Button Visible="true" runat="server" Text="Agregar Pedido" ID="btnAgregar" OnClick="btnAgregar_Click" CssClass="w-200px btn btn-success mb-4" />
                         </div>
+                        <div runat="server" id="divEliminarPedido" class="col-3 text-end">
+                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEliminarPedido" OnClick="btnEliminarPedido_Click1" Text="Eliminar Pedido" />
+                        </div>
                         <div runat="server" id="divEntregarPedido" class="col-3 text-end">
                             <asp:Button runat="server" CssClass="btn btn-success m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnEntregarPedido" OnClick="btnEntregarPedido_Click" Text="Entregar Pedido" />
                         </div>
-                        <div runat="server" id="divCancelarPedido" class="col-3 text-end">
-                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnCancelarPedido" OnClick="btnCancelarPedido_Click" Text="Cancelar Pedido" />
-                        </div>
+
                     </div>
                     <div class="row mt-3">
                         <div class="col">

@@ -92,5 +92,48 @@ namespace Negocio
                 db.CerrarConexion();
             }
         }
+
+        public Mesa ObtenerMesaPorNumero(string numeroMesa)
+        {
+            try
+            {
+                basedatos.SetearProcedimiento("SpObtenerMesaPorNumero");
+                basedatos.SetearParametro("@NumeroMesa", Convert.ToInt32(numeroMesa));
+
+                basedatos.EjecutarLectura();
+
+                Mesa mesa = new Mesa();
+                while (basedatos.Lector.Read())
+                {
+                    mesa.Numero = (int)basedatos.Lector["Numero"];
+
+                    mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
+
+                    mesa.MeseroAsignado.Apellido = (string)basedatos.Lector["Apellidos"];
+                    mesa.MeseroAsignado.Nombre = (string)basedatos.Lector["Nombre"];
+
+                    mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
+
+                    mesa.Reservado = (bool)basedatos.Lector["Reservado"];
+
+                    mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
+
+                    mesa.Activo = (bool)basedatos.Lector["Activo"];
+
+                    mesa.ID = (int)basedatos.Lector["ID"];
+                }
+
+                return mesa;
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
+        }
     }
 }

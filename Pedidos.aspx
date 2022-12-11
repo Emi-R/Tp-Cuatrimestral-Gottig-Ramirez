@@ -28,9 +28,9 @@
                             <div class="row mb-2">
                                 <div class="btn-group-vertical w-200px" role="group" aria-label=" Basic radio toggle button group">
 
-                                    <asp:Button CssClass="w-200px btn btn-outline-primary bg-light p-2" OnClick="btnTodosLosEstados_Click" Text="Todos los Pedidos" runat="server" ID="btnTodosLosEstados"></asp:Button>
+                                    <asp:Button CssClass="w-200px btn btn-outline-success bg-light p-2" OnClick="btnTodosLosEstados_Click" Text="Todos los Pedidos" runat="server" ID="btnTodosLosEstados"></asp:Button>
 
-                                    <asp:Button CssClass="w-200px btn btn-outline-success bg-light p-2" OnClick="btnEstadoEntregados_Click" Text="Pedidos Entregados" runat="server" ID="btnEstadoEntregados"></asp:Button>
+                                    <asp:Button CssClass="w-200px btn btn-outline-primary bg-light p-2" OnClick="btnEstadoEntregados_Click" Text="Pedidos Entregados" runat="server" ID="btnEstadoEntregados"></asp:Button>
 
                                     <asp:Button CssClass="w-200px btn btn-outline-danger bg-light p-2" OnClick="btnEstadoPendiente_Click" Text="Pedidos Pendientes" runat="server" ID="btnEstadoPendiente"></asp:Button>
 
@@ -43,30 +43,30 @@
                                 <div class="col-2">
                                     <asp:Label runat="server" Text="Pedido N°"></asp:Label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <asp:Label runat="server" Text="Total"></asp:Label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <asp:Label runat="server" Text="Mesa N°"></asp:Label>
                                 </div>
                                 <div class="col-2">
-                                    <asp:Label runat="server" Text="Entregado"></asp:Label>
+                                    <asp:Label runat="server" Text="Estado"></asp:Label>
                                 </div>
                                 <div class="col-4">
                                 </div>
                             </div>
                             <asp:Repeater runat="server" ID="repeaterPedidos">
                                 <ItemTemplate>
-                                    <div class="row item-listaPedidos">
+                                    <div class="row item-listaPedidos <%# (bool)Eval("Entregado") ? "bg-alice-blue" : "bg-warning-light"%>">
                                         <div class="col-2 ">
                                             <asp:Label runat="server" ID="txtIdPedido" Text='<%#Eval("ID")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
 
-                                        <div class="col-2 ">
+                                        <div class="col-1">
                                             <asp:Label runat="server" ID="lblTotal" Text='<%#Eval("Total")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
 
-                                        <div class="col-2 ">
+                                        <div class="col-1 ">
                                             <asp:Label runat="server" ID="lblNumeroMesa" Text='<%# Eval("Mesa.Numero") %>'></asp:Label>
                                             <%--                                    <asp:CheckBox runat="server" ID="cbxEntregado" Enabled="false" Checked='<%#Eval("Entregado") %>' />--%>
                                         </div>
@@ -80,10 +80,12 @@
                                             <asp:Button runat="server" CssClass="btn btn-warning m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnVerPedido" OnClick="btnVerPedido_Click" Text="Ver Pedido" />
                                         </div>
 
-                                        
-                                            
-                                       <div class="col-2 m-auto">
-                                            <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEntregado" OnClick="btnEntregado_Click" Text="Entregar Pedido" />
+                                        <div class="col-2 m-auto">
+                                            <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEntregado" OnClick="btnEntregado_Click" Text="Entregar" />
+                                        </div>
+
+                                        <div class="col-2 m-auto">
+                                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEliminarPedido" OnClick="btnEliminarPedido_Click" Text="Eliminar" />
                                         </div>
 
                                     </div>

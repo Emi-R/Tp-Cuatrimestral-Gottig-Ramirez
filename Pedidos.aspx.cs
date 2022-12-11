@@ -26,7 +26,6 @@ namespace TP_Cuatrimestral
                 else
                 {
                     cargarRepeaterPedidos();
-
                 }
             }
         }
@@ -39,14 +38,23 @@ namespace TP_Cuatrimestral
             List<Pedido> listaPedidos = new List<Pedido>();
             string numeroMesa = Request.QueryString["NumeroMesa"] != null ? Request.QueryString["NumeroMesa"] : "";
             if (numeroMesa != "")
+            {
                 listaPedidos = negocio.ListarPedidos(numeroMesa);
+                if (((Usuario)Session["usuario"]).Perfil.Id == (int)Perfiles.Mesero)
+                {
+                    listaPedidos = listaPedidos.Where(e => e.FechaPedido.Date == DateTime.Now.Date).ToList();
+                }           
+            }
             else
+            {
                 listaPedidos = negocio.ListarPedidos();
+            }
+
 
             switch (estado)
             {
                 case 0:
-                    listaPedidos = listaPedidos.Where(x => !x.Entregado).ToList() ;
+                    listaPedidos = listaPedidos.Where(x => !x.Entregado).ToList();
                     break;
 
                 case 1:
@@ -69,9 +77,18 @@ namespace TP_Cuatrimestral
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"EditPedido.aspx", false);
+            string numeroMesa = Request.QueryString["NumeroMesa"];
 
-
+            if (!String.IsNullOrEmpty(numeroMesa))
+            {
+                MesaNegocio negocioMesa = new MesaNegocio();
+                Mesa mesa = negocioMesa.ObtenerMesaPorNumero(numeroMesa);
+                Response.Redirect($"EditPedido.aspx?IdMesa={mesa.ID}&LegajoMesero={mesa.MeseroAsignado.Legajo}", false);
+            }
+            else
+            {
+                Response.Redirect($"EditPedido.aspx", false);
+            }
         }
 
         protected void btnTodosLosEstados_Click(object sender, EventArgs e)
@@ -94,6 +111,11 @@ namespace TP_Cuatrimestral
             int idSelected = Convert.ToInt32(((Button)sender).CommandArgument);
             negocio.CambiarEstadoPedido(idSelected, true);
             cargarRepeaterPedidos();
+
+        }
+
+        protected void btnEliminarPedido_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -170,11 +170,21 @@
 
 
 .item-listaPedidos {
-    background: aliceblue;
+   
     border-right: 1px solid #008fab;
     border-left: 1px solid #008fab;
     border-bottom: 1px solid #008fab;
 }
+
+.bg-alice-blue {
+    background: aliceblue;
+}
+
+.bg-warning-light {
+    background: #ffeeee !important;
+}
+
+
 
 .item-listaPedidos div{
     margin:auto;

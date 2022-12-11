@@ -36,7 +36,7 @@ namespace TP_Cuatrimestral
                 {
                     txtFechaPedido.Text = DateTime.Now.ToString("yyyy-MM-dd");
                     divEntregarPedido.Visible = false;
-                    divCancelarPedido.Visible = false;
+                    divEliminarPedido.Visible = false;
                 }
 
 
@@ -52,21 +52,36 @@ namespace TP_Cuatrimestral
         private void cargarDdlMesas()
         {
             MesaNegocio negocioMesa = new MesaNegocio();
+            string idMesa = Request.QueryString["IdMesa"] != null ? Request.QueryString["IdMesa"] : "";
 
             ddlMesas.DataSource = negocioMesa.ListarMesas();
             ddlMesas.DataTextField = "Numero";
             ddlMesas.DataValueField = "ID";
             ddlMesas.DataBind();
+
+            if (!String.IsNullOrEmpty(idMesa))
+            {
+                ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(idMesa)));
+                ddlMesas.Enabled = false;
+            }
+
         }
 
         private void cargarDdlEmpleados()
         {
             UsuarioNegocio negocioUsuario = new UsuarioNegocio();
+            string legajoMesero = Request.QueryString["LegajoMesero"] != null ? Request.QueryString["LegajoMesero"] : "";
 
             ddlMeseros.DataSource = negocioUsuario.listarUsuarios().Where(x => x.Perfil.Id == (int)Perfiles.Mesero);
             ddlMeseros.DataTextField = "Legajo";
             ddlMeseros.DataValueField = "Legajo";
             ddlMeseros.DataBind();
+
+            if (!String.IsNullOrEmpty(legajoMesero))
+            {
+                ddlMeseros.SelectedIndex = ddlMeseros.Items.IndexOf((ddlMeseros.Items.FindByValue(legajoMesero)));
+                ddlMeseros.Enabled = false;
+            }
 
         }
         private void PrecargarCampos(string idPedido)
@@ -75,7 +90,7 @@ namespace TP_Cuatrimestral
 
             lblId.Text = pedido.ID.ToString();
 
-            ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(pedido.Mesa.Numero.ToString())));
+            ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(pedido.Mesa.ID.ToString())));
             ddlMesas.Enabled = false;
 
             ddlMeseros.SelectedIndex = ddlMeseros.Items.IndexOf((ddlMeseros.Items.FindByValue(pedido.MeseroAsignado.Legajo.ToString())));
@@ -91,6 +106,7 @@ namespace TP_Cuatrimestral
                 btnAgregarBebida.Visible = false;
                 btnAgregarPlato.Visible = false;
                 divEntregarPedido.Visible = false;
+                divEliminarPedido.Visible = false;
             }
             divAgregarPedido.Visible = false;
 
@@ -117,7 +133,7 @@ namespace TP_Cuatrimestral
 
             divAgregarPedido.Visible = false;
             divEntregarPedido.Visible = true;
-            divCancelarPedido.Visible = true;
+            divEliminarPedido.Visible = true;
         }
 
         private void cargarDgvDetallePedido(string IdPedido = "")
@@ -217,7 +233,7 @@ namespace TP_Cuatrimestral
             string nombreSelected = (ddlDetalleInsumo.SelectedItem.Text);
 
             //si el pedido no existe, agrega los detalles en la Session
-            if(lblId.Text == "")
+            if (lblId.Text == "")
             {
                 agregarDetalleEnSession(idSelected, nombreSelected);
             }
@@ -226,7 +242,7 @@ namespace TP_Cuatrimestral
             {
                 agregarDetalleEnDB(idSelected);
                 divEntregarPedido.Visible = true;
-                divCancelarPedido.Visible=true;
+                divEliminarPedido.Visible = true;
             }
 
             rowAgregarInsumo.Visible = false;
@@ -269,7 +285,7 @@ namespace TP_Cuatrimestral
             detalle.Insumo = new Insumo();
 
             if (!detallePedidoList.Any(x => x.Insumo.Id == idSelected))
-            {             
+            {
                 detalle.Insumo.Id = idSelected;
                 detalle.PrecioUnitario = Convert.ToDecimal(txtPrecioUnitario.Text);
                 detalle.Cantidad = (Convert.ToInt32(txtCantidad.Text));
@@ -328,6 +344,7 @@ namespace TP_Cuatrimestral
             }
 
             divEntregarPedido.Visible = true;
+            divEliminarPedido.Visible = true;
         }
 
         protected void btnCancelarPedido_Click(object sender, EventArgs e)
@@ -346,6 +363,16 @@ namespace TP_Cuatrimestral
                 total -= totalDetalle;
 
             txtPrecio.Text = total.ToString();
+        }
+
+        protected void btnEliminarPedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnEliminarPedido_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }
