@@ -226,6 +226,7 @@ namespace TP_Cuatrimestral
             {
                 agregarDetalleEnDB(idSelected);
                 divEntregarPedido.Visible = true;
+                divCancelarPedido.Visible=true;
             }
 
             rowAgregarInsumo.Visible = false;
