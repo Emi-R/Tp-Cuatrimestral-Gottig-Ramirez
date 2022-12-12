@@ -130,8 +130,7 @@ namespace TP_Cuatrimestral
             {
                 if (!(detallePedidoList.Count() > 0))
                 {
-                    lblMessageError.Text = "El Pedido no ha podido realizarse, no contiene Insumos cargados!";
-                    divAlert.Visible = true;
+                    mostrarAlert("El Pedido no ha podido realizarse, no contiene Insumos cargados!");
                     return;
                 }
 
@@ -149,8 +148,7 @@ namespace TP_Cuatrimestral
             }
             catch(Exception ex)
             {
-                lblMessageError.Text = ex.ToString();
-                divAlert.Visible = true;
+                mostrarAlert(ex.ToString());
             }
         }
 
@@ -381,13 +379,7 @@ namespace TP_Cuatrimestral
         {
             var idPedido = Convert.ToInt32(lblId.Text);
 
-            tipoAlert = TipoAlert.ConfirmaEliminarPedido;
-            btnAceptarAlert.CommandArgument = ((int)tipoAlert).ToString();
-
-            lblMessageError.Text = $"Confirma eliminar el Pedido #{idPedido}";
-
-
-            divAlert.Visible = true;
+            mostrarAlert($"Confirma eliminar el Pedido #{idPedido}?", "Confirmar", (int)TipoAlert.ConfirmaEliminarPedido);
         }
 
         protected void ddlMesas_SelectedIndexChanged(object sender, EventArgs e)
@@ -417,6 +409,14 @@ namespace TP_Cuatrimestral
                     divAlert.Visible = false;
                     break;
             }
+        }
+
+        private void mostrarAlert(string message = "", string btnSuccessText = "Aceptar", int tipoAlert = 0)
+        {
+            btnAceptarAlert.CommandArgument = tipoAlert.ToString();
+            btnAceptarAlert.Text = btnSuccessText;
+            lblMessageError.Text = message;
+            divAlert.Visible = true;
         }
     }
 }
