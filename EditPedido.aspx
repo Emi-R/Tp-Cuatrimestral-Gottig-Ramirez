@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="col">
-                            <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Mesero Asignado"></asp:Label>
+                            <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Legajo Mesero Asignado"></asp:Label>
                         </div>
                         <div class="col">
                             <asp:Label runat="server" CssClass="form-label text-dark w-100 fw-semibold" Text="Fecha Pedido"></asp:Label>
@@ -39,10 +39,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlMesas"></asp:DropDownList>
+                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" AutoPostBack="true" OnSelectedIndexChanged="ddlMesas_SelectedIndexChanged" runat="server" ID="ddlMesas"></asp:DropDownList>
                         </div>
                         <div class="col">
-                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" ID="ddlMeseros"></asp:DropDownList>
+                            <asp:DropDownList CssClass="w-100 form-select btn btn-outline-dark dropwdown-toggle bg-light p-2" runat="server" Enabled="false" ID="ddlMeseros"></asp:DropDownList>
                         </div>
                         <div class="col ">
                             <asp:TextBox runat="server" CssClass="form-label br-6 w-100 btn-outline-dark bg-light p-1" ID="txtFechaPedido" Enabled="false" Text="" TextMode="Date"></asp:TextBox>
@@ -160,6 +160,21 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="row justify-content-center m-auto"  style="width: 100%; position: fixed; z-index: 100; top: 30%" runat="server" ID="divAlert" visible="false" role="alert">
+                <div class="col-6 alert alert-danger align-items-center ">
+                  <div class="row">
+                      <div class="col">
+                           <asp:Label runat="server" ID="lblMessageError" Text=""></asp:Label>
+                      </div>
+                  </div>
+                  <div class="row justify-content-end">
+                      <div class="col-3">
+                            <asp:Button CssClass="btn btn-success w-100" runat="server" ID="btnAceptarAlert" CommandArgument='<%# ((int)tipoAlert)%>' OnClick="btnAceptarAlert_Click" Text="Aceptar"/>
+                      </div>
+                  </div>
+                </div>
             </div>
 
         </ContentTemplate>

@@ -14,6 +14,7 @@ namespace TP_Cuatrimestral
         private PedidoNegocio negocio;
         private Pedido pedido;
         private DetallePedidoNegocio negocioDetalle;
+        public TipoAlert tipoAlert;
         protected void Page_Load(object sender, EventArgs e)
         {
             negocio = new PedidoNegocio();
@@ -25,6 +26,7 @@ namespace TP_Cuatrimestral
 
                 if (!IsPostBack)
                 {
+                    tipoAlert = TipoAlert.Default;
                     cargarDdlMesas();
                     cargarDdlEmpleados();
                     crearSessionDetallePedido();
@@ -122,18 +124,34 @@ namespace TP_Cuatrimestral
             pedido.MeseroAsignado = new Usuario();
             pedido.MeseroAsignado.Legajo = Convert.ToInt32(ddlMeseros.SelectedItem.Value);
 
-            int IdPedido = negocio.AgregarPedido(pedido);
-            lblId.Text = IdPedido.ToString();
-
             List<DetallePedido> detallePedidoList = ((Pedido)Session["Pedido"]).ListDetallePedido;
-            decimal total = negocioDetalle.AgregarDetallesPedido(IdPedido, detallePedidoList);
 
-            negocio.ActualizarTotalPedido(IdPedido, total);
-            txtPrecioTotalInsumos.Text = total.ToString();
+            try
+            {
+                if (!(detallePedidoList.Count() > 0))
+                {
+                    lblMessageError.Text = "El Pedido no ha podido realizarse, no contiene Insumos cargados!";
+                    divAlert.Visible = true;
+                    return;
+                }
 
-            divAgregarPedido.Visible = false;
-            divEntregarPedido.Visible = true;
-            divEliminarPedido.Visible = true;
+                int IdPedido = negocio.AgregarPedido(pedido);
+                lblId.Text = IdPedido.ToString();
+
+                decimal total = negocioDetalle.AgregarDetallesPedido(IdPedido, detallePedidoList);
+
+                negocio.ActualizarTotalPedido(IdPedido, total);
+                txtPrecioTotalInsumos.Text = total.ToString();
+
+                divAgregarPedido.Visible = false;
+                divEntregarPedido.Visible = true;
+                divEliminarPedido.Visible = true;
+            }
+            catch(Exception ex)
+            {
+                lblMessageError.Text = ex.ToString();
+                divAlert.Visible = true;
+            }
         }
 
         private void cargarDgvDetallePedido(string IdPedido = "")
@@ -362,8 +380,43 @@ namespace TP_Cuatrimestral
         protected void btnEliminarPedido_Click(object sender, EventArgs e)
         {
             var idPedido = Convert.ToInt32(lblId.Text);
-            negocio.EliminarPedido(idPedido);
-            Response.Redirect("Pedidos.aspx", false);
+
+            tipoAlert = TipoAlert.ConfirmaEliminarPedido;
+            btnAceptarAlert.CommandArgument = ((int)tipoAlert).ToString();
+
+            lblMessageError.Text = $"Confirma eliminar el Pedido #{idPedido}";
+
+
+            divAlert.Visible = true;
+        }
+
+        protected void ddlMesas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string numeroMesa = ddlMesas.SelectedValue;
+
+            MesaNegocio negocioMesa = new MesaNegocio();
+            Mesa mesa = negocioMesa.ObtenerMesaPorNumero(numeroMesa);
+
+            ddlMeseros.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(mesa.MeseroAsignado.Legajo.ToString())));
+        }
+
+        protected void btnAceptarAlert_Click(object sender, EventArgs e)
+        {
+            int alert = Convert.ToInt32(((Button)sender).CommandArgument);
+
+            switch (alert)
+            {
+                case (int)TipoAlert.ConfirmaEliminarPedido:
+                    int idPedido = Convert.ToInt32(lblId.Text);
+                    negocio.EliminarPedido(idPedido);
+                    Response.Redirect("Pedidos.aspx", false);
+                    break;
+                case (int)TipoAlert.ConfirmaEliminarDetallePedido:
+                    break;
+                default:
+                    divAlert.Visible = false;
+                    break;
+            }
         }
     }
 }
