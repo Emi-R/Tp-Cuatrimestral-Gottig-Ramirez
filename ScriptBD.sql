@@ -332,6 +332,7 @@ Begin
 End
 Go
 
+-- Pedidos --
 create Procedure SpAgregarPedido(
  @IdMesa int,
  @LegajoMeseroAsignado int)
@@ -353,6 +354,23 @@ Begin
 
 End
 Go
+
+Create procedure SpEliminarPedido (@IdPedido int)
+as 
+begin
+
+	begin try
+		begin tran
+			Delete From DetallePedidos where IdPedido = @IdPedido
+			Delete From Pedidos where Id = @IdPedido
+		commit tran
+	end try
+
+	begin catch
+		rollback tran
+	end catch
+end
+go
 
 Create Procedure SpListarMeseros
 As

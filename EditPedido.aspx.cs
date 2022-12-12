@@ -361,7 +361,9 @@ namespace TP_Cuatrimestral
 
         protected void btnEliminarPedido_Click(object sender, EventArgs e)
         {
-
+            var idPedido = Convert.ToInt32(lblId.Text);
+            negocio.EliminarPedido(idPedido);
+            Response.Redirect("Pedidos.aspx", false);
         }
     }
 }

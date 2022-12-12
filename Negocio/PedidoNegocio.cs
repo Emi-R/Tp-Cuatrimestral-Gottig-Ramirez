@@ -134,5 +134,23 @@ namespace Negocio
                 _db.CerrarConexion();
             }
         }
+
+        public void EliminarPedido(int idPedido)
+        {
+            try
+            {
+                _db.SetearProcedimiento("SpEliminarPedido");
+                _db.SetearParametro("@IdPedido", idPedido);
+                _db.EjecutarAccion();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _db.CerrarConexion();
+            }
+        }
     }
 }
