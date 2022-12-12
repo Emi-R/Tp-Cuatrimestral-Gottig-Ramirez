@@ -113,7 +113,9 @@ namespace TP_Cuatrimestral
 
         protected void btnEliminarPedido_Click(object sender, EventArgs e)
         {
-
+            int idPedido = Convert.ToInt32(((Button)sender).CommandArgument);
+            negocio.EliminarPedido(idPedido);
+            cargarRepeaterPedidos();
         }
 
         protected void txtFechaPedido_TextChanged(object sender, EventArgs e)
