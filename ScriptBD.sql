@@ -46,7 +46,6 @@ Create Table Mesas(
     Numero Int Not Null,
     Capacidad Int Not Null,
     Ocupado Bit Not Null Default(0),
-    Reservado Bit Not Null Default(0),
     Activo Bit Not Null Default(1)
 )
 
@@ -150,8 +149,7 @@ Select
     Coalesce(U.Apellidos, 'S/ Mesero'),
     Coalesce(U.Nombre, 'S/ Mesero'),
     M.Capacidad, 
-    M.Ocupado, 
-    M.Reservado, 
+    M.Ocupado,
     M.Activo,
 	M.ID
 From Mesas M 
@@ -168,8 +166,7 @@ Select
     U.Apellidos, 
     U.Nombre,
     M.Capacidad, 
-    M.Ocupado, 
-    M.Reservado, 
+    M.Ocupado,
     M.Activo,
 	M.ID
 From Mesas M 
@@ -384,40 +381,44 @@ Create Procedure SpAgregarMesa
 	@NumMesa int,
 	@LegajoMeseroAsignado int,
 	@Capacidad int,
-	@Ocupado bit,
-	@Reservado bit
+	@Ocupado bit
 )
 As
 Begin
+	Insert into Mesas (Numero, MeseroAsignado, Capacidad, Ocupado) Values (@NumMesa, @LegajoMeseroAsignado, @Capacidad, @Ocupado)
+End
+Go
 
+Create Procedure SpEditarMesa 
+(
+	@NumMesa int,
+	@LegajoMeseroAsignado int,
+	@Capacidad int,
+	@Ocupado bit
+)
+As
+Begin
+	Update Mesas Set MeseroAsignado = @LegajoMeseroAsignado, Capacidad = @Capacidad, Ocupado = @Ocupado Where Numero = @NumMesa
+End
+Go
 
-Create Procedure SpObtenerMesaPorNumero (@NumeroMesa int)
-as
-begin 
+Create Proc SpObtenerMesaPorNumero 
+(
+	@NumeroMesa int
+)
+As
+Begin 
 	Select   
     M.Numero,   
     U.Legajo,   
     U.Apellidos,  
     U.Nombre, 
     M.Capacidad,   
-    M.Ocupado,   
-    M.Reservado,   
+    M.Ocupado,
     M.Activo,  
     M.ID  
 From Mesas M   
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo  
 where M.Numero = @NumeroMesa
-end
-go
-
-
-Insert into Mesas (MeseroAsignado, Numero, Capacidad, Ocupado, Reservado, Activo) values
-(@LegajoMeseroAsignado, @NumMesa, @Capacidad, @Ocupado, @Reservado, 1)
-
 End
 Go
-
---EXEC SpListarPlatos
---go
-
-Exec SpEliminarUsuario 2
