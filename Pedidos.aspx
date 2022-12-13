@@ -39,9 +39,15 @@
 
                             <div class="row mb-2">
                                 <div class=" form-dark w-200px ms-2">
-                                    <label class="form-label text-dark" for="lblFiltroFecha">Fecha</label>
-                                    <asp:TextBox TextMode="Date" ID="txtFechaPedido" OnTextChanged="txtFechaPedido_TextChanged" AutoPostBack="true" CssClass="form-control text-dark " runat="server"></asp:TextBox>
+                                    <label class="form-label text-dark" for="lblFiltroFecha">Fecha Pedido Desde</label>
+                                    <asp:TextBox TextMode="Date" ID="txtFechaPedidoDesde" OnTextChanged="txtFechaPedido_TextChanged" AutoPostBack="true" CssClass="form-control text-dark " runat="server"></asp:TextBox>
+                                </div>
+                            </div>
 
+                            <div class="row mb-2">
+                                <div class=" form-dark w-200px ms-2">
+                                    <label class="form-label text-dark" for="lblFiltroFecha">Fecha Pedido Hasta</label>
+                                    <asp:TextBox TextMode="Date" ID="txtFechaPedidoHasta" OnTextChanged="txtFechaPedidoHasta_TextChanged" AutoPostBack="true" CssClass="form-control text-dark " runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -59,6 +65,9 @@
                                 </div>
                                 <div class="col-1">
                                     <asp:Label runat="server" Text="Estado"></asp:Label>
+                                </div>
+                                <div class="col-2">
+                                      <asp:Label runat="server" Text="Fecha"></asp:Label>
                                 </div>
                                 <div class="col-4">
                                 </div>
@@ -82,6 +91,10 @@
                                             <asp:Label runat="server" ID="lblEntregado" Text='<%# (bool)Eval("Entregado") ? "Entregado" : "Pendiente"%>'></asp:Label>
                                         </div>
 
+                                        <div class="col-2">
+                                            <asp:Label Text='<%# ((DateTime)Eval("FechaPedido")).ToString("dd/MM/yyyy") %>' runat="server" ID="lblFecha" />
+                                        </div>
+
                                         <div class="col-2 m-auto">
                                             <asp:Button runat="server" CssClass="btn btn-warning m-1" CommandArgument='<%#Eval("ID")%>' CommandName="idPedido" ID="btnVerPedido" OnClick="btnVerPedido_Click" Text="Ver Pedido" />
                                         </div>
@@ -90,9 +103,6 @@
                                             <asp:Button runat="server" CssClass="btn btn-primary m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEntregado" OnClick="btnEntregado_Click" Text="Entregar" />
                                         </div>
 
-                                        <div class="col-2 m-auto">
-                                            <asp:Button runat="server" CssClass="btn btn-danger m-1" CommandArgument='<%#Eval("ID")%>' Visible='<%# !(bool)Eval("Entregado")%>' CommandName="idPedido" ID="btnEliminarPedido" OnClick="btnEliminarPedido_Click" Text="Eliminar" />
-                                        </div>
 
                                     </div>
                                 </ItemTemplate>

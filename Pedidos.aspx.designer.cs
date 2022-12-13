@@ -60,13 +60,22 @@ namespace TP_Cuatrimestral
         protected global::System.Web.UI.WebControls.Button btnEstadoPendiente;
 
         /// <summary>
-        /// Control txtFechaPedido.
+        /// Control txtFechaPedidoDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaPedido;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaPedidoDesde;
+
+        /// <summary>
+        /// Control txtFechaPedidoHasta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaPedidoHasta;
 
         /// <summary>
         /// Control repeaterPedidos.

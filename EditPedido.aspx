@@ -87,9 +87,13 @@
                                         <div class="col m-auto ">
                                             <asp:Label runat="server" ID="lblPrecioUnitario" Text='<%#Eval("PrecioUnitario")%>' CssClass="text-dark" Enabled="false"></asp:Label>
                                         </div>
+
+                                        <%if (divEntregarPedido.Visible || divAgregarPedido.Visible)
+                                            {%>
                                         <div class="col-2 m-auto">
                                             <asp:Button runat="server" CssClass="btn btn-danger m-1" OnClick="btnEliminarDetalle_Click" CommandArgument='<%# Eval("Insumo.Id")%>' CommandName="idDetallePedido" ID="btnEliminarDetalle" Text="Eliminar" />
                                         </div>
+                                        <%  } %>
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
@@ -162,18 +166,21 @@
 
             </div>
 
-            <div class="row justify-content-center m-auto"  style="width: 100%; position: fixed; z-index: 100; top: 30%" runat="server" ID="divAlert" visible="false" role="alert">
+            <div class="row justify-content-center m-auto" style="width: 100%; position: fixed; z-index: 100; top: 30%" runat="server" id="divAlert" visible="false" role="alert">
                 <div class="col-6 alert alert-danger align-items-center ">
-                  <div class="row">
-                      <div class="col">
-                           <asp:Label runat="server" ID="lblMessageError" Text=""></asp:Label>
-                      </div>
-                  </div>
-                  <div class="row justify-content-end">
-                      <div class="col-3">
-                            <asp:Button CssClass="btn btn-success w-100" runat="server" ID="btnAceptarAlert" CommandArgument='<%# ((int)tipoAlert)%>' OnClick="btnAceptarAlert_Click" Text="Aceptar"/>
-                      </div>
-                  </div>
+                    <div class="row">
+                        <div class="col">
+                            <asp:Label runat="server" ID="lblMessageError" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-3">
+                            <asp:Button CssClass="btn btn-danger w-100" runat="server" ID="btnCancelarAlert"  CommandArgument='<%# ((int)tipoAlert)%>'  OnClick="btnCancelarAlert_Click" Text="Cancelar" />
+                        </div>
+                        <div class="col-3">
+                            <asp:Button CssClass="btn btn-success w-100" runat="server" ID="btnAceptarAlert" CommandArgument='<%# ((int)tipoAlert)%>' OnClick="btnAceptarAlert_Click" Text="Aceptar" />
+                        </div>
+                    </div>
                 </div>
             </div>
 

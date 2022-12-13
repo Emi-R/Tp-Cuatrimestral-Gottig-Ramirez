@@ -231,6 +231,15 @@ namespace TP_Cuatrimestral
         protected global::System.Web.UI.WebControls.Label lblMessageError;
 
         /// <summary>
+        /// Control btnCancelarAlert.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelarAlert;
+
+        /// <summary>
         /// Control btnAceptarAlert.
         /// </summary>
         /// <remarks>

@@ -40,12 +40,7 @@ namespace TP_Cuatrimestral
             else
                 listaPedidos = negocio.ListarPedidos();
 
-            //si la fecha del filtro contiene algo, lo filtra por fecha, si no filtra los pedidos de la fecha actual
-            string fechaFiltro = txtFechaPedido.Text;
-            if (fechaFiltro == "")
-                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date == DateTime.Now.Date).ToList();
-            else
-                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date == DateTime.Parse(fechaFiltro).Date).ToList();
+            filtrarPorFecha(ref listaPedidos);
 
             //filtra dependiendo si el pedido esta entregado o no
             switch (estado)
@@ -64,6 +59,23 @@ namespace TP_Cuatrimestral
 
             repeaterPedidos.DataSource = listaPedidos;
             repeaterPedidos.DataBind();
+        }
+
+        private void filtrarPorFecha(ref List<Pedido> listaPedidos)
+        {
+            //si las fecha de los filtros contienen algo, lo filtra por fecha, si no filtra los pedidos de la fecha actual
+            string fechaFiltroDesde = txtFechaPedidoDesde.Text;
+            string fechaFiltroHasta = txtFechaPedidoHasta.Text;
+
+            if (fechaFiltroDesde == "" && fechaFiltroHasta == "")
+                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date == DateTime.Now.Date).ToList();
+
+            if (!String.IsNullOrEmpty(fechaFiltroDesde))
+                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date >= DateTime.Parse(fechaFiltroDesde).Date).ToList();
+
+            if (!String.IsNullOrEmpty(fechaFiltroHasta))
+                listaPedidos = listaPedidos.Where(x => x.FechaPedido.Date <= DateTime.Parse(fechaFiltroHasta).Date).ToList();
+
         }
 
         protected void btnVerPedido_Click(object sender, EventArgs e)
@@ -110,15 +122,12 @@ namespace TP_Cuatrimestral
             cargarRepeaterPedidos();
 
         }
-
-        protected void btnEliminarPedido_Click(object sender, EventArgs e)
+        protected void txtFechaPedido_TextChanged(object sender, EventArgs e)
         {
-            int idPedido = Convert.ToInt32(((Button)sender).CommandArgument);
-            negocio.EliminarPedido(idPedido);
             cargarRepeaterPedidos();
         }
 
-        protected void txtFechaPedido_TextChanged(object sender, EventArgs e)
+        protected void txtFechaPedidoHasta_TextChanged(object sender, EventArgs e)
         {
             cargarRepeaterPedidos();
         }

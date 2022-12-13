@@ -14,6 +14,7 @@ namespace Negocio
     {
         Default,
         ConfirmaEliminarPedido,
-        ConfirmaEliminarDetallePedido
+        ConfirmaEliminarDetallePedido,
+        ConfirmaEntregarPedido
     }
 }

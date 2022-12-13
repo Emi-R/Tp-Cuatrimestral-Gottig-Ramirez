@@ -143,10 +143,9 @@ namespace TP_Cuatrimestral
                 txtPrecioTotalInsumos.Text = total.ToString();
 
                 divAgregarPedido.Visible = false;
-                divEntregarPedido.Visible = true;
-                divEliminarPedido.Visible = true;
+                mostrarElementosPedidoPendiente();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 mostrarAlert(ex.ToString());
             }
@@ -195,6 +194,11 @@ namespace TP_Cuatrimestral
             ddlDetalleInsumo.DataBind();
 
             txtPrecioUnitario.Text = listaBebidas[0].Precio.ToString();
+
+            if (lblId.Text != "")
+            {
+                mostrarElementosPedidoPendiente();
+            }
         }
 
         protected void btnAgregarPlato_Click(object sender, EventArgs e)
@@ -209,12 +213,21 @@ namespace TP_Cuatrimestral
             ddlDetalleInsumo.DataBind();
 
             txtPrecioUnitario.Text = listaPlatos[0].Precio.ToString();
+
+
+            if (lblId.Text != "")
+            {
+                mostrarElementosPedidoPendiente();
+            }
         }
 
         protected void btnCancelarDetalle_Click(object sender, EventArgs e)
         {
             rowAgregarInsumo.Visible = false;
             LimpiarCampos();
+
+            if(lblId.Text != "")
+                mostrarElementosPedidoPendiente();
         }
 
         private void LimpiarCampos()
@@ -229,6 +242,9 @@ namespace TP_Cuatrimestral
             int cantidad = Convert.ToInt32(txtCantidad.Text);
             decimal precio = Convert.ToDecimal(txtPrecioUnitario.Text);
             txtPrecioTotalInsumos.Text = (cantidad * precio).ToString();
+
+            if(lblId.Text != "")
+                mostrarElementosPedidoPendiente();
         }
 
         protected void ddlDetalleInsumo_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,6 +256,9 @@ namespace TP_Cuatrimestral
             txtPrecioUnitario.Text = selected.Precio.ToString();
             txtPrecioTotalInsumos.Text = selected.Precio.ToString();
             txtCantidad.Text = "1";
+
+            if(lblId.Text != "")
+                mostrarElementosPedidoPendiente();
 
         }
 
@@ -257,8 +276,7 @@ namespace TP_Cuatrimestral
             else
             {
                 agregarDetalleEnDB(idSelected);
-                divEntregarPedido.Visible = true;
-                divEliminarPedido.Visible = true;
+                mostrarElementosPedidoPendiente();
             }
 
             rowAgregarInsumo.Visible = false;
@@ -331,8 +349,11 @@ namespace TP_Cuatrimestral
 
         protected void btnEntregarPedido_Click(object sender, EventArgs e)
         {
-            int idSelected = Convert.ToInt32(((Button)sender).CommandArgument);
-            negocio.CambiarEstadoPedido(idSelected, true);
+            var idPedido = Convert.ToInt32(lblId.Text);
+
+            mostrarElementosPedidoPendiente();
+
+            mostrarAlert($"Confirma entregar el Pedido #{idPedido}?", "Confirmar", tipoAlert: (int)TipoAlert.ConfirmaEntregarPedido);
         }
 
         protected void btnEliminarDetalle_Click(object sender, EventArgs e)
@@ -349,8 +370,7 @@ namespace TP_Cuatrimestral
 
                 actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
                 negocio.ActualizarTotalPedido(Convert.ToInt32(lblId.Text), Convert.ToDecimal(txtPrecio.Text));
-                divEntregarPedido.Visible = true;
-                divEliminarPedido.Visible = true;
+                mostrarElementosPedidoPendiente();
             }
             else
             {
@@ -359,7 +379,7 @@ namespace TP_Cuatrimestral
                 detallePedidoList.Remove(detalleDeleted);
                 actualizarTextTotalPedido(detalleDeleted.Cantidad, detalleDeleted.PrecioUnitario, false);
                 cargarDgvDetallePedido();
-            }        
+            }
         }
 
         private void actualizarTextTotalPedido(int cantidad, decimal precioUnitario, bool suma)
@@ -379,7 +399,9 @@ namespace TP_Cuatrimestral
         {
             var idPedido = Convert.ToInt32(lblId.Text);
 
-            mostrarAlert($"Confirma eliminar el Pedido #{idPedido}?", "Confirmar", (int)TipoAlert.ConfirmaEliminarPedido);
+            mostrarElementosPedidoPendiente();
+
+            mostrarAlert($"Confirma eliminar el Pedido #{idPedido}?", "Confirmar", tipoAlert: (int)TipoAlert.ConfirmaEliminarPedido);
         }
 
         protected void ddlMesas_SelectedIndexChanged(object sender, EventArgs e)
@@ -395,28 +417,77 @@ namespace TP_Cuatrimestral
         protected void btnAceptarAlert_Click(object sender, EventArgs e)
         {
             int alert = Convert.ToInt32(((Button)sender).CommandArgument);
+            int idPedido = Convert.ToInt32(lblId.Text != "" ? lblId.Text : "0");
 
             switch (alert)
             {
                 case (int)TipoAlert.ConfirmaEliminarPedido:
-                    int idPedido = Convert.ToInt32(lblId.Text);
                     negocio.EliminarPedido(idPedido);
                     Response.Redirect("Pedidos.aspx", false);
                     break;
                 case (int)TipoAlert.ConfirmaEliminarDetallePedido:
+
+                    break;
+
+                case (int)TipoAlert.ConfirmaEntregarPedido:
+                    negocio.CambiarEstadoPedido(idPedido, true);
+                    ocultarElementosPedidoEntregado();
                     break;
                 default:
-                    divAlert.Visible = false;
                     break;
             }
+            divAlert.Visible = false;
         }
 
-        private void mostrarAlert(string message = "", string btnSuccessText = "Aceptar", int tipoAlert = 0)
+        private void mostrarAlert(string message = "", string btnAceptarText = "Aceptar", string btnCancelarText = "Cancelar", int tipoAlert = 0)
         {
             btnAceptarAlert.CommandArgument = tipoAlert.ToString();
-            btnAceptarAlert.Text = btnSuccessText;
+            btnAceptarAlert.Text = btnAceptarText;
+
+            btnCancelarAlert.CommandArgument = tipoAlert.ToString();
+            btnCancelarAlert.Text = btnCancelarText;
+
             lblMessageError.Text = message;
             divAlert.Visible = true;
+        }
+
+        protected void btnCancelarAlert_Click(object sender, EventArgs e)
+        {
+            divAlert.Visible = false;
+            int alert = Convert.ToInt32(((Button)sender).CommandArgument);
+
+            switch (alert)
+            {
+                case (int)TipoAlert.ConfirmaEliminarPedido:
+                    mostrarElementosPedidoPendiente();
+                    break;
+                case (int)TipoAlert.ConfirmaEliminarDetallePedido:
+                    break;
+                case (int)TipoAlert.ConfirmaEntregarPedido:
+                    mostrarElementosPedidoPendiente();
+                    break;
+                default:
+                    break;
+            }
+
+            divAlert.Visible = false;
+
+        }
+
+        private void mostrarElementosPedidoPendiente()
+        {
+            btnAgregarBebida.Visible = true;
+            btnAgregarPlato.Visible = true;
+            divEntregarPedido.Visible = true;
+            divEliminarPedido.Visible = true;
+        }
+
+        private void ocultarElementosPedidoEntregado()
+        {
+            btnAgregarBebida.Visible = false;
+            btnAgregarPlato.Visible = false;
+            divEntregarPedido.Visible = false;
+            divEliminarPedido.Visible = false;
         }
     }
 }
