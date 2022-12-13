@@ -26,10 +26,20 @@ namespace TP_Cuatrimestral
 
                 if (!IsPostBack)
                 {
-                    tipoAlert = TipoAlert.Default;
-                    cargarDdlMesas();
-                    cargarDdlEmpleados();
-                    crearSessionDetallePedido();
+
+                    if (Session["usuario"] == null)
+                    {
+                        Session.Add("error", "Debes logearte para acceder a esta area.");
+                        Response.Redirect("Error.aspx", false);
+                    }
+                    else
+                    {
+                        tipoAlert = TipoAlert.Default;
+                        cargarDdlMesas();
+                        cargarDdlEmpleados();
+                        crearSessionDetallePedido();
+                    }
+
                 }
 
                 if (!IsPostBack && !String.IsNullOrEmpty(idPedido))

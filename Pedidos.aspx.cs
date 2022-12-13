@@ -18,7 +18,8 @@ namespace TP_Cuatrimestral
 
             if (!IsPostBack)
             {
-                if (Session["usuario"] == null)
+                Usuario user = (Usuario)Session["usuario"];
+                if (user == null)
                 {
                     Session.Add("error", "Debes logearte para acceder a esta area.");
                     Response.Redirect("Error.aspx", false);
@@ -39,6 +40,11 @@ namespace TP_Cuatrimestral
                 listaPedidos = negocio.ListarPedidos(numeroMesa);
             else
                 listaPedidos = negocio.ListarPedidos();
+
+            //si el usuario tiene perfil de Mesero, muestra solo los pedidos que tiene asignados
+            Usuario user = (Usuario)Session["usuario"];
+            if (user.Perfil.Id == (int)Perfiles.Mesero)
+                listaPedidos = listaPedidos.Where(x => x.MeseroAsignado.Legajo == user.Legajo).ToList();
 
             filtrarPorFecha(ref listaPedidos);
 
