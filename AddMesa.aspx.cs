@@ -24,6 +24,26 @@ namespace TP_Cuatrimestral
                 ddlMeseros.DataBind();
             }
 
+            if (Request.QueryString["id"] != null)
+            {
+                MesaNegocio mesaNegocio = new MesaNegocio();
+                Mesa mesa = mesaNegocio.ObtenerMesaPorNumero(Request.QueryString["id"].ToString());
+
+                txtNumeroMesa.Text = mesa.Numero.ToString();
+                txtCapacidad.Text = mesa.Capacidad.ToString();
+
+                ddlMeseros.SelectedIndex = mesa.MeseroAsignado.Legajo - 1;
+
+                if (mesa.Reservado == true)
+                    chkReservada.Checked = true;
+
+                if (mesa.Ocupado == true)
+                    chkOcupada.Checked = true;
+
+                txtNumeroMesa.Enabled = false;
+
+            }
+
         }
 
         protected void btnEditarMesa_Click(object sender, EventArgs e)
@@ -54,8 +74,9 @@ namespace TP_Cuatrimestral
 
             nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex - 1;
 
+            negocio.agregarMesa(nuevaMesa);
 
-
+            Response.Redirect("Mesas.aspx", false);
 
         }
     }
