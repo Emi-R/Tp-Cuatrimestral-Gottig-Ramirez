@@ -40,8 +40,6 @@ namespace Negocio
 
                     mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
 
-                    mesa.Reservado = (bool)basedatos.Lector["Reservado"];
-
                     mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
 
                     mesa.Activo = (bool)basedatos.Lector["Activo"];
@@ -77,7 +75,6 @@ namespace Negocio
                 db.SetearParametro("@LegajoMeseroAsignado", nueva.MeseroAsignado.Legajo);
                 db.SetearParametro("@Capacidad", nueva.Capacidad);
                 db.SetearParametro("@Ocupado", nueva.Ocupado);
-                db.SetearParametro("@Reservado", nueva.Reservado);
 
                 db.EjecutarAccion();
 
@@ -85,6 +82,32 @@ namespace Negocio
             catch (Exception ex)
             {
                  
+                throw ex;
+            }
+            finally
+            {
+                db.CerrarConexion();
+            }
+        }
+
+        public void editarMesa(Mesa nueva)
+        {
+            AccesoDatos db = new AccesoDatos();
+
+            try
+            {
+                db.SetearProcedimiento("SpEditarMesa");
+                db.SetearParametro("@NumMesa", nueva.Numero);
+                db.SetearParametro("@LegajoMeseroAsignado", nueva.MeseroAsignado.Legajo);
+                db.SetearParametro("@Capacidad", nueva.Capacidad);
+                db.SetearParametro("@Ocupado", nueva.Ocupado);
+
+                db.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
@@ -113,8 +136,6 @@ namespace Negocio
                     mesa.MeseroAsignado.Nombre = (string)basedatos.Lector["Nombre"];
 
                     mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
-
-                    mesa.Reservado = (bool)basedatos.Lector["Reservado"];
 
                     mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
 

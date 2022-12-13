@@ -13,6 +13,7 @@ Insert into Paises (Nombre) Values ('Ecuador');
 Insert into Paises (Nombre) Values ('Bolivia');
 Insert into Paises (Nombre) Values ('Paraguay');
 Go
+
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('lfdi', 42672165, 'Kù', 'Eltringham', '8645977039', 'geltringham0@sun.com', 'Reindahl', '7193', null, null, 8, 2, '1991-12-25', '2019-10-26', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('gdhb', 22143859, 'Léonie', 'Draayer', '9689906602', 'ldraayer1@va.gov', 'Nobel', '2', null, null, 3, 2, '1998-08-10', '2020-03-16', 2);
 insert into Usuarios (Contraseña, DNI, Nombre, Apellidos, Telefono, Email, Calle, Numero, Piso, Departamento, IDNacionalidad, TipoPerfil, FechaNac, FechaRegistro, Estado) values ('ocmj', 15033506, 'Lén', 'McIlwrick', '1994617416', 'pmcilwrick2@omniture.com', 'Brown', '4533', null, null, 5, 2, '1997-09-16', '2021-11-13', 2);
@@ -94,7 +95,8 @@ values (3, 5, GETDATE(), 0, 0),
 
 insert into DetallePedidos(IdPedido, IdInsumo, Cantidad, PrecioUnitario) values(1,2,12,10)
 
-
 update usuarios set TipoPerfil = 1 where Legajo = 11
 
 exec splistarusuarios
+
+Exec SpListarMesas

@@ -25,8 +25,7 @@ namespace TP_Cuatrimestral
 
                 RepeaterMesas.DataSource = lista;
                 contMesasOcupadas = (lista.Where(x => x.Ocupado).Count()).ToString();
-                contMesasReservadas = (lista.Where(x => x.Reservado).Count()).ToString();
-                contMesasLibres = (lista.Where(x => !x.Ocupado && !x.Reservado).Count()).ToString();
+                contMesasLibres = (lista.Where(x => !x.Ocupado).Count()).ToString();
 
                 RepeaterMesas.DataBind();
             }
