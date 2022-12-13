@@ -31,7 +31,6 @@
                                 <asp:BoundField HeaderText="Apellido y Nombre" HeaderStyle-CssClass="headerTitle" DataField="MeseroAsignado" />
                                 <asp:BoundField HeaderText="Número de Asientos" HeaderStyle-CssClass="headerTitle" DataField="Capacidad" />
                                 <asp:CheckBoxField HeaderText="Ocupada" HeaderStyle-CssClass="headerTitle" DataField="Ocupado" />
-                                <asp:CheckBoxField HeaderText="Reservada" HeaderStyle-CssClass="headerTitle" DataField="Reservado" />
                                 <asp:CheckBoxField HeaderText="Activa" HeaderStyle-CssClass="headerTitle" DataField="Activo" />
                                 <asp:CommandField HeaderText="Editar" HeaderStyle-CssClass="headerTitle" ShowSelectButton="true" SelectText="✍" />
                             </Columns>

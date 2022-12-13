@@ -34,9 +34,6 @@ namespace TP_Cuatrimestral
 
                 ddlMeseros.SelectedIndex = mesa.MeseroAsignado.Legajo - 1;
 
-                if (mesa.Reservado == true)
-                    chkReservada.Checked = true;
-
                 if (mesa.Ocupado == true)
                     chkOcupada.Checked = true;
 
@@ -63,18 +60,15 @@ namespace TP_Cuatrimestral
                 nuevaMesa.Ocupado = false;
             }
 
-            if(chkReservada.Checked)
+            nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex - 1;
+            if (Request.QueryString["id"] != null)
             {
-                nuevaMesa.Reservado = true;
+                negocio.editarMesa(nuevaMesa);
             }
             else
             {
-                nuevaMesa.Reservado = false;
+                negocio.agregarMesa(nuevaMesa);
             }
-
-            nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex - 1;
-
-            negocio.agregarMesa(nuevaMesa);
 
             Response.Redirect("Mesas.aspx", false);
 

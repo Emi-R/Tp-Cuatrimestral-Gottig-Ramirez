@@ -34,12 +34,6 @@
             </div>
 
             <div class="row">
-                <div class="col-1">
-                    <div style="height: 15px; width: 15px; border-radius: 50%; background: yellow; margin: auto"></div>
-                </div>
-                <div class="col">
-                    <p>Mesas reservadas: <%: contMesasReservadas %></p>
-                </div>
             </div>
         </div>
         <div class="col-8">
@@ -50,7 +44,7 @@
                     <asp:Repeater ID="RepeaterMesas" runat="server">
                         <ItemTemplate>
                             <div class="col-4">
-                                <div class="card text-white <%#: (bool)Eval("Ocupado") ? "bg-danger": ((bool)Eval("Reservado") ? "bg-warning" : "bg-success")%> mb-3 text-center cardMesas">
+                                <div class="card text-white <%#: (bool)Eval("Ocupado") ? "bg-danger" : "bg-success"%> mb-3 text-center cardMesas">
                                     <div class="card-title" style="margin-top: 20px">Mesa #<%#: Eval("Numero") %></div>
                                     <div class="card-body" style="padding: 0">
                                         <%--<h5 class="card-title">Primary card title</h5>--%>

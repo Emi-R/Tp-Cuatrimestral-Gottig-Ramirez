@@ -18,8 +18,6 @@ namespace Dominio
         [DisplayName("Cantidad de Asientos")]
         public int Capacidad { get; set; }
 
-        public bool Reservado { get; set; }
-
         public bool Ocupado { get; set; }
 
         public bool Activo { get; set; }

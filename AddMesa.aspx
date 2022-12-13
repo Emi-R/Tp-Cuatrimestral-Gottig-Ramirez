@@ -39,12 +39,6 @@
 
                 <!-- Chk Reserva -->
                 <div class="row mb-4">
-                    <div class="col">
-                        <div class="form-check">
-                            <asp:CheckBox ID="chkReservada" CssClass="form-check-input" runat="server" />
-                            <label class="form-check-label" for="chkReservada">Es reserva?</label>
-                        </div>
-                    </div>
                     <!-- Chk Ocupado -->
                     <div class="col">
                         <div class="form-check">
