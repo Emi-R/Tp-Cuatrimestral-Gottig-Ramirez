@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
+using Negocio;
 
 namespace TP_Cuatrimestral
 {
@@ -11,6 +13,20 @@ namespace TP_Cuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarRepeaterReporteMeseros();
+        }
+
+        private void CargarRepeaterReporteMeseros()
+        {
+            ReporteNegocio negocioReporte = new ReporteNegocio();
+            List<ReporteMeseros> listaReporteMeseros = negocioReporte.ObtenerReporteMeseros(DateTime.Now.ToString("yyyy/MM/dd"));
+
+            repeaterReporteMeseros.DataSource = listaReporteMeseros;
+            repeaterReporteMeseros.DataBind();
+
+            var total = listaReporteMeseros.Sum(x => x.TotalRecaudado);
+
+            lblTotalRecaudado.Text = $"{lblTotalRecaudado.Text} {total}";
 
         }
     }

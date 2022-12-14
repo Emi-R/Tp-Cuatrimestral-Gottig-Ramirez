@@ -422,3 +422,32 @@ Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
 where M.Numero = @NumeroMesa
 End
 Go
+
+-- REPORTES --
+
+CREATE VIEW V_REPORTE_MESEROS
+AS
+	SELECT Legajo,
+	NOMBRE + ' ' + Apellidos AS Mesero, 
+	P.Fecha AS FechaPedidos,
+	COUNT(P.Id) AS TotalPedidos,
+	SUM(P.Total) AS TotalRecaudado
+	 FROM Pedidos P
+	INNER JOIN Usuarios U
+	ON P.LegajoMeseroAsignado = U.Legajo
+	WHERE U.TipoPerfil = 2
+	GROUP BY U.Legajo, U.Nombre, U.Apellidos, P.Fecha
+GO
+
+
+CREATE VIEW V_REPORTES_MESAS
+AS
+	SELECT M.Numero AS NumeroMesa,
+	P.Fecha AS FechaPedidos,
+	COUNT(P.Id) AS TotalPedidos,
+	SUM(P.Total) AS TotalRecaudado
+	 FROM Pedidos P
+	INNER JOIN Mesas M
+	ON P.IdMesa =  M.ID
+	GROUP BY M.ID, M.Numero, P.Fecha
+GO
