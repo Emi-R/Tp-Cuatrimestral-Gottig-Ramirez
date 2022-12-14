@@ -15,6 +15,33 @@ namespace TP_Cuatrimestral
     {
 
         /// <summary>
+        /// Control updatePanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel;
+
+        /// <summary>
+        /// Control lblTotalRecaudadoTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRecaudadoTitle;
+
+        /// <summary>
+        /// Control lblFechaTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaTitle;
+
+        /// <summary>
         /// Control lblTotalRecaudado.
         /// </summary>
         /// <remarks>
@@ -24,6 +51,24 @@ namespace TP_Cuatrimestral
         protected global::System.Web.UI.WebControls.Label lblTotalRecaudado;
 
         /// <summary>
+        /// Control txtFechaReportes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaReportes;
+
+        /// <summary>
+        /// Control lblPedidosMeseroTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPedidosMeseroTitle;
+
+        /// <summary>
         /// Control repeaterReporteMeseros.
         /// </summary>
         /// <remarks>
@@ -31,5 +76,23 @@ namespace TP_Cuatrimestral
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeaterReporteMeseros;
+
+        /// <summary>
+        /// Control lblReporteMesasTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReporteMesasTitle;
+
+        /// <summary>
+        /// Control repeaterReporteMesas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterReporteMesas;
     }
 }
