@@ -249,3 +249,9 @@
     font-weight: bold !important;
     background-color: #d83a3a !important;
 }
+
+
+.divScroll {
+    overflow-y: scroll;
+    height: 300px;
+}
