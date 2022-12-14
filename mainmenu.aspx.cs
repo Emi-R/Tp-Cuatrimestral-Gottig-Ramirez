@@ -21,7 +21,15 @@ namespace TP_Cuatrimestral
 
             if (!IsPostBack)
             {
-                List<Mesa> lista = negocio.ListarMesas();
+                List<Mesa> lista = new List<Mesa>();
+                if (((Dominio.Usuario)Session["usuario"]).Perfil.Id != 1)
+                {
+                    lista = negocio.ListarMesasPorMesero((Usuario)Session["usuario"]);
+                }
+                else
+                {
+                    lista = negocio.ListarMesas();
+                }
 
                 RepeaterMesas.DataSource = lista;
                 contMesasOcupadas = (lista.Where(x => x.Ocupado).Count()).ToString();

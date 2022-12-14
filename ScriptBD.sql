@@ -153,7 +153,28 @@ Select
     M.Activo,
 	M.ID
 From Mesas M 
+Left Join Usuarios U On M.MeseroAsignado = U.Legajo
+End
+Go
+
+Create Procedure SpListarMesasPorMesero
+(
+	@Legajo int
+)
+As
+Begin
+Select 
+    M.Numero, 
+    U.Legajo, 
+    Coalesce(U.Apellidos, 'S/ Mesero'),
+    Coalesce(U.Nombre, 'S/ Mesero'),
+    M.Capacidad, 
+    M.Ocupado,
+    M.Activo,
+	M.ID
+From Mesas M 
 Inner Join Usuarios U On M.MeseroAsignado = U.Legajo
+Where M.MeseroAsignado = @Legajo
 End
 Go
 
