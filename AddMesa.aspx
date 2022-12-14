@@ -42,7 +42,7 @@
                     <!-- Chk Ocupado -->
                     <div class="col">
                         <div class="form-check">
-                            <asp:CheckBox ID="chkOcupada" CssClass="form-check-input" runat="server" />
+                            <asp:CheckBox ID="chkOcupada" CssClass="form-check-input" OnCheckedChanged="chkOcupada_CheckedChanged" AutoPostBack="true" runat="server" />
                             <label class="form-check-label" for="chkOcupada">Esta ocupada?</label>
                         </div>
                     </div>

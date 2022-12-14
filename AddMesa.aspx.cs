@@ -12,6 +12,7 @@ namespace TP_Cuatrimestral
     public partial class AddMesa : System.Web.UI.Page
     {
         public bool confirm;
+        public bool banderaOcup;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,23 +23,31 @@ namespace TP_Cuatrimestral
                 List<Usuario> lista = negocio.listarMeseros();
                 ddlMeseros.DataSource = lista;
                 ddlMeseros.DataBind();
-            }
 
-            if (Request.QueryString["id"] != null)
-            {
-                MesaNegocio mesaNegocio = new MesaNegocio();
-                Mesa mesa = mesaNegocio.ObtenerMesaPorNumero(Request.QueryString["id"].ToString());
+                if (Request.QueryString["id"] != null)
+                {
+                    MesaNegocio mesaNegocio = new MesaNegocio();
+                    Mesa mesa = mesaNegocio.ObtenerMesaPorNumero(Request.QueryString["id"].ToString());
 
-                txtNumeroMesa.Text = mesa.Numero.ToString();
-                txtCapacidad.Text = mesa.Capacidad.ToString();
+                    txtNumeroMesa.Text = mesa.Numero.ToString();
+                    txtCapacidad.Text = mesa.Capacidad.ToString();
 
-                ddlMeseros.SelectedIndex = mesa.MeseroAsignado.Legajo - 1;
+                    ddlMeseros.SelectedIndex = mesa.MeseroAsignado.Legajo - 1;
 
-                if (mesa.Ocupado == true)
-                    chkOcupada.Checked = true;
+                    if (mesa.Ocupado == true)
+                    {
+                        banderaOcup = true;
+                        chkOcupada.Checked = true;
+                    }
+                    else
+                    {
+                        banderaOcup = false;
+                        chkOcupada.Checked = false;
+                    }
 
-                txtNumeroMesa.Enabled = false;
+                    txtNumeroMesa.Enabled = false;
 
+                }
             }
 
         }
@@ -51,16 +60,9 @@ namespace TP_Cuatrimestral
             nuevaMesa.Numero = int.Parse(txtNumeroMesa.Text);
             nuevaMesa.Capacidad = int.Parse(txtCapacidad.Text);
 
-            if(chkOcupada.Checked)
-            {
-                nuevaMesa.Ocupado = true;
-            }
-            else
-            {
-                nuevaMesa.Ocupado = false;
-            }
+            nuevaMesa.Ocupado = banderaOcup;
 
-            nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex - 1;
+            nuevaMesa.MeseroAsignado.Legajo = ddlMeseros.SelectedIndex + 1;
             if (Request.QueryString["id"] != null)
             {
                 negocio.editarMesa(nuevaMesa);
@@ -72,6 +74,19 @@ namespace TP_Cuatrimestral
 
             Response.Redirect("Mesas.aspx", false);
 
+        }
+
+        protected void chkOcupada_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkOcupada.Checked)
+            {
+                banderaOcup = true;
+
+            }
+            else
+            {
+                banderaOcup = false;
+            }
         }
     }
 }
