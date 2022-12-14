@@ -65,6 +65,56 @@ namespace Negocio
 
         }
 
+        public List<Mesa> ListarMesasPorMesero(Usuario mesero)
+        {
+            List<Mesa> listaMesas = new List<Mesa>();
+
+            basedatos.SetearProcedimiento("SpListarMesasPorMesero");
+            basedatos.SetearParametro("@Legajo", mesero.Legajo);
+
+            basedatos.EjecutarLectura();
+
+            try
+            {
+                while (basedatos.Lector.Read())
+                {
+
+                    Mesa mesa = new Mesa();
+
+                    mesa.Numero = (int)basedatos.Lector["Numero"];
+
+                    if (!(basedatos.Lector.IsDBNull(basedatos.Lector.GetOrdinal("Legajo"))))
+                        mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
+
+                    mesa.MeseroAsignado.Apellido = basedatos.Lector.GetString(2);
+                    mesa.MeseroAsignado.Nombre = basedatos.Lector.GetString(3);
+
+                    mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
+
+                    mesa.Ocupado = (bool)basedatos.Lector["Ocupado"];
+
+                    mesa.Activo = (bool)basedatos.Lector["Activo"];
+
+                    mesa.ID = (int)basedatos.Lector["ID"];
+
+                    listaMesas.Add(mesa);
+                }
+
+                return listaMesas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+            finally
+            {
+                basedatos.CerrarConexion();
+            }
+
+
+        }
+
         public void agregarMesa(Mesa nueva)
         {
             AccesoDatos db = new AccesoDatos();
