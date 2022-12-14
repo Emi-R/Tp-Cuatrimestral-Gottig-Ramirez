@@ -36,8 +36,8 @@ namespace Negocio
                     if (!(basedatos.Lector.IsDBNull(basedatos.Lector.GetOrdinal("Legajo"))))
                         mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
 
-                    mesa.MeseroAsignado.Apellido = (string)basedatos.Lector["Apellidos"];
-                    mesa.MeseroAsignado.Nombre = (string)basedatos.Lector["Nombre"];
+                    mesa.MeseroAsignado.Apellido = basedatos.Lector.GetString(2);
+                    mesa.MeseroAsignado.Nombre = basedatos.Lector.GetString(3);
 
                     mesa.Capacidad = (int)basedatos.Lector["Capacidad"];
 

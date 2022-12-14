@@ -16,7 +16,8 @@ namespace TP_Cuatrimestral
         {
             negocioReporte = new ReporteNegocio();
 
-            if(!IsPostBack){
+            if (!IsPostBack)
+            {
                 CargarRepeaterReporteMeseros();
                 CargarRepeaterReporteMesas();
                 CargarDatosDiarios();
@@ -47,7 +48,8 @@ namespace TP_Cuatrimestral
             var totalDiario = listaReporteMeseros.Sum(x => x.TotalRecaudado);
             lblTotalRecaudado.Text = $"$ {totalDiario}";
 
-            //txtFechaReportes.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            if (string.IsNullOrEmpty(fechaFiltro))
+                txtFechaReportes.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void CargarRepeaterReporteMesas(string fechaFiltro = "")

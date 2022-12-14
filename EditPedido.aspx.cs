@@ -76,6 +76,10 @@ namespace TP_Cuatrimestral
                 ddlMesas.SelectedIndex = ddlMesas.Items.IndexOf((ddlMesas.Items.FindByValue(idMesa)));
                 ddlMesas.Enabled = false;
             }
+            else
+            {
+                ddlMesas.SelectedIndex = 0;
+            }
 
         }
 
@@ -94,6 +98,14 @@ namespace TP_Cuatrimestral
                 ddlMeseros.SelectedIndex = ddlMeseros.Items.IndexOf((ddlMeseros.Items.FindByValue(legajoMesero)));
                 ddlMeseros.Enabled = false;
             }
+            else
+            {
+                MesaNegocio negocioMesa = new MesaNegocio();
+                Usuario mesero = negocioMesa.ObtenerMesaPorNumero(ddlMesas.Items[0].Value).MeseroAsignado;
+
+                ddlMeseros.SelectedIndex = ddlMeseros.Items.IndexOf((ddlMeseros.Items.FindByValue(mesero.Legajo.ToString())));
+            }
+            ddlMeseros.Enabled = false;
 
         }
         private void PrecargarCampos(string idPedido)
@@ -204,6 +216,8 @@ namespace TP_Cuatrimestral
             ddlDetalleInsumo.DataBind();
 
             txtPrecioUnitario.Text = listaBebidas[0].Precio.ToString();
+            txtPrecioTotalInsumos.Text = listaBebidas[0].Precio.ToString();
+            txtCantidad.Text = "1";
 
             if (lblId.Text != "")
             {
@@ -223,6 +237,8 @@ namespace TP_Cuatrimestral
             ddlDetalleInsumo.DataBind();
 
             txtPrecioUnitario.Text = listaPlatos[0].Precio.ToString();
+            txtPrecioTotalInsumos.Text = listaPlatos[0].Precio.ToString();
+            txtCantidad.Text = "1";
 
 
             if (lblId.Text != "")
@@ -236,7 +252,7 @@ namespace TP_Cuatrimestral
             rowAgregarInsumo.Visible = false;
             LimpiarCampos();
 
-            if(lblId.Text != "")
+            if (lblId.Text != "")
                 mostrarElementosPedidoPendiente();
         }
 
@@ -253,7 +269,7 @@ namespace TP_Cuatrimestral
             decimal precio = Convert.ToDecimal(txtPrecioUnitario.Text);
             txtPrecioTotalInsumos.Text = (cantidad * precio).ToString();
 
-            if(lblId.Text != "")
+            if (lblId.Text != "")
                 mostrarElementosPedidoPendiente();
         }
 
@@ -267,7 +283,7 @@ namespace TP_Cuatrimestral
             txtPrecioTotalInsumos.Text = selected.Precio.ToString();
             txtCantidad.Text = "1";
 
-            if(lblId.Text != "")
+            if (lblId.Text != "")
                 mostrarElementosPedidoPendiente();
 
         }
