@@ -6,7 +6,7 @@
     <asp:ScriptManager runat="server"></asp:ScriptManager>
     <asp:UpdatePanel runat="server" ID="updatePanel">
         <ContentTemplate>
-            <div class="container mt-5">
+            <div class="container mt-5 mb-5">
                 <div class="row m-2">
                     <div class="col" style="background-color: #92aedb !important; border-radius: 50px">
                         <div class="title-page">
