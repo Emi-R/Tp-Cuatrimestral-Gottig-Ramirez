@@ -77,12 +77,12 @@ Go
 --('Ensalada Lechuga y Tomate', 300, 2),
 --('Papas fritas', 1000, 2)
 --Go
-
-Insert Into Insumos (Nombre, Precio, IdTipoInsumo, Capacidad)
+select * from Insumos
+Insert Into Insumos (Nombre, Precio, IdTipoInsumo, Capacidad, Marca)
 Values 
-('Cola', 500, 1, 1),
-('Cola', 500, 1, 1),
-('Naranja', 500, 1, 1)
+('Cola', 500, 1, 1, 1),
+('Cola', 500, 1, 1, 3),
+('Naranja', 500, 1, 1,2)
 Go
 
 
