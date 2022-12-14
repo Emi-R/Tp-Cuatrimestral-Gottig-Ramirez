@@ -15,19 +15,22 @@ namespace TP_Cuatrimestral
         {
             MesaNegocio negocio = new MesaNegocio();
 
-            //if (Session["usuario"] == null)
-            //{
-            //    Session.Add("error", "Debes logearte para acceder a esta area.");
-            //    Response.Redirect("Error.aspx", false);
-            //}
-            //else if (((Dominio.Usuario)Session["usuario"]).Perfil.Id != 1)
-            //{
-            //    Session.Add("error", "No posee los permisos suficientes para acceder.");
-            //    Response.Redirect("Error.aspx", false);
-            //}
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes logearte para acceder a esta area.");
+                Response.Redirect("Error.aspx", false);
+            }
 
-            dgvMesas.DataSource = negocio.ListarMesas();
-            dgvMesas.DataBind();
+            if (((Dominio.Usuario)Session["usuario"]).Perfil.Id == 1)
+            {
+                dgvMesas.DataSource = negocio.ListarMesas();
+                dgvMesas.DataBind();
+            }
+            else
+            {
+                dgvMesas.DataSource = negocio.ListarMesasPorMesero((Usuario)Session["usuario"]);
+                dgvMesas.DataBind();
+            }
         }
 
         protected void dgvMesas_SelectedIndexChanged(object sender, EventArgs e)
