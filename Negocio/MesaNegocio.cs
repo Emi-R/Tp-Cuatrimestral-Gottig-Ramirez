@@ -18,9 +18,9 @@ namespace Negocio
             List<Mesa> listaMesas = new List<Mesa>();
 
             if (gerente)
-                basedatos.SetearProcedimiento("SpListarMesas");
-            else
                 basedatos.SetearProcedimiento("SpListarMesasActivas");
+            else
+                basedatos.SetearProcedimiento("SpListarMesas");
 
             basedatos.EjecutarLectura();
 
@@ -33,7 +33,8 @@ namespace Negocio
 
                     mesa.Numero = (int)basedatos.Lector["Numero"];
 
-                    mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
+                    if (!(basedatos.Lector.IsDBNull(basedatos.Lector.GetOrdinal("Legajo"))))
+                        mesa.MeseroAsignado.Legajo = (int)basedatos.Lector["Legajo"];
 
                     mesa.MeseroAsignado.Apellido = (string)basedatos.Lector["Apellidos"];
                     mesa.MeseroAsignado.Nombre = (string)basedatos.Lector["Nombre"];
@@ -81,7 +82,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                 
+
                 throw ex;
             }
             finally
@@ -147,7 +148,7 @@ namespace Negocio
                 return mesa;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

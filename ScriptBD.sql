@@ -319,7 +319,7 @@ Begin
 	Begin Try
 	Begin Transaction
 		Update Mesas Set MeseroAsignado = Null Where MeseroAsignado = @Legajo
-		Delete From Usuarios where Legajo = @Legajo
+		Update Usuarios Set Estado = 0 where Legajo = @Legajo
 		Commit Transaction
 	End Try
 	Begin Catch
