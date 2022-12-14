@@ -86,15 +86,6 @@ Values
 Go
 
 
-
-INSERT INTO Pedidos(IdMesa, LegajoMeseroAsignado, Fecha, Entregado, total) 
-values (3, 5, GETDATE(), 0, 0),
-(1, 1, GETDATE(), 0, 12340),
-(2, 2, GETDATE(), 0, 10000),
-(2, 1, GETDATE(), 0, 100)
-
-insert into DetallePedidos(IdPedido, IdInsumo, Cantidad, PrecioUnitario) values(1,2,12,10)
-
 update usuarios set TipoPerfil = 1 where Legajo = 11
 
 exec splistarusuarios
